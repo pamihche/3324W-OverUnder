@@ -3,43 +3,23 @@
 using namespace vex;
 competition Competition;
 
-const bool useAutonmousSelector = false;
-
-
-
-/*---------------------------------------------------------------------------*/
-/*                             VEXcode Config                                */
-/*                                                                           */
-/*  Before you do anything else, start by configuring your motors and        */
-/*  sensors using the V5 port icon in the top right of the screen. Doing     */
-/*  so will update robot-config.cpp and robot-config.h automatically, so     */
-/*  you don't have to. Ensure that your motors are reversed properly. For    */
-/*  the drive, spinning all motors forward should drive the robot forward.   */
-/*---------------------------------------------------------------------------*/
-
-/*---------------------------------------------------------------------------*/
-/*                             JAR-Template Config                           */
-/*                                                                           */
-/*  Where all the magic happens. Follow the instructions below to input      */
-/*  all the physical constants and values for your robot. You should         */
-/*  already have configured your robot manually with the sidebar configurer. */
-/*---------------------------------------------------------------------------*/
+const bool useAutonmousSelector = true;
 
 Drive chassis(
 
 //Specify your drive setup below. There are eight options:
 //ZERO_TRACKER_NO_ODOM, ZERO_TRACKER_ODOM, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, and HOLONOMIC_TWO_ROTATION
 //For example, if you are not using odometry, put ZERO_TRACKER_NO_ODOM below:
-ZERO_TRACKER_NO_ODOM,
+ZERO_TRACKER_ODOM,
 
 //Add the names of your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 //You will input whatever motor names you chose when you configured your robot using the sidebar configurer, they don't have to be "Motor1" and "Motor2".
 
 //Left Motors:
-motor_group(),
+motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack),
 
 //Right Motors:
-motor_group(),
+motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
 
 //Specify the PORT NUMBER of your inertial sensor, in PORT format (i.e. "PORT1", not simply "1"):
 PORT1,
