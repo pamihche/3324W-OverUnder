@@ -3,6 +3,10 @@
 using namespace vex;
 competition Competition;
 
+const bool useAutonmousSelector = true;
+
+
+
 /*---------------------------------------------------------------------------*/
 /*                             VEXcode Config                                */
 /*                                                                           */
@@ -101,45 +105,20 @@ void pre_auton(void) {
   vexcodeInit();
   default_constants();
 
-  while(auto_started == false){            //Changing the names below will only change their names on the
-    Brain.Screen.clearScreen();            //brain screen for auton selection.
-    switch(current_auton_selection){       //Tap the brain screen to cycle through autons.
-      case 0:
-        Brain.Screen.printAt(50, 50, "Drive Test");
-        break;
-      case 1:
-        Brain.Screen.printAt(50, 50, "Drive Test");
-        break;
-      case 2:
-        Brain.Screen.printAt(50, 50, "Turn Test");
-        break;
-      case 3:
-        Brain.Screen.printAt(50, 50, "Swing Test");
-        break;
-      case 4:
-        Brain.Screen.printAt(50, 50, "Full Test");
-        break;
-      case 5:
-        Brain.Screen.printAt(50, 50, "Odom Test");
-        break;
-      case 6:
-        Brain.Screen.printAt(50, 50, "Tank Odom Test");
-        break;
-      case 7:
-        Brain.Screen.printAt(50, 50, "Holonomic Odom Test");
-        break;
-    }
-    if(Brain.Screen.pressing()){
-      while(Brain.Screen.pressing()) {}
-      current_auton_selection ++;
-    } else if (current_auton_selection == 8){
-      current_auton_selection = 0;
-    }
-    task::sleep(10);
+  if(useAutonmousSelector == true)
+  {
+    displayAutonmousSelector();
   }
+
+
+
+
+  task::sleep(10);
+  
 }
 
-void autonomous(void) {
+void autonomous(void) 
+{
   auto_started = true;
   switch(current_auton_selection){  
     case 0:
@@ -193,7 +172,7 @@ void usercontrol(void) {
 
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
-    chassis.control_arcade();
+    chassis.control_tank();
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.

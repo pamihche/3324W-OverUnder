@@ -12,7 +12,9 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include <string.h>
+#include <string>
 
 #include "v5.h"
 #include "v5_vcs.h"
@@ -22,6 +24,9 @@
 #include "JAR-Template/drive.h"
 #include "JAR-Template/util.h"
 #include "JAR-Template/PID.h"
+
+#include "autonomous-selector.h"
+
 #include "autons.h"
 
 #define waitUntil(condition)                                                   \
