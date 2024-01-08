@@ -3,7 +3,7 @@
 using namespace vex;
 competition Competition;
 
-const bool useAutonmousSelector = true;
+const bool useAutonmousSelector = false;
 
 
 
@@ -97,55 +97,89 @@ PORT3,     -PORT4,
 
 );
 
-int current_auton_selection = 0;
-bool auto_started = false;
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  default_constants();
+	vexcodeInit();
+	default_constants();
 
-  if(useAutonmousSelector == true)
-  {
-    displayAutonmousSelector();
-  }
+	if(useAutonmousSelector == true)
+	{
+		displayAutonmousSelector();
+	}
 
-
-
-
-  task::sleep(10);
+	wait(10, vex::timeUnits::msec);
   
 }
 
 void autonomous(void) 
 {
-  auto_started = true;
-  switch(current_auton_selection){  
-    case 0:
-      drive_test(); //This is the default auton, if you don't select from the brain.
-      break;        //Change these to be your own auton functions in order to use the auton selector.
-    case 1:         //Tap the screen to cycle through autons.
-      drive_test();
-      break;
-    case 2:
-      turn_test();
-      break;
-    case 3:
-      swing_test();
-      break;
-    case 4:
-      full_test();
-      break;
-    case 5:
-      odom_test();
-      break;
-    case 6:
-      tank_odom_test();
-      break;
-    case 7:
-      holonomic_odom_test();
-      break;
- }
+	Brain.Screen.clearScreen();
+
+	if(autonomousType == 0)
+	{
+		Brain.Screen.printAt(90, 125, true, "No Autonomous Type Selected");
+
+	}
+
+
+	switch (autonomousType)
+	{
+
+		case AutonomousType::Offsensive :
+
+				switch (autonomousTypeStrategy)
+				{
+					case 1 : 
+						//call function1 here
+					break;
+					case 2 : 
+						//call function2 here
+					break;
+
+					default: break;
+				}
+
+
+
+
+		break;
+
+		case AutonomousType::Defensive :
+
+				switch (autonomousTypeStrategy)
+				{
+					case 1 : 
+						//call function1 here
+					break;
+					case 2 : 
+						//call function2 here
+					break;
+
+					default: break;
+				}
+				
+
+		break;
+
+		case AutonomousType::Skills :
+				switch (autonomousTypeStrategy)
+				{
+					case 1 : 	
+					default: 
+						//call SKILLS here
+					break;
+				}
+
+	
+
+		break;
+
+		default: 
+			odom_test();
+		break;
+	}
+
 }
 
 /*---------------------------------------------------------------------------*/
