@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       emilc                                                     */
+/*    Author:       Patrick Chelaru                                           */
 /*    Created:      1/8/2024, 9:48:03 AM                                      */
 /*    Description:  V5 project                                                */
 /*                                                                            */
