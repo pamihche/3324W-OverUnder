@@ -26,6 +26,8 @@
 #include "JAR-Template/PID.h"
 
 #include "autonomous-selector.h"
+#include "SmartDrive.h"
+
 
 #include "autons.h"
 

@@ -1,5 +1,10 @@
 using namespace vex;
 
+class Drive;
+class SmartDrive;
+
+extern SmartDrive chassis;
+
 extern brain Brain;
 
 extern motor MotorLeftFront; 

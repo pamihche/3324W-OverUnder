@@ -1,9 +1,9 @@
 #pragma once
 #include "JAR-Template/drive.h"
 
-class Drive;
+// class Drive;
 
-extern Drive chassis;
+// extern Drive chassis;
 
 void default_constants();
 
