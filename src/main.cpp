@@ -147,8 +147,8 @@ void autonomous(void)
 
 			//drive_test();
 			//tank_odom_test();
-
-			offensive_awp_four_triballs();
+			defensive_awp_nine_points();
+			//offensive_awp_four_triballs();
 
 		break;
 	}

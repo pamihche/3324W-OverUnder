@@ -1,5 +1,7 @@
-//#include "autonomous-offensive.h"
+#include "autonomous-offensive.h"
 #include "vex.h"
+
+using namespace vex;
 
 void offensive_awp_four_triballs()
 {
@@ -30,5 +32,5 @@ void offensive_awp_four_triballs()
   wings.set(true);
   chassis.drive_distance(36);
   MotorIntake.stop();
-  wings.set(false);
+  wings.set(false); 
 }  
