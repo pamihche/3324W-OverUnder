@@ -13,13 +13,13 @@ extern motor MotorLeftBack;
 extern motor MotorRightFront; 
 extern motor MotorRightMiddle;
 extern motor MotorRightBack;
-//extern digital_out wings;
+extern digital_out wings;
 //extern digital_out balance;
 //extern digital_out blocker;
 
 //extern motor catapult1;
 // extern motor catapult2;
-extern motor intake;
+extern motor MotorIntake;
 
 
 

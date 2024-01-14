@@ -30,6 +30,11 @@
 
 
 #include "autons.h"
+#include "autonmous-defensive.h"
+#include "autonomous-offensive.h"
+#include "autonomous-skills.h"
+
+
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \

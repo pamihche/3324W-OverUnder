@@ -4,7 +4,8 @@ using namespace vex;
 competition Competition;
 
 const bool useAutonmousSelector = true;
-
+bool wings_set = false;
+bool wingsLastPress = false;
 SmartDrive chassis( 
 	ZERO_TRACKER_ODOM, 
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
@@ -138,11 +139,51 @@ void autonomous(void)
 
 		default: 
 
-			odom_test();
+			//odom_test();
+			chassis.setDefaultConstants();
+			chassis.turn_kd = 3.35;
+
+			chassis.drive_max_voltage = 7;
+
+			//drive_test();
+			//tank_odom_test();
+
+			offensive_awp_four_triballs();
 
 		break;
 	}
 
+}
+
+ void intake_ButtonControl()
+{
+	if(controller(primary).ButtonR1.pressing())
+	{
+		MotorIntake.setVelocity(600, rpm);
+		MotorIntake.spin(reverse, 600, rpm);
+	}
+	else if(controller(primary).ButtonR2.pressing())
+	{
+		MotorIntake.setVelocity(600, rpm);
+		MotorIntake.spin(vex::forward, 600, rpm);
+	}
+	else
+	{
+		MotorIntake.stop();
+	}
+
+}
+
+void wings_control(void)
+{
+	if(controller(primary).ButtonL1.pressing() && wingsLastPress == false)
+	{
+		wings_set = !wings_set;
+		
+	}
+
+	wingsLastPress = controller(primary).ButtonL1.pressing();
+	wings.set(wings_set);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -169,8 +210,8 @@ void usercontrol(void) {
 
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
-
-
+	intake_ButtonControl();
+	wings_control();
 	chassis.control_tank();
     //chassis.control_tank();
 
