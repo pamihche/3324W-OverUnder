@@ -6,6 +6,9 @@ competition Competition;
 const bool useAutonmousSelector = true;
 bool wings_set = false;
 bool wingsLastPress = false;
+bool cata_set = false;
+bool cataLastPress = false;
+const int CATA_SPEED = 75; 
 SmartDrive chassis( 
 	ZERO_TRACKER_ODOM, 
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
@@ -147,12 +150,36 @@ void autonomous(void)
 
 			//drive_test();
 			//tank_odom_test();
+			//odom_test();
 			defensive_awp_nine_points();
 			//offensive_awp_four_triballs();
 
 		break;
 	}
 
+}
+
+void catapult_ButtonControl()
+{
+  if(controller(primary).ButtonA.pressing() and cataLastPress == false)
+  {
+    cata_set = !cata_set;
+  }
+  // keep track of press
+  cataLastPress = controller(primary).ButtonA.pressing();
+
+  if (cata_set) 
+  {
+    catapult1.spin(vex::forward, CATA_SPEED*120, voltageUnits::mV);
+    //catapult2.spin(reverse, CATA_SPEED*120, voltageUnits::mV);
+
+  } else
+  {
+    catapult1.spin(vex::forward, 0, voltageUnits::mV);
+    //catapult2.spin(reverse, 0, voltageUnits::mV);
+  }
+
+  
 }
 
  void intake_ButtonControl()
@@ -213,6 +240,7 @@ void usercontrol(void) {
 	intake_ButtonControl();
 	wings_control();
 	chassis.control_tank();
+	catapult_ButtonControl();
     //chassis.control_tank();
 
 

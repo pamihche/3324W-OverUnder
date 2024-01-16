@@ -17,7 +17,7 @@ motor MotorRightBack   = motor(PORT18, ratio6_1, false);
 
 motor MotorIntake = motor(PORT15, ratio6_1, true);
 
-// motor catapult1 = motor(PORT10, ratio36_1, false);
+motor catapult1 = motor(PORT9, ratio36_1, false);
 // motor catapult2 = motor(PORT11, ratio36_1, false);
 
 // digital_out blocker = digital_out(Brain.ThreeWirePort.B);
@@ -37,13 +37,13 @@ digital_out wings = digital_out(Brain.ThreeWirePort.A);
 void vexcodeInit( void ) {
 
 
-  MotorRightBack.setBrake(hold);
-  MotorRightMiddle.setBrake(hold);
-  MotorRightFront.setBrake(hold);
+  // MotorRightBack.setBrake(hold);
+  // MotorRightMiddle.setBrake(hold);
+  // MotorRightFront.setBrake(hold);
   
-  MotorLeftBack.setBrake(hold);
-  MotorLeftMiddle.setBrake(hold);
-  MotorLeftFront.setBrake(hold);
+  // MotorLeftBack.setBrake(hold);
+  // MotorLeftMiddle.setBrake(hold);
+  // MotorLeftFront.setBrake(hold);
 
 
 }
