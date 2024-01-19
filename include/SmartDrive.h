@@ -19,6 +19,7 @@ public:
 
     void arc_left_turn(int length, double rad, int max = 100, int type = 0);
     void arc_right_turn(int length, double rad, int max = 100, int type = 0);
+    void setDriveTrainBrakeMode(vex::brakeType brakeMode);
     //void sCurveLeft(int arc1, int mid, int arc2, int max = 100);
 
 };

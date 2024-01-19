@@ -186,6 +186,12 @@ int SmartDrive::slew(int speed)
 
 }
 
+void SmartDrive::setDriveTrainBrakeMode(vex::brakeType brakeMode)
+{
+	this->DriveL.setStopping(brakeMode);
+	this->DriveR.setStopping(brakeMode);
+}
+
 
 SmartDrive::~SmartDrive()
 {}

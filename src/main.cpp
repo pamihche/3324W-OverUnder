@@ -16,7 +16,7 @@ SmartDrive chassis(
 	ZERO_TRACKER_ODOM, 
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
-PORT12, 3.25, 0.6,
+	PORT12, 3.25, 0.6,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
@@ -99,12 +99,14 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						//call function1 here
+						offensive_six_triballs();
 					break;
 					case 2 : 
-						//call function2 here
+						offensive_five_triballs();
 					break;
-
+					case 3:
+						offensive_awp_four_triballs();
+					break;
 					default: break;
 				}
 
@@ -115,12 +117,14 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						//call function1 here
+						defensive_awp_nine_points();
 					break;
 					case 2 : 
-						//call function2 here
+						defensive_awp_seventeen_points();
 					break;
-
+					case 3:
+						defensive_awp_fourteen_points();
+					break;
 					default: break;
 				}
 		break;
@@ -128,10 +132,11 @@ void autonomous(void)
 		case AutonomousType::Skills :
 				switch (autonomousTypeStrategy)
 				{
-					case 1 : 	
-					default: 
-						//call SKILLS here
-					break;
+					case 1 : 
+						main_skill_auton();
+					case 2:
+						backup_skills_auton();
+					default: break;
 				}
 
 		break;
@@ -148,19 +153,19 @@ void autonomous(void)
 			//  wings.set(true);
 			chassis.arc_right_turn(2250, 0.85);
 
-			 //chassis.arc_left_turn(-2500, 0.6);
+			//chassis.arc_left_turn(-2500, 0.6);
 
-// chassis.set_coordinates(0, 0, 0);
-// chassis.setDefaultOdometryConstants();
+			// chassis.set_coordinates(0, 0, 0);
+			// chassis.setDefaultOdometryConstants();
 
-// chassis.drive_max_voltage = 12;
+			// chassis.drive_max_voltage = 12;
 
-// chassis.drive_kd = 7;
-// chassis.drive_to_point(40, -40);
+			// chassis.drive_kd = 7;
+			// chassis.drive_to_point(40, -40);
 
-// chassis.drive_max_voltage = 12;
-// chassis.drive_kd = 10;
-// chassis.drive_to_point(-10, 10);
+			// chassis.drive_max_voltage = 12;
+			// chassis.drive_kd = 10;
+			// chassis.drive_to_point(-10, 10);
 
 			//drive_test();
 			//tank_odom_test();
