@@ -37,13 +37,13 @@ digital_out wings = digital_out(Brain.ThreeWirePort.A);
 void vexcodeInit( void ) {
 
 
-  // MotorRightBack.setBrake(hold);
-  // MotorRightMiddle.setBrake(hold);
-  // MotorRightFront.setBrake(hold);
+  MotorRightBack.setBrake(hold);
+  MotorRightMiddle.setBrake(hold);
+  MotorRightFront.setBrake(hold);
   
-  // MotorLeftBack.setBrake(hold);
-  // MotorLeftMiddle.setBrake(hold);
-  // MotorLeftFront.setBrake(hold);
+  MotorLeftBack.setBrake(hold);
+  MotorLeftMiddle.setBrake(hold);
+  MotorLeftFront.setBrake(hold);
 
 
 }

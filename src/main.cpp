@@ -3,12 +3,15 @@
 using namespace vex;
 competition Competition;
 
-const bool useAutonmousSelector = true;
+const bool USE_AUTONOMOUS_SELECTOR = true;
+
 bool wings_set = false;
 bool wingsLastPress = false;
 bool cata_set = false;
 bool cataLastPress = false;
-const int CATA_SPEED = 75; 
+const int CATA_SPEED = 75;
+
+
 SmartDrive chassis( 
 	ZERO_TRACKER_ODOM, 
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
@@ -47,6 +50,7 @@ PORT3,     -PORT4,
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
 //For a zero tracker tank drive with odom, put the positive distance from the center of the robot to the right side of the drive.
 //This distance is in inches:
+
 4.5,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
@@ -66,9 +70,9 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
 	vexcodeInit();
 	
-	default_constants();
+	chassis.setDefaultConstants();
 
-	if(useAutonmousSelector == true)
+	if(USE_AUTONOMOUS_SELECTOR == true)
 	{
 		displayAutonmousSelector();
 	}
@@ -84,7 +88,6 @@ void autonomous(void)
 	if(autonomousType == 0)
 	{
 		Brain.Screen.printAt(90, 125, true, "No Autonomous Type Selected");
-
 	}
 
 
@@ -105,9 +108,6 @@ void autonomous(void)
 					default: break;
 				}
 
-
-
-
 		break;
 
 		case AutonomousType::Defensive :
@@ -123,8 +123,6 @@ void autonomous(void)
 
 					default: break;
 				}
-				
-
 		break;
 
 		case AutonomousType::Skills :
@@ -136,8 +134,6 @@ void autonomous(void)
 					break;
 				}
 
-	
-
 		break;
 
 		default: 
@@ -146,12 +142,32 @@ void autonomous(void)
 			chassis.setDefaultConstants();
 			chassis.turn_kd = 3.35;
 
-			chassis.drive_max_voltage = 7;
+			chassis.drive_max_voltage = 12;
+
+			chassis.arc_right_turn(-2250, 0.85);
+			//  wings.set(true);
+			chassis.arc_right_turn(2250, 0.85);
+
+			 //chassis.arc_left_turn(-2500, 0.6);
+
+// chassis.set_coordinates(0, 0, 0);
+// chassis.setDefaultOdometryConstants();
+
+// chassis.drive_max_voltage = 12;
+
+// chassis.drive_kd = 7;
+// chassis.drive_to_point(40, -40);
+
+// chassis.drive_max_voltage = 12;
+// chassis.drive_kd = 10;
+// chassis.drive_to_point(-10, 10);
 
 			//drive_test();
 			//tank_odom_test();
 			//odom_test();
-			defensive_awp_nine_points();
+
+			//defensive_awp_nine_points();
+			
 			//offensive_awp_four_triballs();
 
 		break;
@@ -161,23 +177,21 @@ void autonomous(void)
 
 void catapult_ButtonControl()
 {
-  if(controller(primary).ButtonA.pressing() and cataLastPress == false)
-  {
-    cata_set = !cata_set;
-  }
-  // keep track of press
-  cataLastPress = controller(primary).ButtonA.pressing();
-
-  if (cata_set) 
-  {
-    catapult1.spin(vex::forward, CATA_SPEED*120, voltageUnits::mV);
-    //catapult2.spin(reverse, CATA_SPEED*120, voltageUnits::mV);
-
-  } else
-  {
-    catapult1.spin(vex::forward, 0, voltageUnits::mV);
-    //catapult2.spin(reverse, 0, voltageUnits::mV);
-  }
+	if(controller(primary).ButtonA.pressing() and cataLastPress == false)
+	{
+		cata_set = !cata_set;
+	}
+	// keep track of press
+		cataLastPress = controller(primary).ButtonA.pressing();
+	if (cata_set) 
+	{
+		catapult1.spin(vex::forward, CATA_SPEED*120, voltageUnits::mV);
+	//catapult2.spin(reverse, CATA_SPEED*120, voltageUnits::mV);
+	} else
+	{
+		catapult1.spin(vex::forward, 0, voltageUnits::mV);
+	//catapult2.spin(reverse, 0, voltageUnits::mV);
+	}
 
   
 }
@@ -249,6 +263,8 @@ void usercontrol(void) {
   }
 }
 
+
+
 //
 // Main will set up the competition functions and callbacks.
 //
@@ -259,6 +275,9 @@ int main() {
 
   // Run the pre-autonomous function.
   pre_auton();
+
+
+
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
