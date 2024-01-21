@@ -17,9 +17,9 @@ void offensive_awp_four_triballs()
     chassis.set_coordinates(0, 0, 0);
     chassis.drive_max_voltage = 11;
     MotorIntake.spin(vex::forward, 600, rpm);
-    wings.set(true);
+    frontWings.set(true);
     wait(150, msec);
-    wings.set(false);
+    frontWings.set(false);
     chassis.drive_to_point(7, 65);
     MotorIntake.stop();
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());

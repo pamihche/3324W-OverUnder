@@ -203,12 +203,12 @@ void catapult_ButtonControl()
 
  void intake_ButtonControl()
 {
-	if(controller(primary).ButtonR1.pressing())
+	if(controller(primary).ButtonR2.pressing())
 	{
 		MotorIntake.setVelocity(600, rpm);
 		MotorIntake.spin(reverse, 600, rpm);
 	}
-	else if(controller(primary).ButtonR2.pressing())
+	else if(controller(primary).ButtonR1.pressing())
 	{
 		MotorIntake.setVelocity(600, rpm);
 		MotorIntake.spin(vex::forward, 600, rpm);
@@ -220,7 +220,7 @@ void catapult_ButtonControl()
 
 }
 
-void wings_control(void)
+void frontWings_control(void)
 {
 	if(controller(primary).ButtonL1.pressing() && wingsLastPress == false)
 	{
@@ -229,9 +229,20 @@ void wings_control(void)
 	}
 
 	wingsLastPress = controller(primary).ButtonL1.pressing();
-	wings.set(wings_set);
+	frontWings.set(wings_set);
 }
 
+void backWings_control(void)
+{
+	if(controller(primary).ButtonL2.pressing() && wingsLastPress == false)
+	{
+		wings_set = !wings_set;
+		
+	}
+
+	wingsLastPress = controller(primary).ButtonL2.pressing();
+	frontWings.set(wings_set);
+}
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              User Control Task                            */
@@ -257,7 +268,8 @@ void usercontrol(void) {
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
 	intake_ButtonControl();
-	wings_control();
+	frontWings_control();
+	backWings_control();
 	chassis.control_tank();
 	catapult_ButtonControl();
     //chassis.control_tank();

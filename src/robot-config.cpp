@@ -22,8 +22,8 @@ motor catapult1 = motor(PORT9, ratio36_1, false);
 
 // digital_out blocker = digital_out(Brain.ThreeWirePort.B);
 
-digital_out wings = digital_out(Brain.ThreeWirePort.A);
-// digital_out balance = digital_out(Brain.ThreeWirePort.C);
+digital_out frontWings = digital_out(Brain.ThreeWirePort.A);
+digital_out backWings = digital_out(Brain.ThreeWirePort.B);
 
 //inertial imu = inertial(PORT9);
 
