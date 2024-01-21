@@ -5,8 +5,10 @@ competition Competition;
 
 const bool USE_AUTONOMOUS_SELECTOR = true;
 
-bool wings_set = false;
-bool wingsLastPress = false;
+bool front_wings_set = false;
+bool frontWingsLastPress = false;
+bool back_wings_set = false;
+bool backWingsLastPress = false;
 bool cata_set = false;
 bool cataLastPress = false;
 const int CATA_SPEED = 75;
@@ -222,26 +224,27 @@ void catapult_ButtonControl()
 
 void frontWings_control(void)
 {
-	if(controller(primary).ButtonL1.pressing() && wingsLastPress == false)
+	if(controller(primary).ButtonL1.pressing() && frontWingsLastPress == false)
 	{
-		wings_set = !wings_set;
+		front_wings_set = !front_wings_set;
 		
 	}
 
-	wingsLastPress = controller(primary).ButtonL1.pressing();
-	frontWings.set(wings_set);
+	frontWingsLastPress = controller(primary).ButtonL1.pressing();
+	frontWings.set(front_wings_set);
 }
 
 void backWings_control(void)
 {
-	if(controller(primary).ButtonL2.pressing() && wingsLastPress == false)
+	if(controller(primary).ButtonL2.pressing() && backWingsLastPress == false)
 	{
-		wings_set = !wings_set;
+		back_wings_set = !back_wings_set;
 		
 	}
 
-	wingsLastPress = controller(primary).ButtonL2.pressing();
-	frontWings.set(wings_set);
+	backWingsLastPress = controller(primary).ButtonL2.pressing();
+
+	backWings.set(back_wings_set);
 }
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -270,9 +273,10 @@ void usercontrol(void) {
 	intake_ButtonControl();
 	frontWings_control();
 	backWings_control();
-	chassis.control_tank();
 	catapult_ButtonControl();
     //chassis.control_tank();
+
+	chassis.control_tank();
 
 
     wait(20, msec); // Sleep the task for a short amount of time to
