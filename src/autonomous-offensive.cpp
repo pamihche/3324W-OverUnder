@@ -22,8 +22,10 @@ void offensive_awp_four_triballs()
     frontWings.set(false);
     chassis.drive_to_point(7, 65);
     MotorIntake.stop();
+
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
+    
     chassis.right_swing_to_angle(-45);
     chassis.drive_distance(-32);
     chassis.drive_distance(24);

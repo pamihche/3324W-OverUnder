@@ -34,15 +34,4 @@ digital_out backWings = digital_out(Brain.ThreeWirePort.H);
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {
-
-
-  MotorRightBack.setBrake(hold);
-  MotorRightMiddle.setBrake(hold);
-  MotorRightFront.setBrake(hold);
-  
-  MotorLeftBack.setBrake(hold);
-  MotorLeftMiddle.setBrake(hold);
-  MotorLeftFront.setBrake(hold);
-
-
 }

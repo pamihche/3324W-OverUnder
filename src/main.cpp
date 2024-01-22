@@ -72,6 +72,8 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
 	vexcodeInit();
 	
+	chassis.setDriveTrainBrakeMode(brakeType::hold);
+
 	chassis.setDefaultConstants();
 
 	if(USE_AUTONOMOUS_SELECTOR == true)
@@ -146,14 +148,31 @@ void autonomous(void)
 		default: 
 
 			//odom_test();
-			chassis.setDefaultConstants();
-			chassis.turn_kd = 3.35;
+			// chassis.setDefaultConstants();
+			// chassis.turn_kd = 3.35;
 
 			chassis.drive_max_voltage = 12;
 
-			chassis.arc_right_turn(-2250, 0.85);
+
+ chassis.setDefaultOdometryConstants();
+ chassis.set_coordinates(0,0,0);
+ chassis.drive_max_voltage = 12;
+// //
+// chassis.drive_to_point(60, -60);
+
+
+chassis.arc_right_turn(-2250, 0.85);
+chassis.arc_right_turn(2600, 0.6);
+
+//chassis.drive_to_point(39.45, -65);
+
+    Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
+    Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
+
+
+
 			//  wings.set(true);
-			chassis.arc_right_turn(2250, 0.85);
+			//chassis.arc_right_turn(2250, 0.6);
 
 			//chassis.arc_left_turn(-2500, 0.6);
 
@@ -171,7 +190,10 @@ void autonomous(void)
 
 			//drive_test();
 			//tank_odom_test();
-			//odom_test();
+
+			// chassis.setDriveTrainBrakeMode(brakeType::coast);
+
+			// odom_test();
 
 			//defensive_awp_nine_points();
 			
@@ -258,6 +280,9 @@ void backWings_control(void)
 
 void usercontrol(void) {
   // User control code here, inside the loop
+
+
+
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
