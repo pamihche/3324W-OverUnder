@@ -18,7 +18,10 @@ SmartDrive chassis(
 	ZERO_TRACKER_ODOM, 
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
-	PORT12, 3.25, 0.6,
+
+	PORT8, // inertial sensor port
+	3.25, 
+	0.6,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
