@@ -5,10 +5,12 @@ competition Competition;
 
 const bool USE_AUTONOMOUS_SELECTOR = true;
 
-bool front_wings_set = false;
-bool frontWingsLastPress = false;
-bool back_wings_set = false;
-bool backWingsLastPress = false;
+// bool back_wings_set = false;
+// bool front_wings_set = false;
+
+// bool frontWingsLastPress = false;
+// bool backWingsLastPress = false;
+
 bool cata_set = false;
 bool cataLastPress = false;
 const int CATA_SPEED = 75;
@@ -217,7 +219,7 @@ void catapult_ButtonControl()
 		cataLastPress = controller(primary).ButtonA.pressing();
 	if (cata_set) 
 	{
-		catapult1.spin(vex::forward, CATA_SPEED*120, voltageUnits::mV);
+		catapult1.spin(vex::forward, CATA_SPEED * 120, voltageUnits::mV);
 	//catapult2.spin(reverse, CATA_SPEED*120, voltageUnits::mV);
 	} else
 	{
@@ -247,30 +249,72 @@ void catapult_ButtonControl()
 
 }
 
-void frontWings_control(void)
+
+void back_right_arm_control(vex::controller::button controllerButton)
 {
-	if(controller(primary).ButtonL1.pressing() && frontWingsLastPress == false)
-	{
-		front_wings_set = !front_wings_set;
-		
+	static bool buttonPressed = false;
+
+	if(!buttonPressed && controllerButton.pressing()){
+		RightBackArm.set(!RightBackArm.value());
 	}
 
-	frontWingsLastPress = controller(primary).ButtonL1.pressing();
-	frontWings.set(front_wings_set);
+	buttonPressed = controllerButton.pressing();
+
 }
 
-void backWings_control(void)
+void front_left_wing_control(vex::controller::button controllerButton)
 {
-	if(controller(primary).ButtonL2.pressing() && backWingsLastPress == false)
-	{
-		back_wings_set = !back_wings_set;
-		
+	static bool buttonPressed = false;
+
+	if(!buttonPressed && controllerButton.pressing()){
+		LeftFrontWing.set( ! LeftFrontWing.value() );
 	}
 
-	backWingsLastPress = controller(primary).ButtonL2.pressing();
+	buttonPressed = controllerButton.pressing();
 
-	backWings.set(back_wings_set);
 }
+
+void front_right_wing_control(vex::controller::button controllerButton)
+{
+	static bool buttonPressed = false;
+
+	if(!buttonPressed && controllerButton.pressing()){
+		RightFrontWing.set( ! RightFrontWing.value() );
+	}
+
+	buttonPressed = controllerButton.pressing();
+
+}
+
+
+// void frontWings_control(void)
+// {
+// 	if(controller(primary).ButtonL1.pressing() && frontWingsLastPress == false)
+// 	{
+// 		front_wings_set = !front_wings_set;
+		
+// 	}
+
+// 	frontWingsLastPress = controller(primary).ButtonL1.pressing();
+// 	frontWings.set(front_wings_set);
+// }
+
+// void backWings_control(void)
+// {
+// 	if(controller(primary).ButtonL2.pressing() && backWingsLastPress == false)
+// 	{
+// 		back_wings_set = !back_wings_set;
+		
+// 	}
+
+// 	backWingsLastPress = controller(primary).ButtonL2.pressing();
+
+// 	backWings.set(back_wings_set);
+// }
+
+
+
+
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              User Control Task                            */
@@ -282,10 +326,10 @@ void backWings_control(void)
 /*---------------------------------------------------------------------------*/
 
 void usercontrol(void) {
+	
+	chassis.setDriveTrainBrakeMode(brakeType::hold);
+
   // User control code here, inside the loop
-
-
-
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -299,10 +343,17 @@ void usercontrol(void) {
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
 	intake_ButtonControl();
-	frontWings_control();
-	backWings_control();
+	// frontWings_control();
+	// backWings_control();
 	catapult_ButtonControl();
-	
+
+
+back_right_arm_control(Controller.ButtonL1);
+front_left_wing_control(Controller.ButtonL1);
+front_right_wing_control(Controller.ButtonL1);
+
+
+
     //chassis.control_tank();
 
 	chassis.control_tank();
@@ -312,7 +363,6 @@ void usercontrol(void) {
                     // prevent wasted resources.
   }
 }
-
 
 
 //
@@ -325,9 +375,6 @@ int main() {
 
   // Run the pre-autonomous function.
   pre_auton();
-
-
-
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

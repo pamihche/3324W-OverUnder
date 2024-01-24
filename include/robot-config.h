@@ -6,6 +6,7 @@ class SmartDrive;
 extern SmartDrive chassis;
 
 extern brain Brain;
+extern controller Controller;
 
 extern motor MotorLeftFront; 
 extern motor MotorLeftMiddle;
@@ -13,13 +14,18 @@ extern motor MotorLeftBack;
 extern motor MotorRightFront; 
 extern motor MotorRightMiddle;
 extern motor MotorRightBack;
-extern digital_out frontWings;
-extern digital_out backWings;
+
+extern motor catapult1;
+extern motor MotorIntake;
+
+
+extern digital_out RightBackArm;
+
+extern digital_out LeftFrontWing;
+extern digital_out RightFrontWing;
+
 //extern digital_out balance;
 //extern digital_out blocker;
-extern motor catapult1;
-// extern motor catapult2;
-extern motor MotorIntake;
 
 
 
