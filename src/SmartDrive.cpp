@@ -68,13 +68,13 @@ void SmartDrive::arc(bool mirror, int arc_length, double rad, int max, int type)
 	this->DriveR.resetPosition();
 
 	int time_step = 0;
-//int driveMode = 0;
+	//int driveMode = 0;
 	bool reversed = false;
 
-const double arcKP = .075;
+	const double arcKP = .075;
 
 
-  //reverse the movement if the length is negative
+  	//reverse the movement if the length is negative
 	if(arc_length < 0)
 	{
 		reversed = true;

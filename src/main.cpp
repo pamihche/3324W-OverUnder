@@ -159,17 +159,17 @@ void autonomous(void)
 			chassis.drive_max_voltage = 12;
 
 
- chassis.setDefaultOdometryConstants();
- chassis.set_coordinates(0,0,0);
- chassis.drive_max_voltage = 12;
-// //
-// chassis.drive_to_point(60, -60);
+ 	chassis.setDefaultOdometryConstants();
+ 	chassis.set_coordinates(0,0,0);
+ 	chassis.drive_max_voltage = 12;
+	// //
+	// chassis.drive_to_point(60, -60);
 
 
-chassis.arc_right_turn(-2250, 0.85);
-chassis.arc_right_turn(2600, 0.6);
+	chassis.arc_right_turn(-2250, 0.85);
+	chassis.arc_right_turn(2600, 0.6);
 
-//chassis.drive_to_point(39.45, -65);
+	//chassis.drive_to_point(39.45, -65);
 
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
@@ -348,9 +348,9 @@ void usercontrol(void) {
 	catapult_ButtonControl();
 
 
-back_right_arm_control(Controller.ButtonL1);
-front_left_wing_control(Controller.ButtonL1);
-front_right_wing_control(Controller.ButtonL1);
+	back_right_arm_control(Controller.ButtonL2);
+	front_left_wing_control(Controller.ButtonL1);
+	front_right_wing_control(Controller.ButtonL1);
 
 
 

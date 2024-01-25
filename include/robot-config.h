@@ -20,7 +20,6 @@ extern motor MotorIntake;
 
 
 extern digital_out RightBackArm;
-
 extern digital_out LeftFrontWing;
 extern digital_out RightFrontWing;
 
