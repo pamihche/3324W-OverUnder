@@ -90,6 +90,30 @@ void pre_auton(void) {
   
 }
 
+
+int testFunction()
+{
+
+	Brain.Screen.print("Running");
+	Brain.Screen.newLine();
+
+	while ( true )
+	{
+		wait(25, msec);
+
+		if(!LeftFrontWing.value())
+			continue;
+
+		wait(1, sec);
+
+		LeftFrontWing.set(false);
+
+			/* code */
+	}
+		
+	return 0;
+}
+
 void autonomous(void) 
 {
 	Brain.Screen.clearScreen();
@@ -152,59 +176,37 @@ void autonomous(void)
 
 		default: 
 
+			// chassis.drive_max_voltage = 4;
+
+			// leftWingListener = vex::task(testFunction);
+
+			// LeftFrontWing.set(true);
+
+			// chassis.drive_distance(25);
+			
+			// leftWingListener.stop();
+
+			// LeftFrontWing.set(true);
+
+			// chassis.drive_distance(25);
+
+			
+
+			chassis.setDriveTrainBrakeMode(brake);
+
+
+			defensive_awp_nine_points();
+			//main_skill_auton();
+			
 			//odom_test();
 			// chassis.setDefaultConstants();
 			// chassis.turn_kd = 3.35;
 
-			chassis.drive_max_voltage = 12;
-
-
- 	chassis.setDefaultOdometryConstants();
- 	chassis.set_coordinates(0,0,0);
- 	chassis.drive_max_voltage = 12;
-	// //
-	// chassis.drive_to_point(60, -60);
-
-
-	chassis.arc_right_turn(-2250, 0.85);
-	chassis.arc_right_turn(2600, 0.6);
-
-	//chassis.drive_to_point(39.45, -65);
-
-    Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
-    Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
-
-
-
-			//  wings.set(true);
-			//chassis.arc_right_turn(2250, 0.6);
-
-			//chassis.arc_left_turn(-2500, 0.6);
-
-			// chassis.set_coordinates(0, 0, 0);
-			// chassis.setDefaultOdometryConstants();
-
-			// chassis.drive_max_voltage = 12;
-
-			// chassis.drive_kd = 7;
-			// chassis.drive_to_point(40, -40);
-
-			// chassis.drive_max_voltage = 12;
-			// chassis.drive_kd = 10;
-			// chassis.drive_to_point(-10, 10);
-
-			//drive_test();
-			//tank_odom_test();
-
-			// chassis.setDriveTrainBrakeMode(brakeType::coast);
-
-			// odom_test();
-
-			//defensive_awp_nine_points();
 			
-			//offensive_awp_four_triballs();
 
-		break;
+    
+
+			break;
 	}
 
 }
@@ -250,17 +252,17 @@ void catapult_ButtonControl()
 }
 
 
-void back_right_arm_control(vex::controller::button controllerButton)
-{
-	static bool buttonPressed = false;
+// void back_right_arm_control(vex::controller::button controllerButton)
+// {
+// 	static bool buttonPressed = false;
 
-	if(!buttonPressed && controllerButton.pressing()){
-		RightBackArm.set(!RightBackArm.value());
-	}
+// 	if(!buttonPressed && controllerButton.pressing()){
+// 		RightBackArm.set(!RightBackArm.value());
+// 	}
 
-	buttonPressed = controllerButton.pressing();
+// 	buttonPressed = controllerButton.pressing();
 
-}
+// }
 
 void front_left_wing_control(vex::controller::button controllerButton)
 {
@@ -348,7 +350,7 @@ void usercontrol(void) {
 	catapult_ButtonControl();
 
 
-	back_right_arm_control(Controller.ButtonL2);
+	//back_right_arm_control(Controller.ButtonL2);
 	front_left_wing_control(Controller.ButtonL1);
 	front_right_wing_control(Controller.ButtonL1);
 
