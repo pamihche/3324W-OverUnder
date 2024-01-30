@@ -91,28 +91,7 @@ void pre_auton(void) {
 }
 
 
-int testFunction()
-{
 
-	Brain.Screen.print("Running");
-	Brain.Screen.newLine();
-
-	while ( true )
-	{
-		wait(25, msec);
-
-		if(!LeftFrontWing.value())
-			continue;
-
-		wait(1, sec);
-
-		LeftFrontWing.set(false);
-
-			/* code */
-	}
-		
-	return 0;
-}
 
 void autonomous(void) 
 {
@@ -194,8 +173,10 @@ void autonomous(void)
 
 			chassis.setDriveTrainBrakeMode(brake);
 
+			//odom_test();
 
-			defensive_awp_nine_points();
+			//defensive_awp_nine_points();
+			offensive_awp_four_triballs();
 			//main_skill_auton();
 			
 			//odom_test();

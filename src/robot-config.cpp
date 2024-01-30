@@ -8,7 +8,7 @@ using code = vision::code;
 brain  Brain;
 controller Controller;
 
-vex::task leftWingListener;
+vex::task rightWingListener;
 
 motor MotorLeftFront  = motor(PORT9,  ratio6_1, true);
 motor MotorLeftMiddle = motor(PORT5,  ratio6_1, true);

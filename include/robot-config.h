@@ -26,7 +26,7 @@ extern digital_out RightFrontWing;
 //extern digital_out balance;
 //extern digital_out blocker;
 
-extern vex::task leftWingListener;
+extern vex::task rightWingListener;
 
 
 /**
