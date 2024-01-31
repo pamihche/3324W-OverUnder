@@ -174,14 +174,14 @@ void autonomous(void)
 			chassis.setDriveTrainBrakeMode(brake);
 
 			//odom_test();
-			chassis.drive_distance(20);
-			chassis.left_swing_to_angle(-90);
-			chassis.right_swing_to_angle(0);
+			// chassis.drive_distance(20);
+			// chassis.left_swing_to_angle(-90);
+			// chassis.right_swing_to_angle(0);
 			//swing_test();
 
 			//defensive_awp_nine_points();
 			//offensive_awp_four_triballs();
-			//main_skill_auton();
+			main_skill_auton();
 			
 			//odom_test();
 			// chassis.setDefaultConstants();
