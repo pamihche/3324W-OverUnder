@@ -41,14 +41,15 @@ void just_test_skills_auton()
 
     //chassis.drive_distance(20 ,270, 6, 6);
 
-    chassis.set_coordinates(0, 0, 270);
+    chassis.set_coordinates(0, 0, 0);
 
-    chassis.drive_distance(20 ,270, 6, 6);
+    chassis.drive_distance(20);
 
-     chassis.drive_to_point(0, 0, 12, 12);
+    // chassis.drive_to_point(0, 0, 12, 12);
+    chassis.left_swing_to_angle(90);
 
 
-    chassis.swingWithScalarSpeed(-44, 180, 12, 0.5, true);
+    //chassis.swingWithScalarSpeed(-30, -90, 10, 0.5, true);
 
 
 
@@ -82,25 +83,25 @@ void just_test_skills_auton()
     //vex::task  testTask = vex::task( openRighWingCallback );
 
 
-    // vex::task  testTask = vex::task( [](){
+    vex::task  testTask = vex::task( [](){
 
-    //     while ( true )
-    //     {
-    //         if(RightFrontWing.value()){
-    //             wait(0.45, sec);
-    //             RightFrontWing.set(false);
-    //         } 
-    //         vex::task::yield();
-    //         vex::task::sleep(25);
-    //     }
+        while ( true )
+        {
+            if(RightFrontWing.value()){
+                wait(0.45, sec);
+                RightFrontWing.set(false);
+            } 
+            vex::task::yield();
+            vex::task::sleep(25);
+        }
 
-    //     return 0;
-    // });
+        return 0;
+    });
 
-    // testTask.stop();
+    testTask.stop();
 
-    // testTask = vex::task( [](){
-    //         return 1; 
-    //     });
-    // testTask.stop();
+    testTask = vex::task( [](){
+            return 1; 
+        });
+    testTask.stop();
 }

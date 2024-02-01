@@ -178,9 +178,10 @@ void autonomous(void)
 			// chassis.left_swing_to_angle(-90);
 			// chassis.right_swing_to_angle(0);
 			//swing_test();
+			just_test_skills_auton();
 
 			//defensive_awp_nine_points();
-			offensive_awp_four_triballs();
+			//offensive_awp_four_triballs();
 			//main_skill_auton();
 			
 			//odom_test();
