@@ -180,8 +180,8 @@ void autonomous(void)
 			//swing_test();
 
 			//defensive_awp_nine_points();
-			//offensive_awp_four_triballs();
-			main_skill_auton();
+			offensive_awp_four_triballs();
+			//main_skill_auton();
 			
 			//odom_test();
 			// chassis.setDefaultConstants();
