@@ -40,14 +40,15 @@ void just_test_skills_auton()
     chassis.drive_max_voltage = 5;
 
     //chassis.drive_distance(20 ,270, 6, 6);
-    chassis.drive_distance(20 ,0, 6, 6);
+
+    chassis.set_coordinates(0, 0, 270);
+
+    chassis.drive_distance(20 ,270, 6, 6);
+
+     chassis.drive_to_point(0, 0, 12, 12);
 
 
-    LeftFrontWing.set(true);
-
-    //chassis.drive_to_point(0, 0, 12, 12);
-
-    chassis.swingWithScalarSpeed(20, 0, 10, 0.5, false);
+    chassis.swingWithScalarSpeed(-44, 180, 12, 0.5, true);
 
 
 
