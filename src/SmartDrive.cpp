@@ -31,10 +31,48 @@ void SmartDrive::setDefaultOdometryConstants(void)
 	this->drive_max_voltage = 8;
 	this->drive_settle_error = 3;
 
-	//gearSetting
+}
 
+void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight){
+	
+	this->desired_heading = heading;
+	
+	PID drivePID(distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
+	PID headingPID(reduce_negative_180_to_180(heading - this->get_absolute_heading()), heading_kp, heading_ki, heading_kd, heading_starti);
+	
+	float start_average_position = (this->get_left_position_in() + this->get_right_position_in()) / 2.0;
+	float average_position = start_average_position;
+
+  	while( ! drivePID.is_settled() )
+	{
+		average_position     = (this->get_left_position_in() + this->get_right_position_in()) / 2.0;
+		
+		float drive_error    = distance + start_average_position - average_position;
+		float heading_error  = reduce_negative_180_to_180(heading - get_absolute_heading());
+		
+		float drive_output   = drivePID.compute(drive_error);
+		float heading_output = headingPID.compute(heading_error);
+
+		drive_output   = clamp(drive_output, -drive_max_voltage, drive_max_voltage);
+		heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
+
+		if(isRight)
+		{
+			this->drive_with_voltage((drive_output + heading_output) * speedratio, drive_output - heading_output);
+		}
+		else
+		{
+			this->drive_with_voltage(drive_output + heading_output, (drive_output - heading_output)*speedratio);
+		}
+
+	    task::sleep(10);
+  }
+
+  DriveL.stop(hold);
+  DriveR.stop(hold);
 
 }
+
 
 void SmartDrive::arc_left_turn(int length, double rad, int max, int type)
 {
@@ -46,19 +84,6 @@ void SmartDrive::arc_right_turn(int length, double rad, int max, int type)
 {
 	this->arc(true, length, rad, max, type);
 }
-
-// void SmartDrive::sCurveLeft(int arc1, int mid, int arc2, int max)
-// {
-// 	this->arc(false, arc1, 1, max, 1);
- 
-// 	//middle movement
-// 	this->drive_max_voltage = 8;
-// 	this->drive_distance(mid);
-
-//   //final arc
-//   this->arc(true, arc2, 1, max, 2);
-// }
-
 
 
 void SmartDrive::arc(bool mirror, int arc_length, double rad, int max, int type)

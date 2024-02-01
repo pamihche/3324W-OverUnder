@@ -20,6 +20,10 @@ public:
     void arc_left_turn(int length, double rad, int max = 100, int type = 0);
     void arc_right_turn(int length, double rad, int max = 100, int type = 0);
     void setDriveTrainBrakeMode(vex::brakeType brakeMode);
+
+    void swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight);
+
+
     //void sCurveLeft(int arc1, int mid, int arc2, int max = 100);
 
 };
