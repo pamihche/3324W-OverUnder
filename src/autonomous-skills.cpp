@@ -46,10 +46,10 @@ void just_test_skills_auton()
     chassis.drive_distance(20);
 
     // chassis.drive_to_point(0, 0, 12, 12);
-    chassis.left_swing_to_angle(90);
+    //chassis.left_swing_to_angle(90);
 
 
-    //chassis.swingWithScalarSpeed(-30, -90, 10, 0.5, true);
+    chassis.leftWideSwing(-30, -90, 10, 0.5);
 
 
 

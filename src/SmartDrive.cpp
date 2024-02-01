@@ -33,8 +33,19 @@ void SmartDrive::setDefaultOdometryConstants(void)
 
 }
 
-void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight){
-	
+
+void SmartDrive::leftWideSwing(float distance, float heading, float drive_max_voltage, float speedratio)
+{
+	this->swingWithScalarSpeed(distance, heading, drive_max_voltage, speedratio, false);
+}
+void SmartDrive::rightWideSwing(float distance, float heading, float drive_max_voltage, float speedratio)
+{
+	this->swingWithScalarSpeed(distance, heading, drive_max_voltage, speedratio, true);
+}
+
+
+void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight)
+{
 	this->desired_heading = heading;
 	
 	PID drivePID(distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
@@ -53,8 +64,8 @@ void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive
 		float drive_output   = drivePID.compute(drive_error);
 		float heading_output = headingPID.compute(heading_error);
 
-		drive_output   = clamp(drive_output, -drive_max_voltage, drive_max_voltage);
-		heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
+		drive_output         = clamp(drive_output, -drive_max_voltage, drive_max_voltage);
+		heading_output       = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
 
 		if(isRight)
 		{
