@@ -9,11 +9,15 @@
 //
 
 #pragma once
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cmath>
 
-#include <string.h>
+#include <cstdbool>
+#include <cstddef>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+
 #include <string>
 
 #include "v5.h"
@@ -27,7 +31,7 @@
 
 #include "autonomous-selector.h"
 #include "SmartDrive.h"
-
+#include "Pose.h"
 
 #include "autons.h"
 #include "autonmous-defensive.h"
