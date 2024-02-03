@@ -38,7 +38,7 @@ void defensive_awp_nine_points()
 
     // Scoring Preload
    chassis.drive_distance(25.75);
-   chassis.turn_to_angle(39);
+   chassis.turn_to_angle(42);
    MotorIntake.spin(reverse, 60, vex::velocityUnits::pct);
    chassis.drive_distance(4);
    wait(0.4, vex::sec);
