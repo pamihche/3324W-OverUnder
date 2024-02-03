@@ -27,7 +27,7 @@ void defensive_awp_nine_points()
 {
     chassis.setDefaultConstants();
     chassis.set_coordinates(0, 0, 0);
-    chassis.drive_max_voltage = 6;
+    chassis.drive_max_voltage = 7;
 
    chassis.set_turn_constants(9, 0.25, 0, 1.5, 0);
    chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
