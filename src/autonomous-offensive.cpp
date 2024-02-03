@@ -74,10 +74,11 @@ void offensive_awp_four_triballs()
     //wait(0.5, sec);
     //chassis.turn_to_angle(45);
     chassis.turn_kp = 0.25;
-    rightWingListener = vex::task(testFunctionTwo);
+   // rightWingListener = vex::task(testFunctionTwo);
+    chassis.turn_settle_error = 5;
     chassis.turn_max_voltage = 12;
     chassis.turn_to_angle(47.5);
-    rightWingListener.stop();
+    //rightWingListener.stop();
     RightFrontWing.set(false);
     chassis.turn_kp = 0.32;
     chassis.turn_to_angle(70);
@@ -87,7 +88,7 @@ void offensive_awp_four_triballs()
     MotorIntake.stop();
    //MotorIntake.spin(reverse, 600, rpm);
    //chassis.turn_to_angle(75);
-    MotorIntake.spin(reverse, 600, rpm);
+    //MotorIntake.spin(reverse, 600, rpm);
     chassis.drive_distance(-9);
     chassis.turn_to_angle(-123);
     chassis.drive_settle_error = 9;
