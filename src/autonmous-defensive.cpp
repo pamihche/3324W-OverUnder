@@ -45,7 +45,7 @@ void defensive_awp_nine_points()
    MotorIntake.stop();
    chassis.drive_distance(-4);
    chassis.turn_kp = 0.2;
-   chassis.turn_to_angle(-135);
+   chassis.turn_to_angle(-138);
    chassis.turn_kp = 0.25;
    chassis.drive_max_voltage = 12;
    chassis.drive_settle_error = 9;
