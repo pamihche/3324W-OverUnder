@@ -83,11 +83,6 @@ void defensive_awp_nine_points()
    MotorIntake.stop();
    chassis.drive_settle_error = 1.5;
    //RightBackArm.set(false);
-
-
-
-
-
 }
 
 void defensive_awp_seventeen_points()
