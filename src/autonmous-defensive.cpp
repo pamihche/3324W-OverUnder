@@ -18,7 +18,6 @@ int testFunction()
 
 		RightFrontWing.set(false);
 
-			/* code */
 	}
 		
 	return 0;
