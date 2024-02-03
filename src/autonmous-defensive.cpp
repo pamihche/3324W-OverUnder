@@ -30,21 +30,21 @@ void defensive_awp_nine_points()
     chassis.drive_max_voltage = 7;
 
    chassis.set_turn_constants(9, 0.25, 0, 1.5, 0);
-   chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
+   chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
    chassis.turn_settle_time = 0;
    chassis.turn_settle_error = 5;
    //chassis.heading_kp = 3.5;
 
     // Scoring Preload
-   chassis.drive_distance(25.75);
+   chassis.drive_distance(26.25);
    chassis.turn_to_angle(42);
-   MotorIntake.spin(reverse, 60, vex::velocityUnits::pct);
+   MotorIntake.spin(reverse, 75, vex::velocityUnits::pct);
    chassis.drive_distance(4);
    wait(0.4, vex::sec);
    MotorIntake.stop();
    chassis.drive_distance(-4);
    chassis.turn_kp = 0.2;
-   chassis.turn_to_angle(-138);
+   chassis.turn_to_angle(-140);
    chassis.turn_kp = 0.25;
    chassis.drive_max_voltage = 12;
    chassis.drive_settle_error = 9;
@@ -58,7 +58,7 @@ void defensive_awp_nine_points()
    chassis.turn_to_angle(180);
 
    
-   chassis.drive_distance(10.5);
+   chassis.drive_distance(5.5);
    RightFrontWing.set(true);
 
    //RightBackArm.set(true);
@@ -67,20 +67,25 @@ void defensive_awp_nine_points()
     chassis.swing_settle_error = 0.5;
     chassis.swing_max_voltage = 12;
     chassis.swing_settle_time = 300;
-    chassis.swing_timeout = 250;
+    chassis.swing_timeout = 1000;
 
-   rightWingListener = vex::task(testFunction);
+   //rightWingListener = vex::task(testFunction);
    
+   chassis.swing_max_voltage = 10;
    chassis.right_swing_to_angle(-240);
    RightFrontWing.set(false);
-   rightWingListener.stop();
+   chassis.swing_settle_error = 0;
+   //rightWingListener.stop();
    wait(0.75, sec);
+   chassis.drive_distance(10);
+   Brain.Screen.print(chassis.get_absolute_heading());
+   //chassis.turn_to_angle()
 
     chassis.drive_settle_error = 6;
-    MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_max_voltage = 9; 
-   chassis.drive_to_point(22, -19);
-   MotorIntake.stop();
+//     MotorIntake.spin(reverse, 600, rpm);
+//     chassis.drive_max_voltage = 9; 
+//    //chassis.drive_to_point(22, -19);
+//    MotorIntake.stop();
    chassis.drive_settle_error = 1.5;
    //RightBackArm.set(false);
 }
