@@ -8,17 +8,52 @@ void main_skill_auton()
     chassis.swing_max_voltage       = 9;
     chassis.swing_settle_time       = 100;
     chassis.drive_settle_time       = 100;
-    chassis.swing_timeout = 3000;
+    chassis.turn_settle_error = 2;
+    chassis.swing_timeout = 1000;
     chassis.set_coordinates(0, 0, 0);
     chassis.drive_max_voltage = 12;
-    chassis.drive_distance(29);
-    chassis.left_swing_to_angle(45);
+    chassis.drive_settle_error = 6;
+    chassis.drive_to_point(0.75, 25.25);
+    chassis.drive_settle_error = 0.5;
+    chassis.turn_to_angle(43);
+    MotorIntake.spin(reverse, 600, rpm);
+    wait(0.65, sec);
+    MotorIntake.stop();
+    //chassis.drive_distance(-4);
+    chassis.turn_settle_time = 0;
+    chassis.turn_to_angle(-63.25);
+    chassis.drive_distance(1);
     chassis.drive_settle_time  = 10;
+    LeftFrontWing.set(true);
+    wait(2, sec);
+    LeftFrontWing.set(false);
+    chassis.turn_to_angle(-170);
+    chassis.drive_settle_error = 5;
+    chassis.drive_to_point(7, 34);
     //chassis.drive_settle_time = 0;
-    chassis.drive_distance(12);
-    //chassis.drive_settle_time = 0;
-    chassis.drive_distance(-10);
-    chassis.left_swing_to_angle(-85);
+    // vex::task intakeSideGoalListener = vex::task( [](){
+    //     while(true)
+    //     {
+    //         if(!MotorIntake.isSpinning())
+    //         {
+    //             wait(0.00, sec);
+    //             MotorIntake.spin(vex::reverse, 600, rpm);
+    //             // wait(0.125, sec);
+    //             // MotorIntake.spin(vex::forward, 600, rpm);
+    //         }
+    //         vex::task::yield();
+    //         vex::task::sleep(25);
+    //     }
+    //     return 0;
+    // });
+    // chassis.drive_max_voltage = 12;
+    // chassis.drive_distance(13.5);
+    // intakeSideGoalListener.stop();
+    // MotorIntake.stop();
+    // //chassis.drive_settle_time = 0;
+    // chassis.drive_distance(-5);
+    // chassis.swing_timeout = 1000;
+    // chassis.left_swing_to_angle(-75);
 
    
    //x = 6.9 y = 35.1;

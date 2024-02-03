@@ -28,6 +28,7 @@ void defensive_awp_nine_points()
 {
     chassis.setDefaultConstants();
     chassis.set_coordinates(0, 0, 0);
+    chassis.drive_max_voltage = 6;
 
    chassis.set_turn_constants(9, 0.25, 0, 1.5, 0);
    chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
@@ -36,8 +37,8 @@ void defensive_awp_nine_points()
    //chassis.heading_kp = 3.5;
 
     // Scoring Preload
-   chassis.drive_distance(27.75);
-   chassis.turn_to_angle(45);
+   chassis.drive_distance(25.75);
+   chassis.turn_to_angle(39);
    MotorIntake.spin(reverse, 60, vex::velocityUnits::pct);
    chassis.drive_distance(4);
    wait(0.4, vex::sec);
@@ -48,9 +49,9 @@ void defensive_awp_nine_points()
    chassis.turn_kp = 0.25;
    chassis.drive_max_voltage = 12;
    chassis.drive_settle_error = 9;
-   chassis.drive_to_point(13, 38);
+   chassis.drive_distance(-14);
    chassis.drive_settle_error = 1.5;
-   chassis.drive_max_voltage = 8;
+   chassis.drive_max_voltage = 6;
 
 
     //Descoring Triball From Corner
@@ -58,7 +59,7 @@ void defensive_awp_nine_points()
    chassis.turn_to_angle(180);
 
    
-   chassis.drive_distance(11);
+   chassis.drive_distance(10.5);
    RightFrontWing.set(true);
 
    //RightBackArm.set(true);
@@ -71,12 +72,14 @@ void defensive_awp_nine_points()
 
    rightWingListener = vex::task(testFunction);
    
-   chassis.right_swing_to_angle(-230);
+   chassis.right_swing_to_angle(-240);
    RightFrontWing.set(false);
    rightWingListener.stop();
+   wait(0.75, sec);
 
-    chassis.drive_settle_error = 9;
+    chassis.drive_settle_error = 6;
     MotorIntake.spin(reverse, 600, rpm);
+    chassis.drive_max_voltage = 9; 
    chassis.drive_to_point(22, -19);
    MotorIntake.stop();
    chassis.drive_settle_error = 1.5;
