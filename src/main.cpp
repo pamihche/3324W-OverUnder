@@ -111,13 +111,13 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						offensive_six_triballs();
+						//offensive_six_triballs();
 					break;
 					case 2 : 
-						offensive_five_triballs();
+						//offensive_five_triballs();
 					break;
 					case 3:
-						offensive_awp_four_triballs();
+						//offensive_awp_four_triballs();
 					break;
 					default: break;
 				}
@@ -132,10 +132,10 @@ void autonomous(void)
 						defensive_awp_nine_points();
 					break;
 					case 2 : 
-						defensive_awp_seventeen_points();
+						//defensive_awp_seventeen_points();
 					break;
 					case 3:
-						defensive_awp_fourteen_points();
+						//defensive_awp_fourteen_points();
 					break;
 					default: break;
 				}
@@ -147,7 +147,7 @@ void autonomous(void)
 					case 1 : 
 						main_skill_auton();
 					case 2:
-						backup_skills_auton();
+						//backup_skills_auton();
 					default: break;
 				}
 
@@ -180,8 +180,8 @@ void autonomous(void)
 			//swing_test();
 			//just_test_skills_auton();
 
-			defensive_awp_nine_points();
-			//offensive_awp_four_triballs();
+			//defensive_awp_nine_points();
+			offensive_awp_four_triballs();
 			//main_skill_auton();
 			
 			//odom_test();

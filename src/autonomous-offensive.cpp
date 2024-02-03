@@ -32,6 +32,7 @@ void offensive_awp_four_triballs()
     chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
     MotorIntake.setBrake(hold);
     chassis.turn_settle_time = 0;
+    chassis.turn_settle_error = 2; 
     chassis.drive_settle_time = 100;
     chassis.swing_settle_error = 0.5;
     chassis.swing_max_voltage = 9;
@@ -52,7 +53,7 @@ void offensive_awp_four_triballs()
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
     
     chassis.right_swing_to_angle(-45);
-    chassis.drive_distance(-32.5);
+    chassis.drive_distance(-31.5);
     chassis.drive_distance(24);
 
     chassis.set_swing_constants(7, .45, 0.00070, 2.3, 15);
@@ -60,12 +61,13 @@ void offensive_awp_four_triballs()
     //chassis.right_swing_to_angle(-135);
     //chassis.turn_to_point(-10, 5);
     chassis.drive_max_voltage = 12;
-    chassis.drive_to_point(-5.5, 6.5);
+    chassis.drive_to_point(-5.5, 6);
     chassis.turn_to_angle(90);
+    chassis.drive_max_voltage = 8;
     
     RightFrontWing.set(true);
     //LeftFrontWing.set(true);
-    chassis.drive_distance(13);
+    chassis.drive_distance(11);
     //RightFrontWing.set(false);
     LeftFrontWing.set(false);
     //chassis.turn_to_angle(45);
@@ -73,7 +75,8 @@ void offensive_awp_four_triballs()
     //chassis.turn_to_angle(45);
     chassis.turn_kp = 0.25;
     rightWingListener = vex::task(testFunctionTwo);
-    chassis.turn_to_angle(55);
+    chassis.turn_max_voltage = 12;
+    chassis.turn_to_angle(47.5);
     rightWingListener.stop();
     RightFrontWing.set(false);
     chassis.turn_kp = 0.32;

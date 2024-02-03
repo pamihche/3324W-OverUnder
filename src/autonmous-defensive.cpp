@@ -36,7 +36,10 @@ void defensive_awp_nine_points()
    //chassis.heading_kp = 3.5;
 
     // Scoring Preload
-   chassis.drive_distance(26.25);
+    catapult1.spin(vex::forward, 100, pct);
+    wait(0.1, sec);
+    catapult1.stop();
+   chassis.drive_distance(26.75);
    chassis.turn_to_angle(42);
    MotorIntake.spin(reverse, 75, vex::velocityUnits::pct);
    chassis.drive_distance(4);
@@ -44,7 +47,7 @@ void defensive_awp_nine_points()
    MotorIntake.stop();
    chassis.drive_distance(-4);
    chassis.turn_kp = 0.2;
-   chassis.turn_to_angle(-140);
+   chassis.turn_to_angle(-141.5);
    chassis.turn_kp = 0.25;
    chassis.drive_max_voltage = 12;
    chassis.drive_settle_error = 9;
@@ -72,13 +75,18 @@ void defensive_awp_nine_points()
    //rightWingListener = vex::task(testFunction);
    
    chassis.swing_max_voltage = 10;
-   chassis.right_swing_to_angle(-240);
+    chassis.swing_settle_error = 0;
+   chassis.right_swing_to_angle(-235);
    RightFrontWing.set(false);
-   chassis.swing_settle_error = 0;
    //rightWingListener.stop();
    wait(0.75, sec);
-   chassis.drive_distance(10);
-   Brain.Screen.print(chassis.get_absolute_heading());
+   chassis.turn_to_angle(-200);
+   chassis.drive_distance(12);
+   chassis.turn_to_angle(-225);
+   MotorIntake.spin(reverse, 600, rpm);
+    chassis.drive_distance(27);
+    MotorIntake.stop();
+   //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()
 
     chassis.drive_settle_error = 6;
