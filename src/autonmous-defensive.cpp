@@ -36,9 +36,7 @@ void defensive_awp_nine_points()
    //chassis.heading_kp = 3.5;
 
     // Scoring Preload
-    catapult1.spin(vex::forward, 100, pct);
-    wait(0.1, sec);
-    catapult1.stop();
+    catapult1.spinFor(0.5, rev, false);
    chassis.drive_distance(26.75);
    chassis.turn_to_angle(42);
    MotorIntake.spin(reverse, 75, vex::velocityUnits::pct);
@@ -83,8 +81,8 @@ void defensive_awp_nine_points()
    chassis.turn_to_angle(-200);
    chassis.drive_distance(12);
    chassis.turn_to_angle(-225);
-   MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_distance(27);
+   MotorIntake.spin(vex::forward, 600, rpm);
+    chassis.drive_distance(28);
     MotorIntake.stop();
    //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()

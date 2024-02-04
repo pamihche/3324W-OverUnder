@@ -21,7 +21,7 @@ SmartDrive chassis(
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
 
-	PORT7, // inertial sensor port
+	PORT6, // inertial sensor port
 	3.25, 
 	0.6,
 
@@ -108,7 +108,7 @@ void autonomous(void)
 	{
 		Brain.Screen.printAt(90, 125, true, "No Autonomous Type Selected");
 	}
-
+    wait(600, msec);
 
 	switch (autonomousType)
 	{
