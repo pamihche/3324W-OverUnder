@@ -28,6 +28,7 @@ int testFunctionTwo()
 
 void offensive_awp_four_triballs()
 {
+    chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
     MotorIntake.setBrake(hold);
@@ -39,12 +40,14 @@ void offensive_awp_four_triballs()
     chassis.swing_settle_time = 300;
     chassis.swing_timeout = 250;
     Brain.Screen.clearScreen();
+    chassis.Gyro.resetRotation();
     chassis.set_coordinates(0, 0, 0);
     chassis.drive_max_voltage = 11;
     MotorIntake.spin(vex::forward, 600, rpm);
     RightFrontWing.set(true);
     wait(200, msec);
     RightFrontWing.set(false);
+    //chassis.set_heading(0);
     chassis.drive_to_point(4.5, 64.5);
     wait(0.1, sec);
     MotorIntake.stop();
@@ -52,7 +55,7 @@ void offensive_awp_four_triballs()
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
     
-    chassis.right_swing_to_angle(-45);
+    chassis.right_swing_to_angle(-43.5);
     chassis.drive_distance(-31.5);
     chassis.drive_distance(24);
 
@@ -61,13 +64,13 @@ void offensive_awp_four_triballs()
     //chassis.right_swing_to_angle(-135);
     //chassis.turn_to_point(-10, 5);
     chassis.drive_max_voltage = 12;
-    chassis.drive_to_point(-5.5, 6);
+    chassis.drive_to_point(-7.5, 6.5);
     chassis.turn_to_angle(90);
     chassis.drive_max_voltage = 8;
     
     RightFrontWing.set(true);
     //LeftFrontWing.set(true);
-    chassis.drive_distance(11);
+    chassis.drive_distance(8);
     //RightFrontWing.set(false);
     LeftFrontWing.set(false);
     //chassis.turn_to_angle(45);
@@ -77,11 +80,11 @@ void offensive_awp_four_triballs()
    // rightWingListener = vex::task(testFunctionTwo);
     chassis.turn_settle_error = 5;
     chassis.turn_max_voltage = 12;
-    chassis.turn_to_angle(47.5);
+    chassis.turn_to_angle(42.5);
     //rightWingListener.stop();
     RightFrontWing.set(false);
     chassis.turn_kp = 0.32;
-    chassis.turn_to_angle(70);
+    chassis.turn_to_angle(50);
 
     MotorIntake.spin(reverse, 600, rpm);
     wait(0.5, sec);
@@ -90,11 +93,13 @@ void offensive_awp_four_triballs()
    //chassis.turn_to_angle(75);
     //MotorIntake.spin(reverse, 600, rpm);
     chassis.drive_distance(-9);
-    chassis.turn_to_angle(-123);
+    chassis.turn_to_angle(-120);
     chassis.drive_settle_error = 9;
-    chassis.drive_distance(-30);
-    chassis.drive_distance(5);
-    chassis.drive_distance(-5);
+    chassis.heading_kp = 0.3;
+    chassis.drive_distance(-33);
+    chassis.drive_distance(12);
+    chassis.turn_to_angle(-116);
+    chassis.drive_distance(-12);
 
     
     MotorIntake.stop();

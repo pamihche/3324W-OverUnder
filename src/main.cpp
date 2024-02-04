@@ -21,7 +21,7 @@ SmartDrive chassis(
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
 
-	PORT8, // inertial sensor port
+	PORT7, // inertial sensor port
 	3.25, 
 	0.6,
 
@@ -76,6 +76,13 @@ void pre_auton(void) {
 
   // Initializing Robot Configuration. DO NOT REMOVE!
 	vexcodeInit();
+
+	// chassis.Gyro.calibrate();
+
+	while(chassis.Gyro.isCalibrating())
+	{
+			wait(100, vex::msec);
+	}
 	
 	chassis.setDriveTrainBrakeMode(brakeType::hold);
 
@@ -171,7 +178,7 @@ void autonomous(void)
 
 			
 
-			chassis.setDriveTrainBrakeMode(coast);
+			//chassis.setDriveTrainBrakeMode(brake);
 
 			//odom_test();
 			// chassis.drive_distance(20);
@@ -180,9 +187,10 @@ void autonomous(void)
 			//swing_test();
 			//just_test_skills_auton();
 
-			defensive_awp_nine_points();
-			//offensive_awp_four_triballs();
+			//defensive_awp_nine_points();
+			offensive_awp_four_triballs();
 			//main_skill_auton();
+			//drive_test();
 			
 			//odom_test();
 			// chassis.setDefaultConstants();
