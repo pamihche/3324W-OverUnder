@@ -81,7 +81,7 @@ void defensive_awp_nine_points()
    chassis.turn_to_angle(-200);
    chassis.drive_distance(12);
    chassis.turn_to_angle(-225);
-   MotorIntake.spin(vex::forward, 600, rpm);
+   MotorIntake.spin(vex::reverse, 600, rpm);
     chassis.drive_distance(28);
     MotorIntake.stop();
    //Brain.Screen.print(chassis.get_absolute_heading());

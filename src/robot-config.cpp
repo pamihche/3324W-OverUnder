@@ -27,6 +27,7 @@ motor catapult1 = motor(PORT4, ratio36_1, false);
 
  digital_out LeftFrontWing  = digital_out(Brain.ThreeWirePort.H);
  digital_out RightFrontWing = digital_out(Brain.ThreeWirePort.A);
+ digital_out balance = digital_out(Brain.ThreeWirePort.F);
  //digital_out RightBackArm   = digital_out(Brain.ThreeWirePort.F);
 
 

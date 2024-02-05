@@ -124,7 +124,7 @@ void autonomous(void)
 						//offensive_five_triballs();
 					break;
 					case 3:
-						//offensive_awp_four_triballs();
+						offensive_awp_four_triballs();
 					break;
 					default: break;
 				}
@@ -152,7 +152,7 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						main_skill_auton();
+						//main_skill_auton();
 					case 2:
 						//backup_skills_auton();
 					default: break;
@@ -187,8 +187,8 @@ void autonomous(void)
 			//swing_test();
 			//just_test_skills_auton();
 
-			//defensive_awp_nine_points();
-			offensive_awp_four_triballs();
+			defensive_awp_nine_points();
+			//offensive_awp_four_triballs();
 			//main_skill_auton();
 			//drive_test();
 			
@@ -204,6 +204,8 @@ void autonomous(void)
 	}
 
 }
+
+//void balance_Control();
 
 void catapult_ButtonControl()
 {
@@ -282,6 +284,18 @@ void front_right_wing_control(vex::controller::button controllerButton)
 
 }
 
+void balance_control(vex::controller::button controllerButton)
+{
+	static bool buttonPressed = false;
+
+	if(!buttonPressed && controllerButton.pressing()){
+		balance.set( ! balance.value() );
+	}
+
+	buttonPressed = controllerButton.pressing();
+
+}
+
 
 // void frontWings_control(void)
 // {
@@ -345,6 +359,7 @@ void usercontrol(void) {
 
 
 	//back_right_arm_control(Controller.ButtonL2);
+	balance_control(Controller.ButtonL2);
 	front_left_wing_control(Controller.ButtonL1);
 	front_right_wing_control(Controller.ButtonL1);
 
