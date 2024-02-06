@@ -74,26 +74,19 @@ PORT3,     -PORT4,
 
 void pre_auton(void) {
 
-  // Initializing Robot Configuration. DO NOT REMOVE!
 	vexcodeInit();
 
-	// chassis.Gyro.calibrate();
-
-	while(chassis.Gyro.isCalibrating())
-	{
-			wait(100, vex::msec);
+	chassis.Gyro.calibrate();
+	while(chassis.Gyro.isCalibrating()){  // https://www.vexforum.com/t/inertial-calibration-during-skills/75137
+		 vex::task::sleep(50);
 	}
-	
-	chassis.setDriveTrainBrakeMode(brakeType::hold);
 
-	chassis.setDefaultConstants();
 
-	if(USE_AUTONOMOUS_SELECTOR == true)
-	{
+	if(USE_AUTONOMOUS_SELECTOR == true){
 		displayAutonmousSelector();
 	}
 
-	wait(10, vex::timeUnits::msec);
+	wait(25, vex::timeUnits::msec);
   
 }
 
@@ -102,13 +95,22 @@ void pre_auton(void) {
 
 void autonomous(void) 
 {
-	Brain.Screen.clearScreen();
+	while(chassis.Gyro.isCalibrating()){  // https://www.vexforum.com/t/inertial-calibration-during-skills/75137
+		 vex::task::sleep(50);
+	}
 
-	if(autonomousType == 0)
-	{
+	chassis.Gyro.resetRotation();
+	chassis.Gyro.resetHeading();
+	chassis.DriveL.resetPosition();
+	chassis.DriveR.resetPosition();
+
+	chassis.setDriveTrainBrakeMode(brakeType::hold);
+	chassis.setDefaultConstants();
+
+	Brain.Screen.clearScreen();
+	if(autonomousType == 0){
 		Brain.Screen.printAt(90, 125, true, "No Autonomous Type Selected");
 	}
-    wait(600, msec);
 
 	switch (autonomousType)
 	{
@@ -260,7 +262,7 @@ void catapult_ButtonControl()
 
 // }
 
-void front_left_wing_control(vex::controller::button controllerButton)
+void front_left_wing_control(const vex::controller::button& controllerButton)
 {
 	static bool buttonPressed = false;
 
@@ -272,7 +274,7 @@ void front_left_wing_control(vex::controller::button controllerButton)
 
 }
 
-void front_right_wing_control(vex::controller::button controllerButton)
+void front_right_wing_control(const vex::controller::button& controllerButton)
 {
 	static bool buttonPressed = false;
 
@@ -297,33 +299,6 @@ void balance_control(vex::controller::button controllerButton)
 }
 
 
-// void frontWings_control(void)
-// {
-// 	if(controller(primary).ButtonL1.pressing() && frontWingsLastPress == false)
-// 	{
-// 		front_wings_set = !front_wings_set;
-		
-// 	}
-
-// 	frontWingsLastPress = controller(primary).ButtonL1.pressing();
-// 	frontWings.set(front_wings_set);
-// }
-
-// void backWings_control(void)
-// {
-// 	if(controller(primary).ButtonL2.pressing() && backWingsLastPress == false)
-// 	{
-// 		back_wings_set = !back_wings_set;
-		
-// 	}
-
-// 	backWingsLastPress = controller(primary).ButtonL2.pressing();
-
-// 	backWings.set(back_wings_set);
-// }
-
-
-
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -338,41 +313,40 @@ void balance_control(vex::controller::button controllerButton)
 void usercontrol(void) {
 	
 	chassis.setDriveTrainBrakeMode(brakeType::hold);
-
-  // User control code here, inside the loop
-  while (1) {
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
-
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
-
-    //Replace this line with chassis.control_tank(); for tank drive 
-    //or chassis.control_holonomic(); for holo drive.
-	intake_ButtonControl();
-	// frontWings_control();
-	// backWings_control();
-	catapult_ButtonControl();
-
-
-	//back_right_arm_control(Controller.ButtonL2);
-	balance_control(Controller.ButtonL2);
-	front_left_wing_control(Controller.ButtonL1);
-	front_right_wing_control(Controller.ButtonL1);
-
-
-
-    //chassis.control_tank();
 	chassis.drive_max_voltage = 12;
-	chassis.control_tank();
+
+	Controller.ButtonL1.pressed( [] () {
+
+		static bool buttonPressed = false;
+
+		if(!buttonPressed && Controller.ButtonL1.pressing()){
+			RightFrontWing.set( ! RightFrontWing.value() );
+			LeftFrontWing.set( ! LeftFrontWing.value() );
+		}
+
+		buttonPressed = Controller.ButtonL1.pressing();
+
+    } );
 
 
-    wait(20, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
-  }
+	while ( true ) 
+	{
+
+		intake_ButtonControl();
+		catapult_ButtonControl();
+
+		balance_control(Controller.ButtonL2);
+
+		//front_left_wing_control(Controller.ButtonL1);
+		//front_right_wing_control(Controller.ButtonL1);
+
+		
+		chassis.control_tank(Controller);
+
+
+		wait(20, msec); 
+
+	}
 }
 
 
@@ -380,12 +354,14 @@ void usercontrol(void) {
 // Main will set up the competition functions and callbacks.
 //
 int main() {
+  // Run the pre-autonomous function.
+  pre_auton();
+
+
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  // Run the pre-autonomous function.
-  pre_auton();
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

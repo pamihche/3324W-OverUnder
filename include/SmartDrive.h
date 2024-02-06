@@ -27,8 +27,7 @@ public:
     void leftWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
     void rightWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
 
-    //void sCurveLeft(int arc1, int mid, int arc2, int max = 100);
-
+    void control_tank(const vex::controller& primaryController);
 };
 
 

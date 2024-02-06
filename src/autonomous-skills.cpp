@@ -87,20 +87,6 @@ void just_test_skills_auton()
     chassis.leftWideSwing(-30, -90, 10, 0.5);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // auto openRighWingCallback = [] () -> int 
     // {
     //     while ( true )

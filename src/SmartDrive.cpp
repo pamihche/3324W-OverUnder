@@ -9,6 +9,7 @@ SmartDrive::SmartDrive(enum::drive_setup drive_setup, motor_group DriveL, motor_
 : Drive( drive_setup,  DriveL,  DriveR,  gyro_port,  wheel_diameter,  wheel_ratio,  gyro_scale,  DriveLF_port,  DriveRF_port,  DriveLB_port,  DriveRB_port,  ForwardTracker_port,  ForwardTracker_diameter,  ForwardTracker_center_distance,  SidewaysTracker_port,  SidewaysTracker_diameter,  SidewaysTracker_center_distance)
 {
 	this->driveMode = 0;
+
 }
 
 void SmartDrive::setDefaultConstants(void)
@@ -228,6 +229,28 @@ void SmartDrive::setDriveTrainBrakeMode(vex::brakeType brakeMode)
 	this->DriveR.setStopping(brakeMode);
 }
 
+void SmartDrive::control_tank(const vex::controller& primaryController) 
+{
+
+	float leftThrottle  = primaryController.Axis3.value();
+	float rightThrottle = primaryController.Axis2.value();
+
+	if( std::fabs(leftThrottle) < 5 )
+		leftThrottle = 0;
+
+	if( std::fabs(rightThrottle) < 5 )
+		rightThrottle = 0;
+
+ 	this->DriveL.spin(fwd, (leftThrottle  * 12 / 100) , vex::voltageUnits::volt);
+	this->DriveR.spin(fwd, (rightThrottle * 12 / 100) , vex::voltageUnits::volt);
+
+ //  float leftthrottle = deadband(controller(primary).Axis3.value(), 5);
+//   float rightthrottle = deadband(controller(primary).Axis2.value(), 5);
+
+  //DriveL.spin(fwd, to_volt(leftthrottle), volt);
+  //DriveR.spin(fwd, to_volt(rightthrottle), volt);
+
+}
 
 SmartDrive::~SmartDrive()
 {}
