@@ -315,18 +315,18 @@ void usercontrol(void) {
 	chassis.setDriveTrainBrakeMode(brakeType::hold);
 	chassis.drive_max_voltage = 12;
 
-	Controller.ButtonL1.pressed( [] () {
+	// Controller.ButtonL1.pressed( [] () {
 
-		static bool buttonPressed = false;
+	// 	static bool buttonPressed = false;
 
-		if(!buttonPressed && Controller.ButtonL1.pressing()){
-			RightFrontWing.set( ! RightFrontWing.value() );
-			LeftFrontWing.set( ! LeftFrontWing.value() );
-		}
+	// 	if(!buttonPressed && Controller.ButtonL1.pressing()){
+	// 		RightFrontWing.set( ! RightFrontWing.value() );
+	// 		LeftFrontWing.set( ! LeftFrontWing.value() );
+	// 	}
 
-		buttonPressed = Controller.ButtonL1.pressing();
+	// 	buttonPressed = Controller.ButtonL1.pressing();
 
-    } );
+    // } );
 
 
 	while ( true ) 
@@ -337,8 +337,8 @@ void usercontrol(void) {
 
 		balance_control(Controller.ButtonL2);
 
-		//front_left_wing_control(Controller.ButtonL1);
-		//front_right_wing_control(Controller.ButtonL1);
+		front_left_wing_control(Controller.ButtonL1);
+		front_right_wing_control(Controller.ButtonL1);
 
 		
 		chassis.control_tank(Controller);
