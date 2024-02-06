@@ -3,27 +3,39 @@
 
 using namespace vex;
 
-int testFunctionTwo()
+void offensive_five_triballs()
 {
+    chassis.setDefaultOdometryConstants();
+    chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
+    chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
+    MotorIntake.setBrake(hold);
+    chassis.turn_settle_time = 0;
+    chassis.turn_settle_error = 2; 
+    chassis.drive_settle_time = 100;
+    chassis.swing_settle_error = 0.5;
+    chassis.swing_max_voltage = 9;
+    chassis.swing_settle_time = 300;
+    chassis.swing_timeout = 250;
+    Brain.Screen.clearScreen();
+    chassis.Gyro.resetRotation();
+    chassis.set_coordinates(0, 0, 0);
+    chassis.drive_max_voltage = 11;
+    catapult1.spinFor(0.25, rev, false);
+    MotorIntake.spin(vex::forward, 600, rpm);
+    RightFrontWing.set(true);
+    wait(250, msec);
+    RightFrontWing.set(false);
+    //chassis.set_heading(0);
+    chassis.drive_to_point(6, 64.5);
+    wait(0.1, sec);
+    MotorIntake.stop();
 
-	Brain.Screen.print("Running");
-	Brain.Screen.newLine();
-
-	while ( true )
-	{
-		wait(25, msec);
-
-		if(!RightFrontWing.value())
-			continue;
-
-		wait(0.45, sec);
-
-		RightFrontWing.set(false);
-
-			/* code */
-	}
-		
-	return 0;
+    Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
+    Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
+    
+    chassis.right_swing_to_angle(-43.5);
+    chassis.drive_distance(-31.5);
+    //catapult1.spinFor(0.25, rev, false);
 }
 
 void offensive_awp_four_triballs()
@@ -131,11 +143,6 @@ void offensive_awp_four_triballs()
     chassis.drive_distance(33);
    // MotorIntake.stop();
 }  
-
-void offensive_five_triballs()
-{
-  chassis.drive_distance(-24);
-}
 
 void offensive_six_triballs()
 {
