@@ -189,8 +189,8 @@ void autonomous(void)
 			//swing_test();
 			//just_test_skills_auton();
 
-			defensive_awp_nine_points();
-			//offensive_awp_four_triballs();
+			//defensive_awp_nine_points();
+			offensive_awp_four_triballs();
 			//main_skill_auton();
 			//drive_test();
 			
