@@ -26,7 +26,7 @@ void offensive_five_triballs()
     wait(250, msec);
     RightFrontWing.set(false);
     //chassis.set_heading(0);
-    chassis.drive_to_point(6, 64.5);
+    chassis.drive_to_point(16.45, 62.55);
     wait(0.1, sec);
     MotorIntake.stop();
 

@@ -182,14 +182,14 @@ void autonomous(void)
 
 			chassis.setDriveTrainBrakeMode(coast);
 
-			odom_test();
+			//odom_test();
 			//offensive_five_triballs();
 			//swing_test();
 			//just_test_skills_auton();
 
 			//defensive_awp_nine_points();
 			//offensive_awp_four_triballs();
-			//main_skill_auton();
+			main_skill_auton();
 			//drive_test();
 			
 			//odom_test();

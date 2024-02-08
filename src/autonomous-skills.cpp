@@ -3,33 +3,38 @@
 
 void main_skill_auton()
 {
-    chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
-    chassis.swing_settle_error      = 0.5;
-    chassis.swing_max_voltage       = 9;
-    chassis.swing_settle_time       = 100;
-    chassis.drive_settle_time       = 100;
-    chassis.turn_settle_error = 2;
-    chassis.swing_timeout = 1000;
-    chassis.set_coordinates(0, 0, 0);
-    chassis.drive_max_voltage = 12;
-    chassis.drive_settle_error = 6;
-    chassis.drive_to_point(0.75, 25.25);
-    chassis.drive_settle_error = 0.5;
-    chassis.turn_to_angle(43);
-    MotorIntake.spin(reverse, 600, rpm);
-    wait(0.65, sec);
+    chassis.setDefaultOdometryConstants();
+   // chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
+    // chassis.swing_settle_error      = 0.5;
+    // chassis.swing_max_voltage       = 9;
+    // chassis.swing_settle_time       = 100;
+    // chassis.drive_settle_time       = 100;
+    // chassis.turn_settle_error = 2;
+    // chassis.swing_timeout = 1000;
+    chassis.setDriveTrainBrakeMode(brake);
+    chassis.set_coordinates(0, 0, 330);
+    chassis.drive_max_voltage = 8;
+    //chassis.drive_settle_error = 6;
+   // chassis.turn_to_angle(335);
+    chassis.drive_distance(9.5, 335);
+    MotorIntake.spin(reverse, 400, rpm);
+    wait(0.80, sec);
     MotorIntake.stop();
+   // chassis.drive_distance(7.5, 330);
+   // chassis.drive_settle_error = 0.5;
+    //chassis.turn_to_angle(43);
+   
     //chassis.drive_distance(-4);
-    chassis.turn_settle_time = 0;
-    chassis.turn_to_angle(-63.25);
-    chassis.drive_distance(1);
-    chassis.drive_settle_time  = 10;
-    LeftFrontWing.set(true);
-    wait(2, sec);
-    LeftFrontWing.set(false);
-    chassis.turn_to_angle(-170);
-    chassis.drive_settle_error = 5;
-    chassis.drive_to_point(7, 34);
+    // chassis.turn_settle_time = 0;
+    chassis.turn_to_angle(-115);
+    chassis.drive_distance(4);
+    // chassis.drive_settle_time  = 10;
+    // LeftFrontWing.set(true);
+    // wait(2, sec);
+    // LeftFrontWing.set(false);
+    // chassis.turn_to_angle(-170);
+    // chassis.drive_settle_error = 5;
+    // chassis.drive_to_point(7, 34);
     //chassis.drive_settle_time = 0;
     // vex::task intakeSideGoalListener = vex::task( [](){
     //     while(true)
@@ -78,13 +83,12 @@ void just_test_skills_auton()
 
     chassis.set_coordinates(0, 0, 0);
 
-    chassis.drive_distance(20);
-
     // chassis.drive_to_point(0, 0, 12, 12);
     //chassis.left_swing_to_angle(90);
 
 
-    chassis.leftWideSwing(-30, -90, 10, 0.5);
+    chassis.leftWideSwing(30, -90, 10, 0.5);
+    chassis.rightWideSwing(-30, -90, 10, 0.5);
 
 
     // auto openRighWingCallback = [] () -> int 
@@ -104,25 +108,25 @@ void just_test_skills_auton()
     //vex::task  testTask = vex::task( openRighWingCallback );
 
 
-    vex::task  testTask = vex::task( [](){
+    // vex::task  testTask = vex::task( [](){
 
-        while ( true )
-        {
-            if(RightFrontWing.value()){
-                wait(0.45, sec);
-                RightFrontWing.set(false);
-            } 
-            vex::task::yield();
-            vex::task::sleep(25);
-        }
+    //     while ( true )
+    //     {
+    //         if(RightFrontWing.value()){
+    //             wait(0.45, sec);
+    //             RightFrontWing.set(false);
+    //         } 
+    //         vex::task::yield();
+    //         vex::task::sleep(25);
+    //     }
 
-        return 0;
-    });
+    //     return 0;
+    // });
 
-    testTask.stop();
+    // testTask.stop();
 
-    testTask = vex::task( [](){
-            return 1; 
-        });
-    testTask.stop();
+    // testTask = vex::task( [](){
+    //         return 1; 
+    //     });
+    // testTask.stop();
 }
