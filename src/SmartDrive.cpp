@@ -44,6 +44,15 @@ void SmartDrive::rightWideSwing(float distance, float heading, float drive_max_v
 	this->swingWithScalarSpeed(distance, heading, drive_max_voltage, speedratio, true);
 }
 
+void SmartDrive::drive_distance(float distance, float drive_max_voltage, float heading)
+{
+	Drive::drive_distance(distance, heading, drive_max_voltage, this->heading_max_voltage);
+}
+
+void SmartDrive::drive_distance(float distance, float drive_max_voltage, std::nullptr_t nullPointer)
+{
+	this->drive_distance(distance, drive_max_voltage, this->desired_heading);
+}
 
 void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight)
 {

@@ -4,6 +4,7 @@
 void main_skill_auton()
 {
     chassis.setDefaultOdometryConstants();
+
    // chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     // chassis.swing_settle_error      = 0.5;
     // chassis.swing_max_voltage       = 9;

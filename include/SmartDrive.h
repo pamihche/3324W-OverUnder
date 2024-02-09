@@ -27,6 +27,10 @@ public:
     void leftWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
     void rightWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
 
+    using Drive::drive_distance;
+    void drive_distance(float distance, float drive_max_voltage, float heading);
+    void drive_distance(float distance, float drive_max_voltage, std::nullptr_t nullPointer);
+
     void control_tank(const vex::controller& primaryController);
 };
 
