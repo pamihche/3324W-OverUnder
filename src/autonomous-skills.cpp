@@ -18,7 +18,7 @@ void main_skill_auton()
     //chassis.drive_settle_error = 6;
    // chassis.turn_to_angle(335);
     chassis.drive_distance(9.5, 335);
-    MotorIntake.spin(reverse, 400, rpm);
+    MotorIntake.spin(reverse, 475, rpm);
     wait(0.80, sec);
     MotorIntake.stop();
    // chassis.drive_distance(7.5, 330);
@@ -29,6 +29,15 @@ void main_skill_auton()
     // chassis.turn_settle_time = 0;
     chassis.turn_to_angle(-115);
     chassis.drive_distance(4);
+    LeftFrontWing.set(true);
+    wait(2, sec);
+    LeftFrontWing.set(false);
+    chassis.drive_distance(-2);
+    chassis.turn_to_angle(170);
+    Brain.Screen.clearScreen();
+    Brain.Screen.print(chassis.get_absolute_heading());
+    chassis.heading_kp = 0.2;
+    chassis.drive_distance(-12);
     // chassis.drive_settle_time  = 10;
     // LeftFrontWing.set(true);
     // wait(2, sec);
