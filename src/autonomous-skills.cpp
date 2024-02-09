@@ -37,7 +37,13 @@ void main_skill_auton()
     Brain.Screen.clearScreen();
     Brain.Screen.print(chassis.get_absolute_heading());
     chassis.heading_kp = 0.2;
-    chassis.drive_distance(-12);
+    chassis.drive_distance(-9.5, 170);
+    chassis.heading_kp = 0.4;
+    chassis.turn_to_point(5, 6);
+    chassis.drive_to_point(5, 6);
+    Brain.Screen.newLine();
+    Brain.Screen.print(chassis.get_absolute_heading());
+    chassis.turn_to_angle(80);
     // chassis.drive_settle_time  = 10;
     // LeftFrontWing.set(true);
     // wait(2, sec);
