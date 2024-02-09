@@ -83,7 +83,15 @@ void main_skill_auton()
 
 void backup_skills_auton()
 {
-   
+    chassis.setDefaultOdometryConstants();
+    chassis.set_coordinates(0,0,0);
+
+    //chassis.set_drive_constants(12, 4, 0, 20, 0);
+
+    chassis.rightWideSwing(25, 315, 12, 0.5);
+    chassis.leftWideSwing(15, 0, 12, 0.5);
+
+
 }
 
 void just_test_skills_auton()
