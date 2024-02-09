@@ -84,12 +84,18 @@ void main_skill_auton()
 void backup_skills_auton()
 {
     chassis.setDefaultOdometryConstants();
+  //  chassis.setDriveTrainBrakeMode(brake);
     chassis.set_coordinates(0,0,0);
 
-    //chassis.set_drive_constants(12, 4, 0, 20, 0);
+    chassis.set_drive_constants(12, 4, 0, 20, 0);
 
-    chassis.rightWideSwing(25, 315, 12, 0.5);
-    chassis.leftWideSwing(15, 0, 12, 0.5);
+    chassis.rightWideSwing(16.5, 315, 8, 0.5);
+
+    MotorIntake.spin(reverse, 600, rpm);
+    chassis.leftWideSwing(5.5, 0, 8, 0.5);
+    MotorIntake.stop();
+    chassis.left_swing_to_angle(-106);
+    chassis.drive_distance(4);
 
 
 }
