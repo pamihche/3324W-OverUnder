@@ -190,6 +190,7 @@ void autonomous(void)
 			//defensive_awp_nine_points();
 			//offensive_awp_four_triballs();
 			//main_skill_auton();
+			//test();
 			backup_skills_auton();
 			//drive_test();
 			

@@ -10,7 +10,7 @@ controller Controller;
 
 vex::task rightWingListener;
 
-motor MotorLeftFront  = motor(PORT9,  ratio6_1, true);
+motor MotorLeftFront  = motor(PORT17,  ratio6_1, true);
 motor MotorLeftMiddle = motor(PORT5,  ratio6_1, true);
 motor MotorLeftBack   = motor(PORT15, ratio6_1, true);
 

@@ -43,7 +43,7 @@ void main_skill_auton()
     chassis.drive_to_point(5, 6);
     Brain.Screen.newLine();
     Brain.Screen.print(chassis.get_absolute_heading());
-    chassis.turn_to_angle(80);
+    chassis.turn_to_angle(90);
     // chassis.drive_settle_time  = 10;
     // LeftFrontWing.set(true);
     // wait(2, sec);
@@ -94,10 +94,33 @@ void backup_skills_auton()
     MotorIntake.spin(reverse, 600, rpm);
     chassis.leftWideSwing(5.5, 0, 8, 0.5);
     MotorIntake.stop();
-    chassis.left_swing_to_angle(-106);
+    chassis.left_swing_to_angle(-110);
     chassis.drive_distance(4);
+    LeftFrontWing.set(true);
+    wait(2, sec);
+    LeftFrontWing.set(false);
+    chassis.drive_settle_error = 3.9; 
+    chassis.drive_to_point(5, 12);
+    chassis.turn_to_angle(-90);
+    chassis.drive_to_point(67.5, 12);
+    chassis.turn_to_angle(-90);
+    chassis.drive_max_voltage = 8;
+    chassis.leftWideSwing(-51.5, 180, 8, 2.25);
+    chassis.leftWideSwing(40, 0, 8, 0.5);
 
+}
 
+void test()
+{
+    chassis.setDefaultOdometryConstants();
+    LeftFrontWing.set(true);
+    RightFrontWing.set(true);
+    chassis.drive_max_voltage = 12;
+    chassis.drive_distance(40);
+    LeftFrontWing.set(false);
+    RightFrontWing.set(false);
+    chassis.drive_distance(-20);
+    chassis.drive_distance(25);
 }
 
 void just_test_skills_auton()
