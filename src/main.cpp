@@ -357,6 +357,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
+ Competition.bStopTasksBetweenModes = true;
 
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
