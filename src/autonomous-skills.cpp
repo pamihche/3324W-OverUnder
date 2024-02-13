@@ -84,29 +84,89 @@ void main_skill_auton()
 void backup_skills_auton()
 {
     chassis.setDefaultOdometryConstants();
+    chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
+
   //  chassis.setDriveTrainBrakeMode(brake);
     chassis.set_coordinates(0,0,0);
 
     chassis.set_drive_constants(12, 4, 0, 20, 0);
 
-    chassis.rightWideSwing(16.5, 315, 8, 0.5);
+    chassis.rightWideSwing(25.5, 315, 8, 0.5);
 
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.leftWideSwing(5.5, 0, 8, 0.5);
+    chassis.leftWideSwing(19.5, 0, 8, 1.6);
     MotorIntake.stop();
+
+    chassis.swing_settle_error = 0.5;
+    chassis.swing_max_voltage = 12;
+    chassis.swing_settle_time = 300;
+    chassis.swing_timeout = 1000;
+
+   //rightWingListener = vex::task(testFunction);
+   
+   chassis.swing_max_voltage = 10;
+    chassis.swing_settle_error = 0;
     chassis.left_swing_to_angle(-110);
-    chassis.drive_distance(4);
-    LeftFrontWing.set(true);
-    wait(2, sec);
-    LeftFrontWing.set(false);
+    chassis.drive_distance(8);
+    //Brain.Screen.print(chassis.get_absolute_heading());
+    //wait(5, sec);
+    // LeftFrontWing.set(true);
+    wait(1, sec);
+    // LeftFrontWing.set(false);
     chassis.drive_settle_error = 3.9; 
     chassis.drive_to_point(5, 12);
     chassis.turn_to_angle(-90);
-    chassis.drive_to_point(67.5, 12);
-    chassis.turn_to_angle(-90);
     chassis.drive_max_voltage = 8;
-    chassis.leftWideSwing(-51.5, 180, 8, 2.25);
-    chassis.leftWideSwing(40, 0, 8, 0.5);
+    chassis.drive_to_point(67.5, 12);
+    // chassis.turn_to_angle(-90);
+    // chassis.drive_max_voltage = 8;
+
+
+    //chassis.drive_settle_time = 1;
+    chassis.drive_timeout = 1200;
+    chassis.drive_settle_error = 5;
+
+    //chassis.leftWideSwing(-54.9, 180, 8, 3.15);
+    chassis.leftWideSwing(-54.9, 180, 10, 1.575);
+    //chassis.leftWideSwing(-54.9, 180, 12, 1.025);
+
+    chassis.drive_distance(11, 8, 180);
+    chassis.drive_distance(-11.5, 12, 180);
+
+    chassis.set_drive_constants(12, 4, 0, 20, 0);
+    chassis.drive_timeout  = 3000;
+    chassis.leftWideSwing(57, -5, 7.5, 2.5);
+    
+   // LeftFrontWing.set(true);
+    chassis.left_swing_to_angle(55);
+   // LeftFrontWing.set(false);
+//chassis.setDefaultOdometryConstants();
+    chassis.drive_max_voltage = 8;
+    chassis.drive_to_point(50.375, 53.825);
+    Brain.Screen.print(chassis.get_absolute_heading());
+    MotorIntake.spin(reverse, 600, rpm);
+    LeftFrontWing.set(true);
+    
+    chassis.turn_to_angle(58);
+    chassis.drive_distance(34, 12, nullptr);
+    LeftFrontWing.set(false);
+    MotorIntake.stop();
+
+
+
+    chassis.drive_distance(-32, 10, 90);
+    LeftFrontWing.set(true);
+    RightFrontWing.set(true);
+    chassis.turn_to_angle(80);
+    MotorIntake.spin(reverse, 600, rpm);
+    chassis.drive_distance(30, 12, 85);
+    MotorIntake.stop();
+    LeftFrontWing.set(false);
+    RightFrontWing.set(false);
+    chassis.drive_max_voltage = 7;
+    chassis.drive_to_point(43.875, 95);
+
+   
 
 }
 
