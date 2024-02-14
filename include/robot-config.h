@@ -24,6 +24,8 @@ extern digital_out LeftFrontWing;
 extern digital_out RightFrontWing;
 extern digital_out balance;
 
+extern pneumatics HangingPneumatics;
+
 
 extern vex::task rightWingListener;
 

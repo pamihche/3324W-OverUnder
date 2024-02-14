@@ -142,29 +142,59 @@ void backup_skills_auton()
    // LeftFrontWing.set(false);
 //chassis.setDefaultOdometryConstants();
     chassis.drive_max_voltage = 8;
-    chassis.drive_to_point(50.375, 53.825);
+    chassis.drive_to_point(50.375, 56.825);
     Brain.Screen.print(chassis.get_absolute_heading());
     MotorIntake.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     
     chassis.turn_to_angle(58);
-    chassis.drive_distance(34, 12, nullptr);
+    chassis.leftWideSwing(30, 90, 10, 2.2);
+    
+    //chassis.drive_distance(31, 12, nullptr);
     LeftFrontWing.set(false);
     MotorIntake.stop();
 
 
 
-    chassis.drive_distance(-32, 10, 90);
-    LeftFrontWing.set(true);
-    RightFrontWing.set(true);
-    chassis.turn_to_angle(80);
+    chassis.drive_distance(-32, 10, 100);
+    chassis.turn_to_angle(90);
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_distance(30, 12, 85);
-    MotorIntake.stop();
+     LeftFrontWing.set(true);
+    RightFrontWing.set(true);
+    chassis.drive_distance(30, 10, 90);
     LeftFrontWing.set(false);
     RightFrontWing.set(false);
-    chassis.drive_max_voltage = 7;
-    chassis.drive_to_point(43.875, 95);
+    MotorIntake.stop();
+    chassis.rightWideSwing(-40, 141.5, 8, 2.5);
+    chassis.turn_to_angle(105);
+    RightFrontWing.set(true);
+    chassis.rightWideSwing(30, 90, 10, 2.3);
+    RightFrontWing.set(false);
+    chassis.left_swing_to_angle(0);
+    chassis.drive_max_voltage = 10;
+    chassis.drive_to_point(70, 132.5);
+    chassis.turn_to_angle(292.5);
+    chassis.rightWideSwing(-44, 0, 10, 1.775);
+    chassis.drive_distance(12, 8, 0.0);
+
+   chassis.drive_distance(-12, 8, 0.0);
+   chassis.drive_to_point(70, 132.5);
+   chassis.turn_to_angle(-90);
+   HangingPneumatics.open();
+   chassis.drive_max_voltage = 4;
+   chassis.drive_distance(40);
+    HangingPneumatics.close();
+
+    // LeftFrontWing.set(true);
+    // RightFrontWing.set(true);
+    // chassis.turn_to_angle(80);
+    // MotorIntake.spin(reverse, 600, rpm);
+    // chassis.drive_distance(28, 12, 85);
+    // MotorIntake.stop();
+    // LeftFrontWing.set(false);
+    // RightFrontWing.set(false);
+    // chassis.drive_max_voltage = 7;
+    // chassis.drive_to_point(43.875, 95);
 
    
 
