@@ -180,7 +180,7 @@ void autonomous(void)
 
 			
 
-			chassis.setDriveTrainBrakeMode(coast);
+			//chassis.setDriveTrainBrakeMode(coast);
 
 			//odom_test();
 			//offensive_five_triballs();
@@ -192,6 +192,8 @@ void autonomous(void)
 			//main_skill_auton();
 			//test();
 			backup_skills_auton();
+			//backup_skills_auton_1();
+
 			//drive_test();
 			
 			//odom_test();
@@ -312,7 +314,7 @@ void balance_control(vex::controller::button controllerButton)
 
 void usercontrol(void) {
 	
-	chassis.setDriveTrainBrakeMode(brakeType::hold);
+	chassis.setDriveTrainBrakeMode(brakeType::brake);
 	chassis.drive_max_voltage = 12;
 
 	Controller.ButtonL1.pressed( [] () {

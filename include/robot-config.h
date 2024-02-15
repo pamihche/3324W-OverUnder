@@ -20,8 +20,9 @@ extern motor MotorIntake;
 
 
 //extern pneumatics RightBackArm;
-extern digital_out LeftFrontWing;
-extern digital_out RightFrontWing;
+extern pneumatics LeftFrontWing;
+extern pneumatics RightFrontWing;
+
 extern digital_out balance;
 
 extern pneumatics HangingPneumatics;
