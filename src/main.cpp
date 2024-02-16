@@ -163,44 +163,13 @@ void autonomous(void)
 		break;
 
 		default: 
-
-			// chassis.drive_max_voltage = 4;
-
-			// leftWingListener = vex::task(testFunction);
-
-			// LeftFrontWing.set(true);
-
-			// chassis.drive_distance(25);
-			
-			// leftWingListener.stop();
-
-			// LeftFrontWing.set(true);
-
-			// chassis.drive_distance(25);
-
-			
-
-			//chassis.setDriveTrainBrakeMode(coast);
-
-			//odom_test();
-			//offensive_five_triballs();
-			//swing_test();
-			//just_test_skills_auton();
-
 			//defensive_awp_nine_points();
-			//offensive_awp_four_triballs();
-			//main_skill_auton();
-			//test();
-			backup_skills_auton();
-			//backup_skills_auton_1();
-
-			//drive_test();
-			
+			defensive_awp_seventeen_points();
+			//google_programming_skills();	
 			//odom_test();
-			// chassis.setDefaultConstants();
-			// chassis.turn_kd = 3.35;
 
-			
+//backup_skills_auton_1();
+// chassis.setDefaultOdometryConstants();
 
     
 
@@ -251,18 +220,6 @@ void catapult_ButtonControl()
 
 }
 
-
-// void back_right_arm_control(vex::controller::button controllerButton)
-// {
-// 	static bool buttonPressed = false;
-
-// 	if(!buttonPressed && controllerButton.pressing()){
-// 		RightBackArm.set(!RightBackArm.value());
-// 	}
-
-// 	buttonPressed = controllerButton.pressing();
-
-// }
 
 void front_left_wing_control(const vex::controller::button& controllerButton)
 {
@@ -345,6 +302,8 @@ void usercontrol(void) {
 
 		
 		chassis.control_tank(Controller);
+
+
 
 
 		wait(20, msec); 

@@ -54,6 +54,20 @@ void SmartDrive::drive_distance(float distance, float drive_max_voltage, std::nu
 	this->drive_distance(distance, drive_max_voltage, this->desired_heading);
 }
 
+
+void SmartDrive::drive_to_point(float X_position, float Y_position, float drive_max_voltage)
+{
+  this->drive_to_point(X_position, Y_position, drive_max_voltage, this->heading_max_voltage);
+}
+
+
+
+
+
+
+
+
+
 void SmartDrive::swingWithScalarSpeed(float distance, float heading, float drive_max_voltage, float speedratio, bool isRight)
 {
 	this->desired_heading = heading;

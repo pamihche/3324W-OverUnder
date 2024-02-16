@@ -27,6 +27,9 @@ public:
     void leftWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
     void rightWideSwing(float distance, float heading, float drive_max_voltage, float speedratio);
 
+    using Drive::drive_to_point;
+    void drive_to_point(float X_position, float Y_position, float drive_max_voltage);
+
     using Drive::drive_distance;
     void drive_distance(float distance, float drive_max_voltage, float heading);
     void drive_distance(float distance, float drive_max_voltage, std::nullptr_t nullPointer);

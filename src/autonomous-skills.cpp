@@ -1,6 +1,117 @@
 #include "autonomous-skills.h"
 #include "vex.h"
 
+void google_skills_common_movement()
+{
+
+}
+
+void google_programming_skills()
+{
+    chassis.setDefaultOdometryConstants();
+
+    chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
+
+    chassis.set_coordinates(0,0,0);
+    chassis.set_drive_constants(12, 4, 0, 20, 0);
+
+    chassis.rightWideSwing(25.5, 315, 8, 0.5);
+    MotorIntake.spin(reverse, 600, rpm);
+    chassis.leftWideSwing(19.5, 0, 8, 1.6);
+    MotorIntake.stop();
+
+    chassis.swing_settle_error = 0.5;
+    chassis.swing_max_voltage  = 12;
+    chassis.swing_settle_time  = 300;
+    chassis.swing_timeout      = 1000;
+
+   
+    chassis.swing_max_voltage = 10;
+    chassis.swing_settle_error = 0;
+    chassis.left_swing_to_angle(-110);
+    chassis.drive_distance(8);
+
+    LeftFrontWing.set(true);
+    
+        wait(2, sec);
+
+    LeftFrontWing.set(false);
+
+ //chassis.drive_settle_error = 3.9; 
+
+    chassis.drive_to_point(5, 12);
+    //chassis.turn_kp = 3.7;
+    chassis.turn_to_angle(-90);
+    chassis.drive_max_voltage  = 8.0;
+    chassis.drive_to_point(67.5, 12);
+
+    chassis.drive_timeout      = 1200;
+    chassis.drive_settle_error = 5;
+    chassis.leftWideSwing(-54.9, 180, 10, 1.575);
+   
+
+    chassis.drive_distance(11, 8, 180);
+    chassis.drive_distance(-11.5, 12, 180);
+
+    chassis.set_drive_constants(12, 4, 0, 20, 0);
+    chassis.drive_timeout  = 3000;
+
+    chassis.leftWideSwing(57, -5, 7.5, 2.6); 
+
+    chassis.left_swing_to_angle(55);
+
+    chassis.drive_to_point(50.375, 56.825, 8);
+
+   
+    MotorIntake.spin(reverse, 600, rpm);
+    LeftFrontWing.set(true);
+    
+    chassis.turn_to_angle(58);
+    chassis.leftWideSwing(30, 90, 10, 2.2);
+    
+
+    LeftFrontWing.set(false);
+    MotorIntake.stop();
+
+    chassis.drive_distance(-32, 10, 100);
+    chassis.turn_to_angle(90);
+    MotorIntake.spin(reverse, 600, rpm);
+    LeftFrontWing.set(true);
+    RightFrontWing.set(true);
+    chassis.drive_distance(30, 10, 90);
+    LeftFrontWing.set(false);
+    RightFrontWing.set(false);
+    MotorIntake.stop();
+
+
+    chassis.rightWideSwing(-39, 141.5, 8, 2.5);
+    chassis.turn_to_angle(105);
+    RightFrontWing.set(true);
+    chassis.rightWideSwing(30, 90, 10, 2.3);
+    RightFrontWing.set(false);
+
+    chassis.left_swing_to_angle(0);
+    chassis.drive_to_point(70, 132.5, 8);
+
+   
+    chassis.turn_to_angle(292.5);
+    chassis.rightWideSwing(-40, 0, 10, 1.775);
+    chassis.drive_distance(12, 8, 0.0);
+
+    chassis.drive_distance(-12, 8, 0.0);
+    chassis.drive_to_point(70, 135);
+    chassis.turn_to_angle(-90);
+
+
+    HangingPneumatics.open();
+    chassis.drive_max_voltage = 6;
+    chassis.drive_distance(40);
+    HangingPneumatics.close();
+
+
+}
+
+
 void main_skill_auton()
 {
     chassis.setDefaultOdometryConstants();
@@ -83,6 +194,12 @@ void main_skill_auton()
 
 void backup_skills_auton()
 {
+
+
+
+// chassis.Gyro.calibrate();
+// wait(5, sec);
+
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
 
@@ -103,30 +220,30 @@ void backup_skills_auton()
     chassis.swing_timeout = 1000;
 
    
-   
-   chassis.swing_max_voltage = 10;
+    chassis.swing_max_voltage = 10;
     chassis.swing_settle_error = 0;
     chassis.left_swing_to_angle(-110);
     chassis.drive_distance(8);
-    //Brain.Screen.print(chassis.get_absolute_heading());
-    //wait(5, sec);
+
+
     
-    LeftFrontWing.open();
+    LeftFrontWing.set(true);
     
     wait(1, sec);
 
-    LeftFrontWing.close();
+    LeftFrontWing.set(false);
+    
 
-    chassis.drive_settle_error = 3.9; 
-    chassis.drive_to_point(5, 12);
+//chassis.drive_settle_error = 3.9; 
+
+    chassis.drive_to_point(7, 12);
+    
     chassis.turn_to_angle(-90);
-    chassis.drive_max_voltage = 8.2;
+    chassis.drive_max_voltage = 8;
     chassis.drive_to_point(67.5, 12);
-    // chassis.turn_to_angle(-90);
-    // chassis.drive_max_voltage = 8;
 
+   
 
-    //chassis.drive_settle_time = 1;
     chassis.drive_timeout = 1200;
     chassis.drive_settle_error = 5;
     chassis.leftWideSwing(-54.9, 180, 10, 1.575);
@@ -138,7 +255,12 @@ void backup_skills_auton()
     chassis.set_drive_constants(12, 4, 0, 20, 0);
     chassis.drive_timeout  = 3000;
 
+
+
  chassis.leftWideSwing(70, -5, 7.5, 2.5);
+
+/*
+ 
 //chassis.turn_to_angle(90, 8);
 chassis.drive_distance(-28, 9, 45) ;
 LeftFrontWing.open();
@@ -183,8 +305,7 @@ LeftFrontWing.close();
 
 
 
-
-
+*/
 
 
 
@@ -253,7 +374,7 @@ void backup_skills_auton_1()
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
 
-  //  chassis.setDriveTrainBrakeMode(brake);
+  
     chassis.set_coordinates(0,0,0);
 
     chassis.set_drive_constants(12, 4, 0, 20, 0);
@@ -275,19 +396,20 @@ void backup_skills_auton_1()
     chassis.swing_settle_error = 0;
     chassis.left_swing_to_angle(-110);
     chassis.drive_distance(8);
-    //Brain.Screen.print(chassis.get_absolute_heading());
-    //wait(5, sec);
-    
-    LeftFrontWing.open();
-    
-    wait(1, sec);
 
-    LeftFrontWing.close();
+    LeftFrontWing.set(true);
+    
+    wait(2, sec);
 
-    chassis.drive_settle_error = 3.9; 
+    LeftFrontWing.set(false);
+
+
+
+ //chassis.drive_settle_error = 3.9; 
+
     chassis.drive_to_point(5, 12);
     chassis.turn_to_angle(-90);
-    chassis.drive_max_voltage = 8.2;
+    chassis.drive_max_voltage = 8.0;
     chassis.drive_to_point(67.5, 12);
     // chassis.turn_to_angle(-90);
     // chassis.drive_max_voltage = 8;
@@ -344,23 +466,30 @@ chassis.leftWideSwing(57, -5, 7.5, 2.5);
     LeftFrontWing.set(false);
     RightFrontWing.set(false);
     MotorIntake.stop();
-    chassis.rightWideSwing(-40, 141.5, 8, 2.5);
+
+
+    chassis.rightWideSwing(-39, 141.5, 8, 2.5);
     chassis.turn_to_angle(105);
     RightFrontWing.set(true);
     chassis.rightWideSwing(30, 90, 10, 2.3);
     RightFrontWing.set(false);
+
     chassis.left_swing_to_angle(0);
-    chassis.drive_max_voltage = 10;
+    chassis.drive_max_voltage = 8;
     chassis.drive_to_point(70, 132.5);
+
+   
     chassis.turn_to_angle(292.5);
     chassis.rightWideSwing(-44, 0, 10, 1.775);
     chassis.drive_distance(12, 8, 0.0);
 
    chassis.drive_distance(-12, 8, 0.0);
-   chassis.drive_to_point(70, 132.5);
+   chassis.drive_to_point(70, 135);
    chassis.turn_to_angle(-90);
+
+
    HangingPneumatics.open();
-   chassis.drive_max_voltage = 4;
+   chassis.drive_max_voltage = 6;
    chassis.drive_distance(40);
     HangingPneumatics.close();
 

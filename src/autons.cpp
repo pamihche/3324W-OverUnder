@@ -20,10 +20,10 @@ void odom_constants(){
 }
 
 void drive_test(){
-  chassis.drive_distance(6);
   chassis.drive_distance(12);
-  chassis.drive_distance(18);
-  chassis.drive_distance(-36);
+  chassis.drive_distance(24);
+  chassis.drive_distance(24);
+  chassis.drive_distance(-60);
 }
 
 void turn_test(){
@@ -49,7 +49,8 @@ void full_test(){
 }
 
 void odom_test(){
-  chassis.set_coordinates(0, 0, 0);
+  chassis.setDriveTrainBrakeMode(coast);
+  chassis.set_coordinates(0, 0, 45);
   while(1){
     Brain.Screen.clearScreen();
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
