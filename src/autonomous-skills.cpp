@@ -28,15 +28,16 @@ void google_programming_skills()
    
     chassis.swing_max_voltage = 10;
     chassis.swing_settle_error = 0;
-    chassis.left_swing_to_angle(-110);
-    chassis.drive_distance(8);
+    chassis.left_swing_to_angle(-115); //  it was -110
+    chassis.drive_distance(9.1); // it was 8
 
     LeftFrontWing.set(true);
+    catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
+wait(28, sec);
+    catapult1.spin(vex::forward, 0, voltageUnits::mV);
     
-        wait(2, sec);
-
     LeftFrontWing.set(false);
-
+//wait(250, msec);
  //chassis.drive_settle_error = 3.9; 
 
     chassis.drive_to_point(5, 12);
@@ -62,15 +63,14 @@ void google_programming_skills()
 
     chassis.drive_to_point(50.375, 56.825, 8);
 
-   
     MotorIntake.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     
     chassis.turn_to_angle(58);
     chassis.leftWideSwing(30, 90, 10, 2.2);
     
-
     LeftFrontWing.set(false);
+     //wait(250, msec);
     MotorIntake.stop();
 
     chassis.drive_distance(-32, 10, 100);
@@ -78,9 +78,12 @@ void google_programming_skills()
     MotorIntake.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     RightFrontWing.set(true);
+   // wait(250, msec);
     chassis.drive_distance(30, 10, 90);
+    
     LeftFrontWing.set(false);
     RightFrontWing.set(false);
+    wait(250, msec);
     MotorIntake.stop();
 
 
@@ -104,10 +107,9 @@ void google_programming_skills()
 
 
     HangingPneumatics.open();
-    chassis.drive_max_voltage = 6;
-    chassis.drive_distance(40);
+    chassis.drive_max_voltage = 10;
+    chassis.drive_distance(44);
     HangingPneumatics.close();
-
 
 }
 

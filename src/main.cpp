@@ -164,12 +164,15 @@ void autonomous(void)
 
 		default: 
 			//defensive_awp_nine_points();
-			defensive_awp_seventeen_points();
-			//google_programming_skills();	
+			//defensive_awp_seventeen_points();
+			google_programming_skills();	
 			//odom_test();
-
+			//drive_test();
+			//google_offensive_awp_four_triballs();
+//offensive_five_triballs();
+//offensive_awp_four_triballs();
 //backup_skills_auton_1();
-// chassis.setDefaultOdometryConstants();
+// chassis.setDefaultOdometryConstants(); -38.3 51.4 305
 
     
 
@@ -300,6 +303,57 @@ void usercontrol(void) {
 		//front_left_wing_control(Controller.ButtonL1);
 		//front_right_wing_control(Controller.ButtonL1);
 
+
+		if (Controller.ButtonLeft.pressing())
+		{
+			    chassis.setDefaultOdometryConstants();
+
+			chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
+
+			chassis.set_coordinates(0,0,0);
+			chassis.set_drive_constants(12, 4, 0, 20, 0);
+
+			chassis.rightWideSwing(25.5, 315, 8, 0.5);
+			MotorIntake.spin(reverse, 600, rpm);
+			chassis.leftWideSwing(19.5, 0, 8, 1.6);
+			MotorIntake.stop();
+
+			chassis.swing_settle_error = 0.5;
+			chassis.swing_max_voltage  = 12;
+			chassis.swing_settle_time  = 300;
+			chassis.swing_timeout      = 1000;
+
+		
+			chassis.swing_max_voltage = 10;
+			chassis.swing_settle_error = 0;
+			chassis.left_swing_to_angle(-115); //  it was -110
+			chassis.drive_distance(9.1); // it was 8
+
+			LeftFrontWing.set(true);
+			catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
+		wait(28, sec);
+			catapult1.spin(vex::forward, 0, voltageUnits::mV);
+			
+			LeftFrontWing.set(false);
+		//wait(250, msec);
+		//chassis.drive_settle_error = 3.9; 
+
+			chassis.drive_to_point(5, 12);
+			//chassis.turn_kp = 3.7;
+			chassis.turn_to_angle(-90);
+			chassis.drive_max_voltage  = 8.0;
+			chassis.drive_to_point(67.5, 12);
+
+			chassis.drive_timeout      = 1200;
+			chassis.drive_settle_error = 5;
+			chassis.leftWideSwing(-54.9, 180, 10, 1.575);
+		
+
+			chassis.drive_distance(11, 8, 180);
+			chassis.drive_distance(-11.5, 12, 180);
+
+		}
+		
 		
 		chassis.control_tank(Controller);
 

@@ -50,7 +50,7 @@ void full_test(){
 
 void odom_test(){
   chassis.setDriveTrainBrakeMode(coast);
-  chassis.set_coordinates(0, 0, 45);
+  chassis.set_coordinates(0, 0, 0);
   while(1){
     Brain.Screen.clearScreen();
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
