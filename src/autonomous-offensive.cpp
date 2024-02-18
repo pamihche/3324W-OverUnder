@@ -35,13 +35,22 @@ void google_offensive_awp_four_triballs()
     chassis.set_coordinates(0, 0, -45);
 
     chassis.drive_max_voltage = 12;
+//chassis.turn_to_angle(0);
+
+    // RightFrontWing.set(true);
+    //     wait(500, msec);
+     //RightFrontWing.set(false);
+
+//wait(1000, msec);
+
+//  wait(5, msec);
+
+//     LeftFrontWing.set(true);
+//         wait(350, msec);
+//     LeftFrontWing.set(false);
 
 
-    RightFrontWing.set(true);
-        wait(300, msec);
-    RightFrontWing.set(false);
-
-
+// display_odomentry_info(40);
 
 Pose topTriBallPose       = Pose(-37, 54);
 Pose topMiddleTriBallPose = Pose(-47, 38);
@@ -49,7 +58,8 @@ Pose topMiddleTriBallPose = Pose(-47, 38);
 
     MotorIntake.spin(vex::forward, 600, rpm);
 
-    chassis.drive_to_point(topTriBallPose.XCoordinate, topTriBallPose.YCoordinate);
+    chassis.drive_to_point(topTriBallPose.XCoordinate, 
+                            topTriBallPose.YCoordinate, 12);
     
 
     display_odomentry_info(0);
@@ -63,10 +73,6 @@ MotorIntake.stop();
 display_odomentry_info(0);
 
 
-
-
-
-//chassis.set_swing_constants(7, .45, 0.00070, 2.3, 15);
 
     chassis.turn_kp = 0.25;
     chassis.turn_settle_error = 5;
@@ -82,15 +88,16 @@ MotorIntake.spin(vex::forward, 0, voltageUnits::mV);
 MotorIntake.spin(vex::forward, 600, rpm);
 
 
-    chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
-    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
+//chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
+chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, 
+                        topMiddleTriBallPose.YCoordinate);
     
 
  //display_odomentry_info(20);   
-    chassis.drive_distance(-20);
+chassis.drive_distance(-20, 8, nullptr);
 
 //chassis.rightWideSwing(25.5, 85, 8, 1.5);
-chassis.rightWideSwing(58, 120, 10, 1.3); 
+chassis.rightWideSwing(58, 120, 10, 1.2); 
 //chassis.rightWideSwing(52, 115, 10, 1.3);
 
 
@@ -113,8 +120,13 @@ chassis.drive_distance(31.5, -135);
 chassis.left_swing_to_angle(-90);
 
 MotorIntake.spin(vex::forward, 600, rpm);
-chassis.drive_distance(16, -90);
+chassis.drive_distance(20, -90);//
+//chassis.drive_distance(-1, -90);//
+MotorIntake.stop(vex::brakeType::coast);
 
+//chassis.set_heading(270);
+// chassis.turn_to_point(-41, 0);
+// chassis.drive_to_point(-41, 0, 12);
 //wait(100, msec);
 //chassis.drive_distance(-40, -90);
 
