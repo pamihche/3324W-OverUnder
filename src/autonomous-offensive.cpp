@@ -3,14 +3,17 @@
 
 using namespace vex;
 
-void display_odomentry_info(float watingSeconds)
+void display_odomentry_info(int waitingSeconds)
 {
+
+    if(!waitingSeconds)   
+        return; 
     Brain.Screen.clearScreen();
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
     Brain.Screen.printAt(0,90, "Heading: %f", chassis.get_absolute_heading());
 
-    wait(watingSeconds, sec);
+    wait(waitingSeconds, sec);
 
 }
 
@@ -29,9 +32,9 @@ void google_offensive_awp_four_triballs()
     chassis.swing_timeout = 800;
 
 
-    chassis.set_coordinates(0, 0, 0);
+    chassis.set_coordinates(0, 0, -45);
 
-    chassis.drive_max_voltage = 10;
+    chassis.drive_max_voltage = 12;
 
 
     RightFrontWing.set(true);
@@ -40,26 +43,24 @@ void google_offensive_awp_four_triballs()
 
 
 
-Pose topTriBallPose       = Pose(-30.24, 57.35);
-//Pose centerTriBallPose    = Pose(44, 23);
-//Pose topMiddleTriBallPose = Pose(-41.1, 45.7);
-//Pose topMiddleTriBallPose = Pose(30.24, 57.35);
+Pose topTriBallPose       = Pose(-37, 54);
+Pose topMiddleTriBallPose = Pose(-47, 38);
+
 
     MotorIntake.spin(vex::forward, 600, rpm);
-    //chassis.drive_to_point(-7.47, 40.52);
-    chassis.leftWideSwing(70, -45, 10, 2);
-    //chassis.drive_to_point(topTriBallPose.XCoordinate, topTriBallPose.YCoordinate);
-    wait(0.1, sec);
+
+    chassis.drive_to_point(topTriBallPose.XCoordinate, topTriBallPose.YCoordinate);
+    
 
     display_odomentry_info(0);
 
     chassis.right_swing_to_angle(-90);
-    chassis.drive_distance(-33);
+    chassis.drive_distance(-33.5);
     chassis.drive_distance(24, -135);
 MotorIntake.stop();
 
 
-
+display_odomentry_info(0);
 
 
 
@@ -73,27 +74,55 @@ MotorIntake.stop();
     chassis.turn_to_angle(90);
 
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_distance(26.5, 90);
-    MotorIntake.stop();
-    chassis.drive_distance(-17.5, -90);
+    chassis.drive_distance(28.5, 90);
 
+    chassis.drive_distance(-17, -90);
+
+MotorIntake.spin(vex::forward, 0, voltageUnits::mV);
 MotorIntake.spin(vex::forward, 600, rpm);
 
 
-    //-9.47, 36.52
-    //30.24, 57.35 
-    //chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
+    chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
+    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
     
-   // chassis.set_heading(315);
 
-   // chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
-    
-    chassis.drive_distance(9, -128.5);
+ //display_odomentry_info(20);   
+    chassis.drive_distance(-20);
+
+//chassis.rightWideSwing(25.5, 85, 8, 1.5);
+chassis.rightWideSwing(58, 120, 10, 1.3); 
+//chassis.rightWideSwing(52, 115, 10, 1.3);
+
+
+//MotorIntake.spin(vex::forward, 0, voltageUnits::mV);
+//MotorIntake.spin(vex::reverse, 600, rpm);
+
+
+chassis.right_swing_to_angle(45);
+//chassis.drive_distance(-15, 0);
 
 MotorIntake.stop();
+MotorIntake.spin(vex::reverse, 600, rpm);
 
- display_odomentry_info(20);
+chassis.rightWideSwing(16, 0, 10, 1.3);
+chassis.drive_distance(-10, 8, 0.0);
+MotorIntake.stop();
 
+chassis.right_swing_to_angle(-135);
+chassis.drive_distance(31.5, -135);
+chassis.left_swing_to_angle(-90);
+
+MotorIntake.spin(vex::forward, 600, rpm);
+chassis.drive_distance(16, -90);
+
+//wait(100, msec);
+//chassis.drive_distance(-40, -90);
+
+//display_odomentry_info(70);
+
+
+
+//display_odomentry_info(20);
 
     //chassis.set_heading(-45);
     //chassis.drive_to_point(28, 42);
