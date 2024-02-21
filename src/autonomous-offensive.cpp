@@ -37,9 +37,9 @@ void google_offensive_awp_four_triballs()
     chassis.drive_max_voltage = 12;
 //chassis.turn_to_angle(0);
 
-    // RightFrontWing.set(true);
-    //     wait(500, msec);
-     //RightFrontWing.set(false);
+    RightFrontWing.set(true);
+         wait(500, msec);
+     RightFrontWing.set(false);
 
 //wait(1000, msec);
 
@@ -116,11 +116,11 @@ chassis.drive_distance(-10, 8, 0.0);
 MotorIntake.stop();
 
 chassis.right_swing_to_angle(-135);
-chassis.drive_distance(31.5, -135);
+chassis.drive_distance(32, -135);
 chassis.left_swing_to_angle(-90);
 
 MotorIntake.spin(vex::forward, 600, rpm);
-chassis.drive_distance(20, -90);//
+chassis.drive_distance(17, -90);//
 //chassis.drive_distance(-1, -90);//
 MotorIntake.stop(vex::brakeType::coast);
 

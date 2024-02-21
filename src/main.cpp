@@ -126,7 +126,7 @@ void autonomous(void)
 						//offensive_five_triballs();
 					break;
 					case 3:
-						offensive_awp_four_triballs();
+						google_offensive_awp_four_triballs();;
 					break;
 					default: break;
 				}
@@ -141,7 +141,7 @@ void autonomous(void)
 						defensive_awp_nine_points();
 					break;
 					case 2 : 
-						//defensive_awp_seventeen_points();
+						defensive_awp_seventeen_points();
 					break;
 					case 3:
 						//defensive_awp_fourteen_points();
@@ -154,7 +154,7 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						//main_skill_auton();
+						google_programming_skills();
 					case 2:
 						//backup_skills_auton();
 					default: break;
@@ -164,8 +164,8 @@ void autonomous(void)
 
 		default: 
 			//defensive_awp_nine_points();
-			defensive_awp_seventeen_points();
-			//google_programming_skills();	
+			//defensive_awp_seventeen_points();
+			google_programming_skills();	
 			//odom_test();
 			//drive_test();
 			//google_offensive_awp_four_triballs();
@@ -335,7 +335,7 @@ void usercontrol(void) {
 
 			LeftFrontWing.set(true);
 			catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
-		wait(28, sec);
+			wait(26, sec);
 			catapult1.spin(vex::forward, 0, voltageUnits::mV);
 			
 			LeftFrontWing.set(false);
