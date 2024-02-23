@@ -194,13 +194,15 @@ void catapult_ButtonControl()
 		cata_set = !cata_set;
 	}
 	// keep track of press
-		cataLastPress = controller(primary).ButtonA.pressing();
+	cataLastPress = controller(primary).ButtonA.pressing();
 	if (cata_set) 
 	{
 		catapult1.spin(vex::forward, CATA_SPEED * 120, voltageUnits::mV);
+		LeftFrontWing.set(true);
 	//catapult2.spin(reverse, CATA_SPEED*120, voltageUnits::mV);
 	} else
-	{
+	{	
+		//LeftFrontWing.set(false);	
 		catapult1.spin(vex::forward, 0, voltageUnits::mV);
 	//catapult2.spin(reverse, 0, voltageUnits::mV);
 	}
@@ -287,13 +289,28 @@ void usercontrol(void) {
     } );
 
 	Controller.ButtonDown.pressed([] () {
-
 		HangingPneumatics.set(!HangingPneumatics.value());
+    });
 
-    } 
 
-	);
+	Controller.ButtonA.pressed([] () {
 
+		static bool buttonPressed = false;
+
+		if(!buttonPressed && Controller.ButtonA.pressing())
+		{
+			LeftFrontWing.set( true);
+			catapult1.spin(vex::forward, CATA_SPEED * 120, voltageUnits::mV);
+
+		}
+		else
+		{
+			LeftFrontWing.set( false);
+			catapult1.stop();
+		}
+
+		buttonPressed = Controller.ButtonA.pressing();
+	});
 
 
 	while ( true ) 
@@ -310,14 +327,14 @@ void usercontrol(void) {
 
 		if (Controller.ButtonLeft.pressing())
 		{
-			    chassis.setDefaultOdometryConstants();
+			chassis.setDefaultOdometryConstants();
 
 			chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
 
 			chassis.set_coordinates(0,0,0);
 			chassis.set_drive_constants(12, 4, 0, 20, 0);
 
-			chassis.rightWideSwing(25.5, 315, 8, 0.5);
+			chassis.rightWideSwing(23.5, 315, 8, 0.5);
 			MotorIntake.spin(reverse, 600, rpm);
 			chassis.leftWideSwing(19.5, 0, 8, 1.6);
 			MotorIntake.stop();
@@ -330,18 +347,19 @@ void usercontrol(void) {
 		
 			chassis.swing_max_voltage = 10;
 			chassis.swing_settle_error = 0;
-			chassis.left_swing_to_angle(-115); //  it was -110
-			chassis.drive_distance(9.1); // it was 8
+			chassis.left_swing_to_angle(-110); //  it was -110
+			chassis.drive_distance(8.5); // it was 8
 
-			LeftFrontWing.set(true);
-			catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
-			wait(26, sec);
-			catapult1.spin(vex::forward, 0, voltageUnits::mV);
+			//LeftFrontWing.set(true);
+			// catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
+			// wait(26, sec);
+			// catapult1.spin(vex::forward, 0, voltageUnits::mV);
 			
-			LeftFrontWing.set(false);
+			// LeftFrontWing.set(false);
+
 		//wait(250, msec);
 		//chassis.drive_settle_error = 3.9; 
-
+/*
 			chassis.drive_to_point(5, 12);
 			//chassis.turn_kp = 3.7;
 			chassis.turn_to_angle(-90);
@@ -355,6 +373,7 @@ void usercontrol(void) {
 
 			chassis.drive_distance(11, 8, 180);
 			chassis.drive_distance(-11.5, 12, 180);
+*/
 
 		}
 		
