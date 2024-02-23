@@ -164,8 +164,8 @@ void autonomous(void)
 
 		default: 
 			//defensive_awp_nine_points();
-			//defensive_awp_seventeen_points();
-			google_programming_skills();	
+			defensive_awp_seventeen_points();
+			//google_programming_skills();	
 			//odom_test();
 			//drive_test();
 			//google_offensive_awp_four_triballs();
