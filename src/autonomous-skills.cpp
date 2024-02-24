@@ -49,7 +49,7 @@ void google_programming_skills()
 
     LeftFrontWing.set(true);
     catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
-    wait(1, sec);
+    wait(7, sec);
     catapult1.spin(vex::forward, 0, voltageUnits::mV);
     
     LeftFrontWing.set(false);
