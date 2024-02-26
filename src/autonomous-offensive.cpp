@@ -37,9 +37,20 @@ void google_offensive_awp_four_triballs()
     chassis.drive_max_voltage = 12;
 //chassis.turn_to_angle(0);
 
-    RightFrontWing.set(true);
-         wait(500, msec);
-     RightFrontWing.set(false);
+    // RightFrontWing.set(true);
+    // // LeftFrontWing.set(true);
+    //       wait(300, msec);
+    // RightFrontWing.set(false);
+    // LeftFrontWing.set(false);
+
+    // LeftFrontWing.set(true);
+    //      wait(300, msec);
+    // LeftFrontWing.set(false);
+
+
+
+
+
 
 //wait(1000, msec);
 
