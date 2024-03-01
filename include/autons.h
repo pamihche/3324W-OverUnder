@@ -5,6 +5,9 @@
 
 // extern Drive chassis;
 
+
+void display_odomentry_info(int waitingSeconds);
+
 void default_constants();
 
 void drive_test();

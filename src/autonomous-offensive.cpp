@@ -8,6 +8,7 @@ void display_odomentry_info(int waitingSeconds)
 
     if(!waitingSeconds)   
         return; 
+        
     Brain.Screen.clearScreen();
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
@@ -34,13 +35,13 @@ void google_offensive_awp_four_triballs()
 
     chassis.set_coordinates(0, 0, -45);
 
-    chassis.drive_max_voltage = 12;
+    chassis.drive_max_voltage = 8;
 //chassis.turn_to_angle(0);
 
-    // RightFrontWing.set(true);
-    // // LeftFrontWing.set(true);
-    //       wait(300, msec);
-    // RightFrontWing.set(false);
+    RightFrontWing.set(true);
+    // LeftFrontWing.set(true);
+          wait(750, msec);
+    RightFrontWing.set(false);
     // LeftFrontWing.set(false);
 
     // LeftFrontWing.set(true);

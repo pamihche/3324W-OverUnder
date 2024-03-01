@@ -1,9 +1,104 @@
 #include "autonomous-skills.h"
 #include "vex.h"
 
-void google_skills_common_movement()
+void states_programming_skills_v1()
 {
+    vex::task wingsTask;
 
+    chassis.setDefaultOdometryConstants();
+
+    chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
+
+    chassis.set_coordinates(0,0,0);
+    chassis.set_drive_constants(12, 4, 0, 20, 0);
+
+    
+    chassis.rightWideSwing(23.5, 315, 8, 0.5);
+	MotorIntake.spin(reverse, 600, rpm);
+	chassis.leftWideSwing(19.5, 0, 8, 1.6);
+	MotorIntake.stop();
+
+	chassis.swing_settle_error = 0.5;
+	chassis.swing_max_voltage  = 12;
+	chassis.swing_settle_time  = 300;
+	chassis.swing_timeout      = 1000;
+
+		
+	chassis.swing_max_voltage = 10;
+	chassis.swing_settle_error = 0;
+	chassis.left_swing_to_angle(-110); 
+	chassis.drive_distance(8.5);
+
+    LeftFrontWing.set(true);
+    catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
+    wait(2, sec);
+    catapult1.spin(vex::forward, 0, voltageUnits::mV);
+    
+    LeftFrontWing.set(false);
+    
+
+    chassis.drive_to_point(5, 12);
+    chassis.turn_to_angle(-90);
+    chassis.drive_max_voltage  = 8.0;
+    chassis.drive_to_point(67.5, 12);
+
+    chassis.drive_timeout      = 1200;
+    chassis.drive_settle_error = 5;
+    chassis.leftWideSwing(-54.9, 180, 10, 1.7);
+   
+
+    chassis.drive_distance(11, 8, 180);
+    chassis.drive_distance(-11.5, 12, 180);
+    chassis.left_swing_to_angle(-80);
+    chassis.drive_distance(32, 10, -80);
+    // chassis.left_swing_to_angle(57.5);
+    // chassis.drive_distance(25, 10, 90);
+
+    wingsTask =  vex::task([](){
+
+    wait(0.475, sec); 
+    LeftFrontWing.set(true);
+        return 0;
+
+    });
+
+    chassis.drive_timeout = 5000;
+    chassis.leftWideSwing(53.5, 90, 7, 2.1);
+
+  
+
+
+    LeftFrontWing.set(false);
+
+    wingsTask.stop();
+
+    chassis.drive_to_point(50.5, 59.5, 6);
+    display_odomentry_info(0);
+    chassis.turn_to_point(53.5, 88);
+    chassis.drive_to_point(53.5, 88);
+    display_odomentry_info(0);
+    chassis.right_swing_to_angle(90);
+    RightFrontWing.set(true);
+    chassis.drive_distance(35, 10, 90);
+    RightFrontWing.set(false);
+    chassis.drive_to_point(50.5, 66);
+    display_odomentry_info(0);
+    chassis.turn_to_angle(90);
+    RightFrontWing.set(true);
+    LeftFrontWing.set(true);
+    chassis.drive_distance(35, 10, 90);
+    RightFrontWing.set(false);
+    LeftFrontWing.set(false);
+    chassis.drive_to_point(52.5, 95.25);
+    chassis.right_swing_to_angle(-90);
+    chassis.drive_distance(-24, 10, -90);
+    chassis.turn_to_angle(0);
+    chassis.drive_distance(16, 8, 0.0);
+    chassis.turn_to_angle(-55);
+    chassis.rightWideSwing(-33.333, 0, 10, 2);
+    chassis.drive_distance(10, 8, 0.0);
+    chassis.drive_distance(-12, 10, 0.0);
+    // 48.5, 52.1
 }
 
 void google_programming_skills()

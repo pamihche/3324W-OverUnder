@@ -111,8 +111,12 @@ void defensive_awp_seventeen_points()
     Pose middleTriBallPose(22.75, 51.75);
 
     MotorIntake.spin(vex::forward, 600, rpm);
+
+    chassis.drive_max_voltage = 10;
+
+
     LeftFrontWing.set(true);
-    wait(0.35, sec);
+    wait(0.35, sec);    
     LeftFrontWing.set(false);
     chassis.drive_to_point(middleTriBallPose.XCoordinate, middleTriBallPose.YCoordinate, 11);
     chassis.turn_to_angle(90);
