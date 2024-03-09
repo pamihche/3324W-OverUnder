@@ -36,7 +36,7 @@ void defensive_awp_nine_points()
    //chassis.heading_kp = 3.5;
 
     // Scoring Preload
-    catapult1.spinFor(0.5, rev, false);
+    //catapult1.spinFor(0.5, rev, false);
    chassis.drive_distance(26.75);
    chassis.turn_to_angle(42);
    MotorIntake.spin(reverse, 75, vex::velocityUnits::pct);
@@ -116,18 +116,42 @@ void defensive_awp_seventeen_points()
 
 
     LeftFrontWing.set(true);
-    wait(0.35, sec);    
-    LeftFrontWing.set(false);
+    // wait(0.35, sec);    
+    // LeftFrontWing.set(false);
+    //RightFrontWing.set(true);
+     //wait(50, msec);
+
+    vex::task rightWingTask = vex::task([](){
+            vex::task::sleep(550);
+            LeftFrontWing.set(false);
+            return 1;
+
+        }
+    );
+
     chassis.drive_to_point(middleTriBallPose.XCoordinate, middleTriBallPose.YCoordinate, 11);
+    rightWingTask.stop();
     chassis.turn_to_angle(90);
+
+    // task leftWingTask = task([](){
+    //     wait(0.35, sec);
+    //     LeftFrontWing.set(true);
+    //     return 0;
+    // });
     LeftFrontWing.set(true);
-    chassis.drive_distance(8.5, 12, 90);
+    chassis.drive_distance(5.5, 12, 90);
+    chassis.turn_max_voltage = 12;
     chassis.turn_to_angle(-165);
+    chassis.turn_max_voltage = 9;
     LeftFrontWing.set(false);
+    
+    
     MotorIntake.stop();
     chassis.drive_to_point(2, 6, 8.5);
+    MotorIntake.spin(vex::forward, 100, rpm);
     chassis.turn_to_angle(125);
     chassis.rightWideSwing(-32, 180, 8, 3.4);
+    MotorIntake.stop();
     //MotorIntake.stop();
 
     chassis.drive_max_voltage  = 7;
