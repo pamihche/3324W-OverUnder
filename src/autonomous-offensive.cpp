@@ -23,7 +23,7 @@ void states_offensive_six_triballs()
 
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
-    chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
+    chassis.set_turn_constants(12, 0.32, 0.2, 2.2, 0);
     MotorIntake.setBrake(hold);
     chassis.turn_settle_time = 0;
     chassis.turn_settle_error = 2; 
@@ -66,7 +66,7 @@ void states_offensive_six_triballs()
 // display_odomentry_info(40);
 
     Pose topTriBallPose       = Pose(-38.5, 54);
-    Pose topMiddleTriBallPose = Pose(-35, 38);
+    Pose topMiddleTriBallPose = Pose(-36, 38.4);
 
 
     MotorIntake.spin(vex::forward, 600, rpm);
@@ -80,11 +80,11 @@ rightWingTask.stop();
     LeftFrontWing.set(true);
     //RightFrontWing.set(true);
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_distance(35, 10, 90);
+    chassis.drive_distance(35, 12, 90);
    // MotorIntake.stop();
     LeftFrontWing.set(false);
     //RightFrontWing.set(false);
-    chassis.drive_distance(-12, 10, 90);
+    chassis.drive_distance(-12, 12, 90);
     MotorIntake.stop();
     chassis.swing_max_voltage = 8.375;
     chassis.left_swing_to_angle(-85);
@@ -93,7 +93,7 @@ rightWingTask.stop();
     chassis.drive_settle_error = 3;
     chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate - 3, 10);
     chassis.drive_settle_error = 1.5;
-    chassis.drive_distance(-17.5, 10. -90);
+    chassis.drive_distance(-17.5, 12, -90);
     chassis.turn_to_point(-4, 0);
     chassis.drive_to_point(-4, 3, 8.5);
     //MotorIntake.stop();
@@ -105,8 +105,8 @@ rightWingTask.stop();
     chassis.drive_distance(-5);
     chassis.turn_to_point(-40, -4, 10);
     MotorIntake.spin(vex::forward, 600, rpm);
-    chassis.drive_to_point(-36, -4, 10);
-    chassis.drive_distance(-34, 10, -90);
+    chassis.drive_to_point(-37.5, -4, 10);
+    chassis.drive_distance(-34, 12, -90);
     chassis.turn_to_angle(45);
 
 
@@ -117,20 +117,27 @@ rightWingTask.stop();
     });
 
 
-    chassis.drive_distance(12);
+    chassis.drive_distance(12.25);
     wingsTask.stop();
    // RightFrontWing.set(true);
-    chassis.right_swing_to_angle(-5);
-    RightFrontWing.set(false);
-    chassis.turn_to_angle(45);
-    MotorIntake.stop();
     MotorIntake.spin(reverse, 600, rpm);
-    wait(0.4, sec);
-    chassis.turn_to_angle(-135);
-    chassis.drive_distance(-23.5, -168, 12);
-    chassis.drive_distance(10);
-    chassis.drive_distance(-15, 12, nullptr);
+    chassis.right_swing_to_angle(0);
+    //chassis.turn_to_angle(0);
+    RightFrontWing.set(false);
+    //chassis.turn_to_angle(37.5);
     MotorIntake.stop();
+    //wait(0.4, sec);
+    chassis.turn_to_angle(-135);
+    //chassis.leftWideSwing(-24.9, -165, 11, 1.5);
+    //chassis.drive_distance(-27.5, 12, -155);
+    chassis.drive_settle_error = 6;
+    chassis.drive_to_point(19.2, 37.6, 12);
+    //29.1, 10.6
+   // display_odomentry_info(30);
+    //chassis.leftWideSwing(-25, -155, 12, 3);
+    // chassis.drive_distance(10);
+    // chassis.drive_distance(-15, 12, nullptr);
+    // MotorIntake.stop();
 }
 
 void google_offensive_awp_four_triballs()
