@@ -120,7 +120,7 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						//offensive_six_triballs();
+						states_offensive_six_triballs();
 					break;
 					case 2 : 
 						//offensive_five_triballs();
@@ -163,20 +163,25 @@ void autonomous(void)
 		break;
 
 		default: 
-			//defensive_awp_nine_points();
-		defensive_awp_seventeen_points();
-			//google_programming_skills();	
-			//odom_test();
-			//drive_test();
-			//google_offensive_awp_four_triballs();
+		//defensive_awp_nine_points();
+		//defensive_awp_seventeen_points();
+		states_programming_skills_v1();
 
-//full_test();
+		//states_programming_skills_v2();
+	//states_offensive_six_triballs();
+		//google_programming_skills();	
+		//odom_test();
+		//drive_test();
+		//full_test();
+		//google_offensive_awp_four_triballs();
+
+		//full_test();
 
 
-//offensive_five_triballs();
-//offensive_awp_four_triballs();
-//backup_skills_auton_1();
-// chassis.setDefaultOdometryConstants(); -38.3 51.4 305
+		//offensive_five_triballs();
+		//offensive_awp_four_triballs();
+		//backup_skills_auton_1();
+		// chassis.setDefaultOdometryConstants(); -38.3 51.4 305
 
     
 
@@ -284,9 +289,21 @@ void usercontrol(void) {
 	chassis.drive_max_voltage = 12;
 
 	Controller.ButtonL1.pressed( [] () {
+		
 		RightFrontWing.set( ! RightFrontWing.value() );
 		LeftFrontWing.set( ! LeftFrontWing.value() );
+
     } );
+
+
+	Controller.ButtonRight.pressed([] () {
+		LeftFrontWing.set( ! LeftFrontWing.value() );
+    });
+
+
+	Controller.ButtonY.pressed([] () {
+		RightFrontWing.set( ! RightFrontWing.value() );
+    });
 
 	Controller.ButtonDown.pressed([] () {
 		HangingPneumatics.set(!HangingPneumatics.value());
