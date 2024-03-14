@@ -164,8 +164,8 @@ void autonomous(void)
 
 		default: 
 		//defensive_awp_nine_points();
-		//defensive_awp_seventeen_points();
-		states_programming_skills_v1();
+	defensive_awp_seventeen_points();
+		//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
 	//states_offensive_six_triballs();
