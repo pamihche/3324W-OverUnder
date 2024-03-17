@@ -96,7 +96,7 @@ void defensive_awp_nine_points()
    //RightBackArm.set(false);
 }
 
-void defensive_awp_seventeen_points()
+void defensive_awp_seventeen_points(bool wingsOpen)
 {
 
     chassis.setDefaultOdometryConstants();
@@ -114,23 +114,32 @@ void defensive_awp_seventeen_points()
 
     chassis.drive_max_voltage = 10;
 
+    if(wingsOpen)
+    {
+        LeftFrontWing.set(true);
+       // RightFrontWing.set(true);
 
-    LeftFrontWing.set(true);
-    // wait(0.35, sec);    
-    // LeftFrontWing.set(false);
+        wait(0.4, sec);    
+
+       // RightFrontWing.set(false);
+        LeftFrontWing.set(false);
+
+    }
+    
     //RightFrontWing.set(true);
      //wait(50, msec);
 
-    vex::task rightWingTask = vex::task([](){
-            vex::task::sleep(550);
-            LeftFrontWing.set(false);
-            return 1;
+    // vex::task rightWingTask = vex::task([](){
+    //         vex::task::sleep(550);
+    //         LeftFrontWing.set(false);
+    //         return 1;
 
-        }
-    );
+    //     }
+    // );
 
-    chassis.drive_to_point(middleTriBallPose.XCoordinate, middleTriBallPose.YCoordinate, 11);
-    rightWingTask.stop();
+    chassis.drive_to_point(middleTriBallPose.XCoordinate,
+                         middleTriBallPose.YCoordinate, 10);
+    //rightWingTask.stop();
     chassis.turn_to_angle(90);
 
     // task leftWingTask = task([](){
@@ -147,16 +156,17 @@ void defensive_awp_seventeen_points()
     
     
     MotorIntake.stop();
-    chassis.drive_to_point(2, 6, 8.5);
+    chassis.drive_to_point(2, 6, 12);
     MotorIntake.spin(vex::forward, 100, rpm);
     chassis.turn_to_angle(125);
     chassis.rightWideSwing(-32, 180, 8, 3.4);
-    MotorIntake.stop();
+    //MotorIntake.stop();
     //MotorIntake.stop();
 
     chassis.drive_max_voltage  = 7;
     chassis.drive_distance(12);
    chassis.turn_to_angle(135);
+   MotorIntake.stop();
 
    
    chassis.drive_distance(12);
@@ -182,7 +192,7 @@ void defensive_awp_seventeen_points()
    chassis.drive_distance(12);
    chassis.turn_to_angle(90);
    MotorIntake.spin(vex::reverse, 600, rpm);
-    chassis.drive_distance(31.5);
+    chassis.drive_distance(31, 8, nullptr);
     MotorIntake.stop();
    //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()

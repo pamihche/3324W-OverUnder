@@ -18,7 +18,7 @@ void display_odomentry_info(int waitingSeconds)
 
 }
 
-void states_offensive_six_triballs()
+void states_offensive_six_triballs(bool driveToHallway)
 {
 
     chassis.setDefaultOdometryConstants();
@@ -38,11 +38,11 @@ void states_offensive_six_triballs()
 
     chassis.drive_max_voltage = 8;
 
-     RightFrontWing.set(true);
-     wait(50, msec);
+    //  RightFrontWing.set(true);
+    //  wait(50, msec);
 
     vex::task rightWingTask = vex::task([](){
-            vex::task::sleep(550);
+            vex::task::sleep(500);
             RightFrontWing.set(false);
             return 1;
 
@@ -66,7 +66,7 @@ void states_offensive_six_triballs()
 // display_odomentry_info(40);
 
     Pose topTriBallPose       = Pose(-38.5, 54);
-    Pose topMiddleTriBallPose = Pose(-36, 38.4);
+    Pose topMiddleTriBallPose = Pose(-35, 38.4);
 
 
     MotorIntake.spin(vex::forward, 600, rpm);
@@ -80,13 +80,13 @@ rightWingTask.stop();
     LeftFrontWing.set(true);
     //RightFrontWing.set(true);
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.drive_distance(35, 12, 90);
+    chassis.drive_distance(35, 11, 90);
    // MotorIntake.stop();
     LeftFrontWing.set(false);
     //RightFrontWing.set(false);
     chassis.drive_distance(-12, 12, 90);
     MotorIntake.stop();
-    chassis.swing_max_voltage = 8.375;
+    chassis.swing_max_voltage = 9;
     chassis.left_swing_to_angle(-85);
     MotorIntake.spin(vex::forward, 600, rpm);
     chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
@@ -100,38 +100,51 @@ rightWingTask.stop();
     chassis.turn_to_angle(30);
     MotorIntake.stop();
     MotorIntake.spin(reverse, 600, rpm);
-    wait(0.35, vex::sec);
+    wait(0.45, vex::sec);
     MotorIntake.stop();
     chassis.drive_distance(-5);
     chassis.turn_to_point(-40, -4, 10);
     MotorIntake.spin(vex::forward, 600, rpm);
-    chassis.drive_to_point(-37.5, -4, 10);
-    chassis.drive_distance(-34, 12, -90);
+    if(driveToHallway)
+    {
+        chassis.drive_distance(34.5, 10, -90);
+        chassis.drive_distance(-34, 12, -90);
+    }
+    else
+    {
+        chassis.drive_distance(22.5, 10, -90);
+        chassis.drive_distance(-22, 12, -90);
+    }
+    
     chassis.turn_to_angle(45);
+    chassis.turn_settle_time = 0;
 
 
     vex::task wingsTask = vex::task([](){
-       vex::task::sleep(250);
+       wait(250, msec);
        RightFrontWing.set(true);
        return 0;
     });
 
 
     chassis.drive_distance(12.25);
-    wingsTask.stop();
+    //wingsTask.stop();
    // RightFrontWing.set(true);
     MotorIntake.spin(reverse, 600, rpm);
-    chassis.right_swing_to_angle(0);
+    chassis.right_swing_to_angle(10);
     //chassis.turn_to_angle(0);
     RightFrontWing.set(false);
     //chassis.turn_to_angle(37.5);
     MotorIntake.stop();
     //wait(0.4, sec);
-    chassis.turn_to_angle(-135);
+    chassis.turn_to_angle(-130);
     //chassis.leftWideSwing(-24.9, -165, 11, 1.5);
     //chassis.drive_distance(-27.5, 12, -155);
     chassis.drive_settle_error = 6;
-    chassis.drive_to_point(19.2, 37.6, 12);
+    chassis.leftWideSwing(-28, -160, 7, 2.9);
+    chassis.drive_distance(12, 12, 180);
+    chassis.drive_distance(-20, 12, 230);
+    //chassis.drive_to_point(21.2, 33.6, 12);
     //29.1, 10.6
    // display_odomentry_info(30);
     //chassis.leftWideSwing(-25, -155, 12, 3);

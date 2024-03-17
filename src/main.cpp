@@ -120,10 +120,10 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						states_offensive_six_triballs();
+						states_offensive_six_triballs(true);
 					break;
 					case 2 : 
-						//offensive_five_triballs();
+						states_offensive_six_triballs(false);
 					break;
 					case 3:
 						google_offensive_awp_four_triballs();;
@@ -141,10 +141,10 @@ void autonomous(void)
 						defensive_awp_nine_points();
 					break;
 					case 2 : 
-						defensive_awp_seventeen_points();
+						defensive_awp_seventeen_points(true);
 					break;
 					case 3:
-						//defensive_awp_fourteen_points();
+						defensive_awp_seventeen_points(false);
 					break;
 					default: break;
 				}
@@ -164,11 +164,11 @@ void autonomous(void)
 
 		default: 
 		//defensive_awp_nine_points();
-	defensive_awp_seventeen_points();
-		//states_programming_skills_v1();
+	//defensive_awp_seventeen_points(true);
+//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
-	//states_offensive_six_triballs();
+	states_offensive_six_triballs(false);
 		//google_programming_skills();	
 		//odom_test();
 		//drive_test();
@@ -290,8 +290,23 @@ void usercontrol(void) {
 
 	Controller.ButtonL1.pressed( [] () {
 		
-		RightFrontWing.set( ! RightFrontWing.value() );
-		LeftFrontWing.set( ! LeftFrontWing.value() );
+		if(RightFrontWing.value() != LeftFrontWing.value())
+		{
+			if(RightFrontWing.value())
+			{
+				RightFrontWing.set( ! RightFrontWing.value() );
+			}
+			else if( LeftFrontWing.value() )
+			{
+				LeftFrontWing.set( ! LeftFrontWing.value() );
+			}
+		}
+		else
+		{
+			RightFrontWing.set( ! RightFrontWing.value() );
+			LeftFrontWing.set( ! LeftFrontWing.value() );
+
+		}
 
     } );
 
@@ -349,11 +364,12 @@ void usercontrol(void) {
 			chassis.set_swing_constants(8, .45, 0.00070, 2.3, 15);
 
 			chassis.set_coordinates(0,0,0);
-			chassis.set_drive_constants(12, 4, 0, 20, 0);
+			chassis.set_drive_constants(12, 3.78, 0, 20, 0);
 
-			chassis.rightWideSwing(23.5, 315, 8, 0.5);
+			
+			chassis.rightWideSwing(26.5, 315, 8, 0.5);
 			MotorIntake.spin(reverse, 600, rpm);
-			chassis.leftWideSwing(19.5, 0, 8, 1.6);
+			chassis.leftWideSwing(19.5, 0, 8, 1.75);
 			MotorIntake.stop();
 
 			chassis.swing_settle_error = 0.5;
@@ -361,11 +377,19 @@ void usercontrol(void) {
 			chassis.swing_settle_time  = 300;
 			chassis.swing_timeout      = 1000;
 
-		
+				
 			chassis.swing_max_voltage = 10;
 			chassis.swing_settle_error = 0;
-			chassis.left_swing_to_angle(-110); //  it was -110
-			chassis.drive_distance(8.5); // it was 8
+			chassis.left_swing_to_angle(-115); 
+			chassis.drive_distance(8.5);
+
+			LeftFrontWing.set(true);
+			catapult1.spin(vex::forward, 80.5 * 120, voltageUnits::mV);
+			wait(24, sec);
+			catapult1.spin(vex::forward, 0, voltageUnits::mV);
+    
+    		LeftFrontWing.set(false);
+
 
 			//LeftFrontWing.set(true);
 			// catapult1.spin(vex::forward, 75 * 120, voltageUnits::mV);
