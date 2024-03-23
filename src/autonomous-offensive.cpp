@@ -102,7 +102,7 @@ rightWingTask.stop();
     MotorIntake.spin(reverse, 600, rpm);
     wait(0.45, vex::sec);
     MotorIntake.stop();
-    chassis.drive_distance(-5);
+    //chassis.drive_distance(-5);
     chassis.turn_to_point(-40, -4, 10);
     MotorIntake.spin(vex::forward, 600, rpm);
     if(driveToHallway)
@@ -141,7 +141,7 @@ rightWingTask.stop();
     //chassis.leftWideSwing(-24.9, -165, 11, 1.5);
     //chassis.drive_distance(-27.5, 12, -155);
     chassis.drive_settle_error = 6;
-    chassis.leftWideSwing(-28, -160, 7, 2.9);
+    chassis.leftWideSwing(-26, -160, 7, 2.9);
     chassis.drive_distance(12, 12, 180);
     chassis.drive_distance(-20, 12, 230);
     //chassis.drive_to_point(21.2, 33.6, 12);

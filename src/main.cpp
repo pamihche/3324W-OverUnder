@@ -154,7 +154,8 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						google_programming_skills();
+						states_programming_skills_v1();
+						//google_programming_skills();
 					case 2:
 						//backup_skills_auton();
 					default: break;
@@ -164,11 +165,11 @@ void autonomous(void)
 
 		default: 
 		//defensive_awp_nine_points();
-	//defensive_awp_seventeen_points(true);
-//states_programming_skills_v1();
+	//defensive_awp_seventeen_points(false);
+	//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
-	states_offensive_six_triballs(false);
+	states_offensive_six_triballs(true);
 		//google_programming_skills();	
 		//odom_test();
 		//drive_test();
@@ -285,7 +286,7 @@ void balance_control(vex::controller::button controllerButton)
 
 void usercontrol(void) {
 	
-	chassis.setDriveTrainBrakeMode(brakeType::brake);
+	chassis.setDriveTrainBrakeMode(brakeType::coast);
 	chassis.drive_max_voltage = 12;
 
 	Controller.ButtonL1.pressed( [] () {
