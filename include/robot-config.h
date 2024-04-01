@@ -16,7 +16,9 @@ extern motor MotorRightMiddle;
 extern motor MotorRightBack;
 
 extern motor catapult1;
-extern motor MotorIntake;
+extern motor LeftMotorIntake;
+extern motor RightMotorIntake;
+extern motor_group IntakeMotors;
 
 
 //extern pneumatics RightBackArm;

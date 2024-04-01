@@ -24,7 +24,7 @@ void states_offensive_six_triballs(bool driveToHallway)
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     chassis.set_turn_constants(12, 0.32, 0.2, 2.2, 0);
-    MotorIntake.setBrake(hold);
+    IntakeMotors.setStopping(hold);
     chassis.turn_settle_time = 0;
     chassis.turn_settle_error = 2; 
     chassis.drive_settle_time = 100;
@@ -61,15 +61,13 @@ void states_offensive_six_triballs(bool driveToHallway)
 //     LeftFrontWing.set(true);
 //         wait(350, msec);
 //     LeftFrontWing.set(false);
-
-
 // display_odomentry_info(40);
 
     Pose topTriBallPose       = Pose(-38.5, 54);
     Pose topMiddleTriBallPose = Pose(-35, 38.4);
 
 
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
 
     chassis.drive_to_point(topTriBallPose.XCoordinate, 
                             topTriBallPose.YCoordinate, 12);
@@ -79,16 +77,16 @@ rightWingTask.stop();
 
     LeftFrontWing.set(true);
     //RightFrontWing.set(true);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.drive_distance(35, 11, 90);
    // MotorIntake.stop();
     LeftFrontWing.set(false);
     //RightFrontWing.set(false);
     chassis.drive_distance(-12, 12, 90);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     chassis.swing_max_voltage = 9;
     chassis.left_swing_to_angle(-85);
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
     chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
     chassis.drive_settle_error = 3;
     chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate - 3, 10);
@@ -98,13 +96,13 @@ rightWingTask.stop();
     chassis.drive_to_point(-4, 3, 8.5);
     //MotorIntake.stop();
     chassis.turn_to_angle(30);
-    MotorIntake.stop();
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.stop();
+    IntakeMotors.spin(reverse, 600, rpm);
     wait(0.45, vex::sec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     //chassis.drive_distance(-5);
     chassis.turn_to_point(-40, -4, 10);
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
     if(driveToHallway)
     {
         chassis.drive_distance(34.5, 10, -90);
@@ -130,12 +128,12 @@ rightWingTask.stop();
     chassis.drive_distance(12.25);
     //wingsTask.stop();
    // RightFrontWing.set(true);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.right_swing_to_angle(10);
     //chassis.turn_to_angle(0);
     RightFrontWing.set(false);
     //chassis.turn_to_angle(37.5);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     //wait(0.4, sec);
     chassis.turn_to_angle(-130);
     //chassis.leftWideSwing(-24.9, -165, 11, 1.5);
@@ -158,7 +156,7 @@ void google_offensive_awp_four_triballs()
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
-    MotorIntake.setBrake(hold);
+    IntakeMotors.setStopping(hold);
     chassis.turn_settle_time = 0;
     chassis.turn_settle_error = 2; 
     chassis.drive_settle_time = 100;
@@ -203,7 +201,7 @@ Pose topTriBallPose       = Pose(-37, 54);
 Pose topMiddleTriBallPose = Pose(-47, 38);
 
 
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
 
     chassis.drive_to_point(topTriBallPose.XCoordinate, 
                             topTriBallPose.YCoordinate, 12);
@@ -214,7 +212,7 @@ Pose topMiddleTriBallPose = Pose(-47, 38);
     chassis.right_swing_to_angle(-90);
     chassis.drive_distance(-33.5);
     chassis.drive_distance(24, -135);
-MotorIntake.stop();
+IntakeMotors.stop();
 
 
 display_odomentry_info(0);
@@ -226,13 +224,13 @@ display_odomentry_info(0);
     chassis.turn_max_voltage = 10;
     chassis.turn_to_angle(90);
 
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.drive_distance(28.5, 90);
 
     chassis.drive_distance(-17, -90);
 
-MotorIntake.spin(vex::forward, 0, voltageUnits::mV);
-MotorIntake.spin(vex::forward, 600, rpm);
+IntakeMotors.spin(vex::forward, 0, voltageUnits::mV);
+IntakeMotors.spin(vex::forward, 600, rpm);
 
 
 //chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
@@ -255,21 +253,21 @@ chassis.rightWideSwing(58, 120, 10, 1.2);
 chassis.right_swing_to_angle(45);
 //chassis.drive_distance(-15, 0);
 
-MotorIntake.stop();
-MotorIntake.spin(vex::reverse, 600, rpm);
+IntakeMotors.stop();
+IntakeMotors.spin(vex::reverse, 600, rpm);
 
 chassis.rightWideSwing(16, 0, 10, 1.3);
 chassis.drive_distance(-10, 8, 0.0);
-MotorIntake.stop();
+IntakeMotors.stop();
 
 chassis.right_swing_to_angle(-135);
 chassis.drive_distance(32, -135);
 chassis.left_swing_to_angle(-90);
 
-MotorIntake.spin(vex::forward, 600, rpm);
+IntakeMotors.spin(vex::forward, 600, rpm);
 chassis.drive_distance(17, -90);//
 //chassis.drive_distance(-1, -90);//
-MotorIntake.stop(vex::brakeType::coast);
+IntakeMotors.stop(vex::brakeType::coast);
 
 //chassis.set_heading(270);
 // chassis.turn_to_point(-41, 0);
@@ -348,7 +346,7 @@ void offensive_five_triballs()
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
-    MotorIntake.setBrake(hold);
+    IntakeMotors.setStopping(hold);
     chassis.turn_settle_time = 0;
     chassis.turn_settle_error = 2; 
     chassis.drive_settle_time = 100;
@@ -361,14 +359,14 @@ void offensive_five_triballs()
     chassis.set_coordinates(0, 0, 0);
     chassis.drive_max_voltage = 11;
     catapult1.spinFor(0.25, rev, false);
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
     RightFrontWing.set(true);
     wait(250, msec);
     RightFrontWing.set(false);
     //chassis.set_heading(0);
     chassis.drive_to_point(16.45, 62.55);
     wait(0.1, sec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
@@ -383,7 +381,7 @@ void offensive_awp_four_triballs()
     chassis.setDefaultOdometryConstants();
     chassis.set_swing_constants(12, .45, 0.00070, 2.3, 15);
     chassis.set_turn_constants(9, 0.32, 0.2, 2.2, 0);
-    MotorIntake.setBrake(hold);
+    IntakeMotors.setStopping(hold);
     chassis.turn_settle_time = 0;
     chassis.turn_settle_error = 2; 
     chassis.drive_settle_time = 100;
@@ -396,14 +394,14 @@ void offensive_awp_four_triballs()
     chassis.set_coordinates(0, 0, 0);
     chassis.drive_max_voltage = 11;
     catapult1.spinFor(0.25, rev, false);
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
     RightFrontWing.set(true);
     wait(250, msec);
     RightFrontWing.set(false);
     //chassis.set_heading(0);
     chassis.drive_to_point(4.5, 64.5);
     wait(0.1, sec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
     Brain.Screen.printAt(0,50, "X: %f", chassis.get_X_position());
     Brain.Screen.printAt(0,70, "Y: %f", chassis.get_Y_position());
@@ -442,9 +440,9 @@ void offensive_awp_four_triballs()
     chassis.turn_to_angle(60);
     wait(100, vex::msec);
 
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     wait(0.5, sec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
    //MotorIntake.spin(reverse, 600, rpm);
    //chassis.turn_to_angle(75);
     //MotorIntake.spin(reverse, 600, rpm);
@@ -466,7 +464,7 @@ void offensive_awp_four_triballs()
     chassis.drive_distance(-18);
 
     
-    MotorIntake.stop();
+    IntakeMotors.stop();
     //MotorIntake.stop();
     // chassis.drive_distance(3);
     // chassis.turn_settle_time = 100;
@@ -479,9 +477,9 @@ void offensive_awp_four_triballs()
     chassis.drive_to_point(-18.5, 12);
     chassis.turn_to_angle(-50);
     wait(100, vex::msec);
-    MotorIntake.spin(vex::forward, 600, rpm);
+    IntakeMotors.spin(vex::forward, 600, rpm);
     chassis.drive_distance(33);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 }  
 
 void offensive_six_triballs()

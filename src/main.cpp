@@ -169,7 +169,7 @@ void autonomous(void)
 	//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
-	states_offensive_six_triballs(true);
+		states_offensive_six_triballs(true);
 		//google_programming_skills();	
 		//odom_test();
 		//drive_test();
@@ -216,21 +216,23 @@ void catapult_ButtonControl()
   
 }
 
- void intake_ButtonControl()
+void intake_ButtonControl()
 {
 	if(controller(primary).ButtonR2.pressing())
 	{
-		MotorIntake.setVelocity(600, rpm);
-		MotorIntake.spin(reverse, 600, rpm);
+		IntakeMotors.setVelocity(600, rpm);
+		IntakeMotors.spin(reverse, 600, rpm);
+
 	}
 	else if(controller(primary).ButtonR1.pressing())
 	{
-		MotorIntake.setVelocity(600, rpm);
-		MotorIntake.spin(vex::forward, 600, rpm);
+		IntakeMotors.setVelocity(600, rpm);
+		IntakeMotors.spin(vex::forward, 600, rpm);
+
 	}
 	else
 	{
-		MotorIntake.stop();
+		IntakeMotors.stop();
 	}
 
 }
@@ -369,9 +371,9 @@ void usercontrol(void) {
 
 			
 			chassis.rightWideSwing(26.5, 315, 8, 0.5);
-			MotorIntake.spin(reverse, 600, rpm);
+			IntakeMotors.spin(reverse, 600, rpm);
 			chassis.leftWideSwing(19.5, 0, 8, 1.75);
-			MotorIntake.stop();
+			IntakeMotors.stop();
 
 			chassis.swing_settle_error = 0.5;
 			chassis.swing_max_voltage  = 12;

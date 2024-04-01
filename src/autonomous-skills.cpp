@@ -17,9 +17,9 @@ void states_programming_skills_v2()
 
     
     chassis.rightWideSwing(26.5, 315, 8, 0.5);
-	MotorIntake.spin(reverse, 600, rpm);
+	IntakeMotors.spin(reverse, 600, rpm);
 	chassis.leftWideSwing(19.5, 0, 8, 1.6);
-	MotorIntake.stop();
+	IntakeMotors.stop();
 
 	chassis.swing_settle_error = 0.5;
 	chassis.swing_max_voltage  = 12;
@@ -143,9 +143,9 @@ void google_programming_skills()
     // chassis.drive_distance(8.1); // it was 8
 
     chassis.rightWideSwing(23.5, 315, 8, 0.5);
-	MotorIntake.spin(reverse, 600, rpm);
+	IntakeMotors.spin(reverse, 600, rpm);
 	chassis.leftWideSwing(19.5, 0, 8, 1.6);
-	MotorIntake.stop();
+	IntakeMotors.stop();
 
 	chassis.swing_settle_error = 0.5;
 	chassis.swing_max_voltage  = 12;
@@ -190,7 +190,7 @@ void google_programming_skills()
 
     chassis.drive_to_point(50.375, 53.825, 8);
 
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     
     chassis.turn_to_angle(58);
@@ -198,11 +198,11 @@ void google_programming_skills()
     
     LeftFrontWing.set(false);
      //wait(250, msec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
     chassis.drive_distance(-32, 10, 95);
     chassis.turn_to_angle(90);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     RightFrontWing.set(true);
    // wait(250, msec);
@@ -211,7 +211,7 @@ void google_programming_skills()
     LeftFrontWing.set(false);
     RightFrontWing.set(false);
     wait(250, msec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
 
     chassis.rightWideSwing(-39, 141.5, 8, 2.5);
@@ -257,9 +257,9 @@ void states_programming_skills_v1()
 
     
     chassis.rightWideSwing(26.5, 315, 8, 0.5);
-	MotorIntake.spin(reverse, 600, rpm);
+	IntakeMotors.spin(reverse, 600, rpm);
 	chassis.leftWideSwing(19.5, 0, 8, 1.75);
-	MotorIntake.stop();
+	IntakeMotors.stop();
 
 	chassis.swing_settle_error = 0.5;
 	chassis.swing_max_voltage  = 12;
@@ -311,12 +311,12 @@ void states_programming_skills_v1()
     // });
 
     chassis.drive_timeout = 5000;
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.leftWideSwing(62.5, 90, 12, 0.65);
 
   
 
-    MotorIntake.stop();
+    IntakeMotors.stop();
     LeftFrontWing.set(false);
 
     wingsTask.stop();
@@ -329,9 +329,9 @@ void states_programming_skills_v1()
     chassis.right_swing_to_angle(90);
     RightFrontWing.set(true);
     //LeftFrontWing.set(true);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.drive_distance(37, 12, 90);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     //LeftFrontWing.set(false);
     RightFrontWing.set(false);
     chassis.drive_to_point(50.5, 66);
@@ -339,9 +339,9 @@ void states_programming_skills_v1()
     chassis.turn_to_angle(90);
     RightFrontWing.set(true);
     LeftFrontWing.set(true);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.drive_distance(37, 12, 90);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     RightFrontWing.set(false);
     LeftFrontWing.set(false);
     chassis.left_swing_to_angle(0);
@@ -351,12 +351,12 @@ void states_programming_skills_v1()
     // chassis.turn_to_angle(45);
     // chassis.drive_distance(15.25, 10, 45);
     chassis.left_swing_to_angle(135);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.leftWideSwing(35.5, 180, 12, 1.2);
     chassis.drive_distance(-10, 8, 180);
     chassis.drive_distance(12, 12, 180);
     chassis.drive_distance(-14);
-    MotorIntake.stop();
+    IntakeMotors.stop();
     chassis.turn_to_angle(-100);
     chassis.drive_kp = 1;
     chassis.rightWideSwing(80, 180, 12, 1.15);
@@ -398,9 +398,9 @@ void main_skill_auton()
     //chassis.drive_settle_error = 6;
    // chassis.turn_to_angle(335);
     chassis.drive_distance(9.5, 335);
-    MotorIntake.spin(reverse, 475, rpm);
+    IntakeMotors.spin(reverse, 475, rpm);
     wait(0.80, sec);
-    MotorIntake.stop();
+    IntakeMotors.stop();
    // chassis.drive_distance(7.5, 330);
    // chassis.drive_settle_error = 0.5;
     //chassis.turn_to_angle(43);
@@ -479,9 +479,9 @@ void backup_skills_auton()
 
     chassis.rightWideSwing(25.5, 315, 8, 0.5);
 
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.leftWideSwing(19.5, 0, 8, 1.6);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
     chassis.swing_settle_error = 0.5;
     chassis.swing_max_voltage = 12;
@@ -650,9 +650,9 @@ void backup_skills_auton_1()
 
     chassis.rightWideSwing(25.5, 315, 8, 0.5);
 
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     chassis.leftWideSwing(19.5, 0, 8, 1.6);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
     chassis.swing_settle_error = 0.5;
     chassis.swing_max_voltage = 12;
@@ -714,7 +714,7 @@ chassis.leftWideSwing(57, -5, 7.5, 2.5);
 
 
     Brain.Screen.print(chassis.get_absolute_heading());
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
     LeftFrontWing.set(true);
     
     chassis.turn_to_angle(58);
@@ -722,19 +722,19 @@ chassis.leftWideSwing(57, -5, 7.5, 2.5);
     
 
     LeftFrontWing.set(false);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
 
 
     chassis.drive_distance(-32, 10, 100);
     chassis.turn_to_angle(90);
-    MotorIntake.spin(reverse, 600, rpm);
+    IntakeMotors.spin(reverse, 600, rpm);
      LeftFrontWing.set(true);
     RightFrontWing.set(true);
     chassis.drive_distance(30, 10, 90);
     LeftFrontWing.set(false);
     RightFrontWing.set(false);
-    MotorIntake.stop();
+    IntakeMotors.stop();
 
 
     chassis.rightWideSwing(-39, 141.5, 8, 2.5);
