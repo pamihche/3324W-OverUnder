@@ -24,6 +24,8 @@ extern motor_group IntakeMotors;
 //extern pneumatics RightBackArm;
 extern digital_out LeftFrontWing;
 extern digital_out RightFrontWing;
+extern digital_out LeftBackWings;
+extern digital_out RightBackWings;
 
 extern digital_out balance;
 

@@ -38,8 +38,8 @@ void states_offensive_six_triballs(bool driveToHallway)
 
     chassis.drive_max_voltage = 8;
 
-    //  RightFrontWing.set(true);
-    //  wait(50, msec);
+     RightFrontWing.set(true);
+     wait(50, msec);
 
     vex::task rightWingTask = vex::task([](){
             vex::task::sleep(500);
@@ -49,7 +49,7 @@ void states_offensive_six_triballs(bool driveToHallway)
         }
     );
 
-    //vex::task::sleep(350);
+
 
     // RightFrontWing.set(false);
     //     vex::task::sleep(350);
@@ -71,6 +71,7 @@ void states_offensive_six_triballs(bool driveToHallway)
 
     chassis.drive_to_point(topTriBallPose.XCoordinate, 
                             topTriBallPose.YCoordinate, 12);
+   //     vex::task::sleep(1000000);
     chassis.turn_to_angle(90);
 
 rightWingTask.stop();
@@ -89,7 +90,7 @@ rightWingTask.stop();
     IntakeMotors.spin(vex::forward, 600, rpm);
     chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
     chassis.drive_settle_error = 3;
-    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate - 3, 10);
+    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate - 5, topMiddleTriBallPose.YCoordinate - 6, 10);
     chassis.drive_settle_error = 1.5;
     chassis.drive_distance(-17.5, 12, -90);
     chassis.turn_to_point(-4, 0);

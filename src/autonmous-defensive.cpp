@@ -148,7 +148,7 @@ void defensive_awp_seventeen_points(bool wingsOpen)
     //     return 0;
     // });
     LeftFrontWing.set(true);
-    chassis.drive_distance(5.5, 12, 90);
+    chassis.drive_distance(6.25, 12, 90);
     chassis.turn_max_voltage = 12;
     chassis.turn_to_angle(-165);
     chassis.turn_max_voltage = 9;
@@ -156,7 +156,7 @@ void defensive_awp_seventeen_points(bool wingsOpen)
     
     
     IntakeMotors.stop();
-    chassis.drive_to_point(2, 6, 12);
+    chassis.drive_to_point(2, 6, 10);
     IntakeMotors.spin(vex::forward, 100, rpm);
     chassis.turn_to_angle(125);
     chassis.rightWideSwing(-32, 180, 8, 3.4);
@@ -192,7 +192,7 @@ void defensive_awp_seventeen_points(bool wingsOpen)
    chassis.drive_distance(12);
    chassis.turn_to_angle(90);
    IntakeMotors.spin(vex::reverse, 600, rpm);
-    chassis.drive_distance(31, 8, nullptr);
+    chassis.drive_distance(27.5, 8, nullptr);
     IntakeMotors.stop();
    //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()

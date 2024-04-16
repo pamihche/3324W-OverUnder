@@ -21,7 +21,7 @@ SmartDrive chassis(
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
 
-	PORT6, // inertial sensor port
+	PORT15, // inertial sensor port
 	3.25, 
 	0.6,
 
@@ -218,16 +218,16 @@ void catapult_ButtonControl()
 
 void intake_ButtonControl()
 {
-	if(controller(primary).ButtonR2.pressing())
-	{
-		IntakeMotors.setVelocity(600, rpm);
-		IntakeMotors.spin(reverse, 600, rpm);
-
-	}
-	else if(controller(primary).ButtonR1.pressing())
+	if(controller(primary).ButtonR1.pressing())
 	{
 		IntakeMotors.setVelocity(600, rpm);
 		IntakeMotors.spin(vex::forward, 600, rpm);
+
+	}
+	else if(controller(primary).ButtonR2.pressing())
+	{
+		IntakeMotors.setVelocity(600, rpm);
+		IntakeMotors.spin(vex::reverse, 600, rpm);
 
 	}
 	else
@@ -288,7 +288,7 @@ void balance_control(vex::controller::button controllerButton)
 
 void usercontrol(void) {
 	
-	chassis.setDriveTrainBrakeMode(brakeType::coast);
+	chassis.setDriveTrainBrakeMode(brakeType::brake);
 	chassis.drive_max_voltage = 12;
 
 	Controller.ButtonL1.pressed( [] () {
@@ -323,9 +323,30 @@ void usercontrol(void) {
 		RightFrontWing.set( ! RightFrontWing.value() );
     });
 
-	Controller.ButtonDown.pressed([] () {
-		HangingPneumatics.set(!HangingPneumatics.value());
-    });
+	Controller.ButtonL2.pressed([](){
+		if(LeftBackWings.value() != RightBackWings.value())
+		{
+			if(RightBackWings.value())
+			{
+				RightBackWings.set( ! RightBackWings.value() );
+			}
+			else if( LeftBackWings.value() )
+			{
+				LeftBackWings.set( ! LeftBackWings.value() );
+			}
+		}
+		else
+		{
+			RightBackWings.set( ! RightBackWings.value() );
+			LeftBackWings.set( ! LeftBackWings.value() );
+
+		}
+
+	});
+
+	// Controller.ButtonDown.pressed([] () {
+	// 	HangingPneumatics.set(!HangingPneumatics.value());
+    // });
 
 
 	Controller.ButtonA.pressed([] () {
