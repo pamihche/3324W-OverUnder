@@ -79,7 +79,7 @@ rightWingTask.stop();
     LeftFrontWing.set(true);
     //RightFrontWing.set(true);
     IntakeMotors.spin(reverse, 600, rpm);
-    chassis.drive_distance(35, 11, 90);
+    chassis.drive_distance(32, 11, 90);
    // MotorIntake.stop();
     LeftFrontWing.set(false);
     //RightFrontWing.set(false);
@@ -90,18 +90,18 @@ rightWingTask.stop();
     IntakeMotors.spin(vex::forward, 600, rpm);
     chassis.turn_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate);
     chassis.drive_settle_error = 3;
-    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate - 5, topMiddleTriBallPose.YCoordinate - 6, 10);
+    chassis.drive_to_point(topMiddleTriBallPose.XCoordinate, topMiddleTriBallPose.YCoordinate, 10);
     chassis.drive_settle_error = 1.5;
-    chassis.drive_distance(-17.5, 12, -90);
-    chassis.turn_to_point(-4, 0);
-    chassis.drive_to_point(-4, 3, 8.5);
+    chassis.drive_distance(-21.5, 12, -90);
+    chassis.turn_to_point(6, 10);
+    chassis.drive_to_point(6, 10, 8.5);
     //MotorIntake.stop();
-    chassis.turn_to_angle(30);
+    chassis.turn_to_angle(35);
     IntakeMotors.stop();
     IntakeMotors.spin(reverse, 600, rpm);
     wait(0.45, vex::sec);
     IntakeMotors.stop();
-    //chassis.drive_distance(-5);
+    chassis.drive_distance(-7);
     chassis.turn_to_point(-40, -4, 10);
     IntakeMotors.spin(vex::forward, 600, rpm);
     if(driveToHallway)
@@ -114,6 +114,24 @@ rightWingTask.stop();
         chassis.drive_distance(22.5, 10, -90);
         chassis.drive_distance(-22, 12, -90);
     }
+    // vex::task leftBackWingTask = vex::task([](){
+    //         vex::task::sleep(600);
+    //         LeftBackWings.set(true);
+    //         vex::task::sleep(1100);
+    //         LeftBackWings.set(false);
+    //         return 0;
+    //     }
+    // );
+    // chassis.left_swing_to_angle(-130);
+    // chassis.drive_distance(-20, 10, -130);
+    // chassis.left_swing_to_angle(180);
+    // //chassis.leftWideSwing(-30.9, -135, 10, 1.0);
+    // chassis.turn_to_angle(-170);
+    // chassis.drive_distance(-14, 12, 180);
+
+
+
+    
     
     chassis.turn_to_angle(45);
     chassis.turn_settle_time = 0;
@@ -150,6 +168,7 @@ rightWingTask.stop();
     // chassis.drive_distance(10);
     // chassis.drive_distance(-15, 12, nullptr);
     // MotorIntake.stop();
+
 }
 
 void google_offensive_awp_four_triballs()

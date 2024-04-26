@@ -87,13 +87,13 @@ void displayAutonmousSelector(void)
 							{
 								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
 								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(77, 110, true, "Target: All 6 Triballs in Goal (24 Points)");
+								Brain.Screen.printAt(117, 110, true, "Target: All 6 Triballs in Goal");
 							}
 							if(autonomousType == AutonomousType::Defensive)
 							{
 								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
 								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(35, 110, true, "Target: Score Preload in Opponent's Goal + AWP");
+								Brain.Screen.printAt(135, 110, true, "Target: Simple Qual AWP");
 
 							}
 							if(autonomousType == AutonomousType::Skills)
@@ -111,14 +111,14 @@ void displayAutonmousSelector(void)
 							{
 								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
 								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(65, 110, true, "Target: 5 Triballs & Steal Middle Triballs");
-								Brain.Screen.printAt(190, 130, true, "(19 Points)");
+								Brain.Screen.printAt(85, 110, true, "Target: 5-6 Ball (Not All The Way In Ally)");
+								//Brain.Screen.printAt(190, 130, true, "(19 Points)");
 							}
 							if(autonomousType == AutonomousType::Defensive)
 							{
 								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
 								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(20, 110, true, "Target: Push Middle Triballs Over + AWP (17 Points)");
+								Brain.Screen.printAt(135, 110, true, "Target: Simple Elim AWP");
 
 							}
 							if(autonomousType == AutonomousType::Skills)
@@ -131,16 +131,14 @@ void displayAutonmousSelector(void)
 						case 3 :
 							if(autonomousType == AutonomousType::Offsensive)
 							{
-								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
-								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(85, 110, true, "Target: 4 Triballs + AWP (14 Points)");
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
 							}
 							if(autonomousType == AutonomousType::Defensive)
 							{
 								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
 								Brain.Screen.setFont(propM);
-								Brain.Screen.printAt(30, 110, true, "Target: Steal Middle Triballs + AWP (14 Points)");
-								Brain.Screen.printAt(190, 130, true, "Less Risky!");
+								Brain.Screen.printAt(60, 110, true, "Target: Elims States-Defensive With Wings");
+								//Brain.Screen.printAt(190, 130, true, "Less Risky!");
 
 							}
 							if(autonomousType == AutonomousType::Skills)
@@ -151,9 +149,58 @@ void displayAutonmousSelector(void)
 						break;	
 
 						case 4 :
+							if(autonomousType == AutonomousType::Offsensive)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
+							if(autonomousType == AutonomousType::Defensive)
+							{
+								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
+								Brain.Screen.setFont(propM);
+								Brain.Screen.printAt(60, 110, true, "Target: Qual States-Defensive With Wings");
+								//Brain.Screen.printAt(190, 130, true, "Less Risky!");
+
+							}
+							if(autonomousType == AutonomousType::Skills)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
+						break;
 						case 5 :
+							if(autonomousType == AutonomousType::Offsensive)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
+							if(autonomousType == AutonomousType::Defensive)
+							{
+								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
+								Brain.Screen.setFont(propM);
+								Brain.Screen.printAt(63, 110, true, "Target: Elims States-Defensive No Wings");
+								//Brain.Screen.printAt(190, 130, true, "Less Risky!");
+
+							}
+							if(autonomousType == AutonomousType::Skills)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
+						break;
 						case 6 :
-						Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							if(autonomousType == AutonomousType::Offsensive)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
+							if(autonomousType == AutonomousType::Defensive)
+							{
+								Brain.Screen.printAt(115, 75, true, "%s", getAutonDescription(autonomousType).c_str());
+								Brain.Screen.setFont(propM);
+								Brain.Screen.printAt(63, 110, true, "Target: Qual States-Defensive No Wings");
+								//Brain.Screen.printAt(190, 130, true, "Less Risky!");
+
+							}
+							if(autonomousType == AutonomousType::Skills)
+							{
+								Brain.Screen.printAt(90, 125, true, "No Auton Selected");
+							}
 						break;
 
 						default : break;
@@ -239,11 +286,11 @@ void drawAutonomousStrategies(int autonType)
 	switch (autonType)
 	{
 		case AutonomousType::Offsensive :
-			Brain.Screen.printAt(55, 80, "6 Triball");
+			Brain.Screen.printAt(47, 80, "6 Triball Rush");
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(38, 80, "AWP + 9 Points");				
+			Brain.Screen.printAt(22, 80, "AWP + 9 Points [Qual]");				
 			break;
 
 		case AutonomousType::Skills :
@@ -257,11 +304,11 @@ void drawAutonomousStrategies(int autonType)
 	switch (autonType)
 	{
 		case AutonomousType::Offsensive :
-			Brain.Screen.printAt(177, 80, "5 Triball (JAR Auton)");
+			Brain.Screen.printAt(174, 80, "No Hallway 5-6 Triball");
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(192, 80, "AWP + 17 Points");				
+			Brain.Screen.printAt(175, 80, "AWP + 9 Points [Elims]");				
 			break;
 
 		case AutonomousType::Skills :
@@ -275,12 +322,12 @@ void drawAutonomousStrategies(int autonType)
 	switch (autonType)
 	{
 		case AutonomousType::Offsensive :
-			Brain.Screen.printAt(347, 80, "4 Triball + AWP");
+			Brain.Screen.printAt(347, 80, "");
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(350, 75, "AWP + 14 Points");
-			Brain.Screen.printAt(360, 88, "(Less Risk)");								
+			Brain.Screen.printAt(350, 75, "AWP + 17 Points");
+			Brain.Screen.printAt(353, 88, "[Elims + Wing]");								
 			break;
 
 		case AutonomousType::Skills :
@@ -298,7 +345,8 @@ void drawAutonomousStrategies(int autonType)
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(30, 178, "");				
+			Brain.Screen.printAt(40, 178, "AWP + 17 Points");
+			Brain.Screen.printAt(45, 191, "[Qual + Wing]");				
 			break;
 
 		case AutonomousType::Skills :
@@ -317,7 +365,8 @@ void drawAutonomousStrategies(int autonType)
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(185, 178, "");							
+			Brain.Screen.printAt(195, 178, "AWP + 17 Points");
+			Brain.Screen.printAt(190, 191, "[Elims + No Wing]");							
 			break;
 
 		case AutonomousType::Skills :
@@ -336,7 +385,8 @@ void drawAutonomousStrategies(int autonType)
 			break;
 
 		case AutonomousType::Defensive :
-			Brain.Screen.printAt(342, 178, "");					
+			Brain.Screen.printAt(352, 178, "AWP + 17 Points");
+			Brain.Screen.printAt(347, 191, "[Qual + No Wing]");					
 			break;
 
 		case AutonomousType::Skills :

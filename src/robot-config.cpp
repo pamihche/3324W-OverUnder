@@ -10,16 +10,16 @@ controller Controller;
 
 vex::task rightWingListener;
 
-motor MotorLeftFront  = motor(PORT20,  ratio6_1, true);
-motor MotorLeftMiddle = motor(PORT19,  ratio6_1, true);
-motor MotorLeftBack   = motor(PORT18, ratio6_1, true);
+motor MotorLeftFront  = motor(PORT10,  ratio6_1, true);
+motor MotorLeftMiddle = motor(PORT9,  ratio6_1, true);
+motor MotorLeftBack   = motor(PORT8, ratio6_1, true);
 
-motor MotorRightFront  = motor(PORT12, ratio6_1, false);
-motor MotorRightMiddle = motor(PORT13, ratio6_1, false);
-motor MotorRightBack   = motor(PORT14, ratio6_1, false);
+motor MotorRightFront  = motor(PORT1, ratio6_1, false);
+motor MotorRightMiddle = motor(PORT2, ratio6_1, false);
+motor MotorRightBack   = motor(PORT3, ratio6_1, false);
 
-motor RightMotorIntake = motor(PORT11, ratio6_1, true);
-motor LeftMotorIntake = motor(PORT17, ratio6_1, false);
+motor RightMotorIntake = motor(PORT5, ratio6_1, true);
+motor LeftMotorIntake = motor(PORT6, ratio6_1, false);
 
 motor_group IntakeMotors = motor_group(RightMotorIntake, LeftMotorIntake);
 
@@ -34,7 +34,7 @@ motor catapult1 = motor(PORT4, ratio36_1, false);
  digital_out LeftBackWings = digital_out(Brain.ThreeWirePort.A);
  digital_out RightBackWings = digital_out(Brain.ThreeWirePort.B);
 //  digital_out balance = digital_out(Brain.ThreeWirePort.F);
- pneumatics HangingPneumatics = pneumatics(Brain.ThreeWirePort.H);
+ pneumatics HangingPneumatics = pneumatics(Brain.ThreeWirePort.E);
  //digital_out RightBackArm   = digital_out(Brain.ThreeWirePort.F);
 
 

@@ -21,7 +21,7 @@ SmartDrive chassis(
 	motor_group(MotorLeftFront, MotorLeftMiddle, MotorLeftBack), 
 	motor_group(MotorRightFront, MotorRightMiddle, MotorRightBack),
 
-	PORT15, // inertial sensor port
+	PORT21, // inertial sensor port
 	3.25, 
 	0.6,
 
@@ -125,9 +125,6 @@ void autonomous(void)
 					case 2 : 
 						states_offensive_six_triballs(false);
 					break;
-					case 3:
-						google_offensive_awp_four_triballs();;
-					break;
 					default: break;
 				}
 
@@ -138,13 +135,22 @@ void autonomous(void)
 				switch (autonomousTypeStrategy)
 				{
 					case 1 : 
-						defensive_awp_nine_points();
+						defensive_awp_nine_points(false);
 					break;
 					case 2 : 
-						defensive_awp_seventeen_points(true);
+						defensive_awp_nine_points(true);
 					break;
 					case 3:
-						defensive_awp_seventeen_points(false);
+						defensive_awp_seventeen_points(true, true);
+					break;
+					case 4:
+						defensive_awp_seventeen_points(true, false);
+					break;
+					case 5:
+						defensive_awp_seventeen_points(false, true);
+					break;
+					case 6:
+						defensive_awp_seventeen_points(false, false);
 					break;
 					default: break;
 				}
@@ -164,8 +170,8 @@ void autonomous(void)
 		break;
 
 		default: 
-		//defensive_awp_nine_points();
-	//defensive_awp_seventeen_points(false);
+		//defensive_awp_nine_points(true);
+		//defensive_awp_seventeen_points(true, true);
 	//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
@@ -344,9 +350,9 @@ void usercontrol(void) {
 
 	});
 
-	// Controller.ButtonDown.pressed([] () {
-	// 	HangingPneumatics.set(!HangingPneumatics.value());
-    // });
+	Controller.ButtonDown.pressed([] () {
+		HangingPneumatics.set(!HangingPneumatics.value());
+    });
 
 
 	Controller.ButtonA.pressed([] () {
@@ -380,7 +386,7 @@ void usercontrol(void) {
 		//front_left_wing_control(Controller.ButtonL1);
 		//front_right_wing_control(Controller.ButtonL1);
 
-
+		/*
 		if (Controller.ButtonLeft.pressing())
 		{
 			chassis.setDefaultOdometryConstants();
@@ -438,9 +444,10 @@ void usercontrol(void) {
 
 			chassis.drive_distance(11, 8, 180);
 			chassis.drive_distance(-11.5, 12, 180);
-*/
+
 
 		}
+		*/
 		
 		
 		chassis.control_tank(Controller);

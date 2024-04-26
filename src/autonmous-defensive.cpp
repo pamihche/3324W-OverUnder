@@ -23,7 +23,7 @@ int testFunction()
 	return 0;
 }
 
-void defensive_awp_nine_points()
+void defensive_awp_nine_points(bool isElims)
 {
     chassis.setDefaultConstants();
     chassis.set_coordinates(0, 0, 0);
@@ -87,16 +87,25 @@ void defensive_awp_nine_points()
    //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()
 
-    chassis.drive_settle_error = 6;
-//     MotorIntake.spin(reverse, 600, rpm);
-//     chassis.drive_max_voltage = 9; 
-//    //chassis.drive_to_point(22, -19);
-//    MotorIntake.stop();
-   chassis.drive_settle_error = 1.5;
+//     chassis.drive_settle_error = 6;
+// //     MotorIntake.spin(reverse, 600, rpm);
+// //     chassis.drive_max_voltage = 9; 
+// //    //chassis.drive_to_point(22, -19);
+// //    MotorIntake.stop();
+//    chassis.drive_settle_error = 1.5;
    //RightBackArm.set(false);
+   if(isElims)
+    {
+        chassis.drive_to_point(-7.5, 3, 8);
+        chassis.turn_to_angle(155);
+        RightBackWings.set(true);
+        // chassis.drive_distance(-30.125, 8, nullptr);
+        // chassis.right_swing_to_angle(120);
+    }
+
 }
 
-void defensive_awp_seventeen_points(bool wingsOpen)
+void defensive_awp_seventeen_points(bool wingsOpen, bool isElims)
 {
 
     chassis.setDefaultOdometryConstants();
@@ -148,7 +157,7 @@ void defensive_awp_seventeen_points(bool wingsOpen)
     //     return 0;
     // });
     LeftFrontWing.set(true);
-    chassis.drive_distance(6.25, 12, 90);
+    chassis.drive_distance(7.25, 12, 90);
     chassis.turn_max_voltage = 12;
     chassis.turn_to_angle(-165);
     chassis.turn_max_voltage = 9;
@@ -164,7 +173,7 @@ void defensive_awp_seventeen_points(bool wingsOpen)
     //MotorIntake.stop();
 
     chassis.drive_max_voltage  = 7;
-    chassis.drive_distance(12);
+    chassis.drive_distance(13);
    chassis.turn_to_angle(135);
    IntakeMotors.stop();
 
@@ -192,17 +201,28 @@ void defensive_awp_seventeen_points(bool wingsOpen)
    chassis.drive_distance(12);
    chassis.turn_to_angle(90);
    IntakeMotors.spin(vex::reverse, 600, rpm);
-    chassis.drive_distance(27.5, 8, nullptr);
+    chassis.drive_distance(30.125, 7, nullptr);
     IntakeMotors.stop();
    //Brain.Screen.print(chassis.get_absolute_heading());
    //chassis.turn_to_angle()
 
-    chassis.drive_settle_error = 6;
-//     MotorIntake.spin(reverse, 600, rpm);
-//     chassis.drive_max_voltage = 9; 
-//    //chassis.drive_to_point(22, -19);
-//    MotorIntake.stop();
-   chassis.drive_settle_error = 1.5;
+//     chassis.drive_settle_error = 6;
+// //     MotorIntake.spin(reverse, 600, rpm);
+// //     chassis.drive_max_voltage = 9; 
+// //    //chassis.drive_to_point(22, -19);
+// //    MotorIntake.stop();
+//    chassis.drive_settle_error = 1.5;
+
+    if(isElims)
+    {
+        chassis.drive_to_point(-7.5, -2, 8);
+        chassis.turn_to_angle(115);
+        RightBackWings.set(true);
+        // chassis.drive_distance(-30.125, 8, nullptr);
+        // chassis.right_swing_to_angle(120);
+    }
+
+
 
 }
 
