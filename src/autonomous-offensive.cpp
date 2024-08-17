@@ -79,7 +79,7 @@ rightWingTask.stop();
     LeftFrontWing.set(true);
     //RightFrontWing.set(true);
     IntakeMotors.spin(reverse, 600, rpm);
-    chassis.drive_distance(32, 11, 90);
+    chassis.drive_distance(34, 11, 90);
    // MotorIntake.stop();
     LeftFrontWing.set(false);
     //RightFrontWing.set(false);
@@ -106,8 +106,8 @@ rightWingTask.stop();
     IntakeMotors.spin(vex::forward, 600, rpm);
     if(driveToHallway)
     {
-        chassis.drive_distance(34.5, 10, -90);
-        chassis.drive_distance(-34, 12, -90);
+        chassis.drive_distance(36, 10, -90);
+        chassis.drive_distance(-35.5, 12, -90);
     }
     else
     {

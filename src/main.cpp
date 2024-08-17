@@ -170,12 +170,12 @@ void autonomous(void)
 		break;
 
 		default: 
+		//states_offensive_six_triballs(true);
 		//defensive_awp_nine_points(true);
-		//defensive_awp_seventeen_points(true, true);
-	//states_programming_skills_v1();
+		defensive_awp_seventeen_points(true, true);
+		//states_programming_skills_v1();
 
 		//states_programming_skills_v2();
-		states_offensive_six_triballs(true);
 		//google_programming_skills();	
 		//odom_test();
 		//drive_test();

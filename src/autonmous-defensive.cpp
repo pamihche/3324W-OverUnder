@@ -147,7 +147,7 @@ void defensive_awp_seventeen_points(bool wingsOpen, bool isElims)
     // );
 
     chassis.drive_to_point(middleTriBallPose.XCoordinate,
-                         middleTriBallPose.YCoordinate, 10);
+                         middleTriBallPose.YCoordinate - 1, 9.5);
     //rightWingTask.stop();
     chassis.turn_to_angle(90);
 
